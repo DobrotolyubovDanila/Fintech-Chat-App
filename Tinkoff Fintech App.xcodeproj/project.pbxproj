@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E003F8E4253726E000AFE501 /* ProfileInformationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E003F8E3253726E000AFE501 /* ProfileInformationClass.swift */; };
+		E003F8E825373D8F00AFE501 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E003F8E725373D8F00AFE501 /* NavController.swift */; };
 		E025DE94252DF80C008D957F /* DefaultThemeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E025DE93252DF80C008D957F /* DefaultThemeRepository.swift */; };
 		E025DE97252DF831008D957F /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E025DE96252DF831008D957F /* ThemeProtocol.swift */; };
 		E025DE9A252DF8B4008D957F /* ClassicTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E025DE99252DF8B4008D957F /* ClassicTheme.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E003F8E3253726E000AFE501 /* ProfileInformationClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationClass.swift; sourceTree = "<group>"; };
+		E003F8E725373D8F00AFE501 /* NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		E025DE93252DF80C008D957F /* DefaultThemeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultThemeRepository.swift; sourceTree = "<group>"; };
 		E025DE96252DF831008D957F /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
 		E025DE99252DF8B4008D957F /* ClassicTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicTheme.swift; sourceTree = "<group>"; };
@@ -83,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E003F8E2253726B400AFE501 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E003F8E3253726E000AFE501 /* ProfileInformationClass.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E025DE92252DF7F3008D957F /* Theme Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +130,7 @@
 			children = (
 				E05BE3DB2525754600673380 /* ConversationsList.storyboard */,
 				E05BE3D82525754600673380 /* ConversationsListViewController.swift */,
+				E003F8E725373D8F00AFE501 /* NavController.swift */,
 				E0443BDC25366C0B00676C24 /* Extensions */,
 				E05BE3D92525754600673380 /* Views */,
 				E06B174C252908EC0084BA8D /* Model */,
@@ -147,9 +160,10 @@
 		E05BE3F5252575A200673380 /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E05BE3F8252575A200673380 /* ProfileViewController.swift */,
 				E05BE3F6252575A200673380 /* Profile.storyboard */,
+				E05BE3F8252575A200673380 /* ProfileViewController.swift */,
 				E09884CA2528D443007CFBA5 /* Views */,
+				E003F8E2253726B400AFE501 /* Model */,
 			);
 			path = ProfileViewController;
 			sourceTree = "<group>";
@@ -316,9 +330,11 @@
 				E0CEE2F92526089C00696196 /* ProfileAvatarView.swift in Sources */,
 				E09F8FD3252E313B00C7D270 /* ThemesPickerDelegate.swift in Sources */,
 				E05BE3CB252574FA00673380 /* AppDelegate.swift in Sources */,
+				E003F8E825373D8F00AFE501 /* NavController.swift in Sources */,
 				E05BE3EF2525758700673380 /* ConversationViewController.swift in Sources */,
 				E05BE3D52525753D00673380 /* ConfigurableViewProtocol.swift in Sources */,
 				E05BE3F32525759B00673380 /* Logger.swift in Sources */,
+				E003F8E4253726E000AFE501 /* ProfileInformationClass.swift in Sources */,
 				E05BE3DC2525754600673380 /* ConversationsListViewController.swift in Sources */,
 				E05BE3FA252575A200673380 /* ProfileViewController.swift in Sources */,
 				E05BE3EE2525758700673380 /* ConversationCell.swift in Sources */,

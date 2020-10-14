@@ -14,9 +14,9 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var editButton: UIButton!
     
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameField: UITextField!
     
-    @IBOutlet weak var informationLabel: UILabel!
+    @IBOutlet weak var informationTextView: UITextView!
     
     var profileImage:UIImage?
     
@@ -102,7 +102,7 @@ class ProfileViewController: UIViewController {
         actionSheet.addAction(photo)
         actionSheet.addAction(cansel)
         
-        if ThemeManager.shared.current.style == .nigth {
+        if ThemeManager.shared.current.style == .night {
             if #available(iOS 13.0, *) {
                 actionSheet.overrideUserInterfaceStyle = .dark
             }
@@ -116,8 +116,8 @@ class ProfileViewController: UIViewController {
     func setInterfaceStyle() {
         editButton.backgroundColor = ThemeManager.shared.current.secondBackgroundColor
         editButton.setTitleColor(ThemeManager.shared.current.tintColor, for: .normal)
-        nameLabel.textColor = ThemeManager.shared.current.mainTextColor
-        informationLabel.textColor = ThemeManager.shared.current.mainTextColor
+        nameField.textColor = ThemeManager.shared.current.mainTextColor
+        informationTextView.textColor = ThemeManager.shared.current.mainTextColor
         
         view.backgroundColor = ThemeManager.shared.current.backgroundColor
         

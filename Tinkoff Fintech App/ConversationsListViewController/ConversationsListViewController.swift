@@ -16,6 +16,12 @@ class ConversationsListViewController: UITableViewController {
     
     var conversationCellsContent: [ConversationCellModel] = PlaceholderData().conversationCellsContent
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if ThemeManager.shared.current.style == .night {
+            return .lightContent
+        }
+        return .default
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +58,6 @@ class ConversationsListViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatOnlineCell", for: indexPath) as! ChatOnlineCell
             
             cell.configCellContent(conversationCellsContent[indexPath.row])
-            cell.configOnlineIndicator()
             cell.configWithTheme()
             
             return cell

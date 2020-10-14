@@ -12,7 +12,7 @@ import Foundation
 enum InterfaceStyle {
     case classic
     case day
-    case nigth
+    case night
     
     var description:String {
         switch self {
@@ -20,7 +20,7 @@ enum InterfaceStyle {
             return "ClassicTheme"
         case .day:
             return "DayTheme"
-        case .nigth:
+        case .night:
             return "NightTheme"
         }
     }

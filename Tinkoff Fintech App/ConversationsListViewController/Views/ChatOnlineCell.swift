@@ -18,7 +18,7 @@ class ChatOnlineCell: UITableViewCell {
     
     @IBOutlet weak var onlineIndicator: UIView!
     
-    func configOnlineIndicator() {
+    private func configOnlineIndicator() {
         onlineIndicator.layer.cornerRadius = onlineIndicator.layer.frame.height/2
         
         let shapeLayer = CAShapeLayer()
@@ -61,6 +61,8 @@ class ChatOnlineCell: UITableViewCell {
         } else {
             messageLabel.font = UIFont(name: "HelveticaNeue", size: messageLabel.font.pointSize)
         }
+
+        configOnlineIndicator()
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {

@@ -212,10 +212,10 @@ Second Line</string>
             </objects>
             <point key="canvasLocation" x="1189.5999999999999" y="121.88905547226388"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav Controller-->
         <scene sceneID="jYY-hU-GbZ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ayF-t0-WXh" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ayF-t0-WXh" customClass="NavController" customModule="Tinkoff_Fintech_App" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="wlZ-Zi-up6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>

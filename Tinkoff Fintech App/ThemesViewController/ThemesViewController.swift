@@ -28,7 +28,7 @@ class ThemesViewController: UIViewController {
             selectCurrentButton(themeButtons[0])
         case .day:
             selectCurrentButton(themeButtons[1])
-        case .nigth:
+        case .night:
             selectCurrentButton(themeButtons[2])
         }
         
@@ -91,6 +91,7 @@ class ThemesViewController: UIViewController {
     func updateInterfaceWithTheme() {
         view.backgroundColor = ThemeManager.shared.current.backgroundColor
         labelsThemes.forEach{ $0.textColor = ThemeManager.shared.current.mainTextColor }
+        self.navigationController?.setNeedsStatusBarAppearanceUpdate()
     }
     
 }
