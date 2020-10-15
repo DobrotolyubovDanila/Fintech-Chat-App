@@ -10,7 +10,7 @@ import UIKit
 
 class OperationDataManager: DataManagerAbstraction {
     
-    var delegate: DataUpdaterDelegate?
+    weak var delegate: DataUpdaterDelegate?
     
     func saveProfileInformation(with profInfo: ProfileInformation, completion: @escaping ()->() ) {
         print("Save with Operation")
