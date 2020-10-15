@@ -42,6 +42,9 @@
 		E0A476D72537DF1F00938B10 /* InterfaceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476B22537DF1F00938B10 /* InterfaceStyle.swift */; };
 		E0A476D82537DF1F00938B10 /* OperationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476B42537DF1F00938B10 /* OperationDataManager.swift */; };
 		E0A476D92537DF1F00938B10 /* GCDDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476B52537DF1F00938B10 /* GCDDataManager.swift */; };
+		E0A476EB2537E93800938B10 /* SaveOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476EA2537E93800938B10 /* SaveOperation.swift */; };
+		E0A476EE2537E94500938B10 /* LoadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476ED2537E94500938B10 /* LoadOperation.swift */; };
+		E0A476F22537F52C00938B10 /* DataManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476F12537F52C00938B10 /* DataManagerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +84,9 @@
 		E0A476B22537DF1F00938B10 /* InterfaceStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceStyle.swift; sourceTree = "<group>"; };
 		E0A476B42537DF1F00938B10 /* OperationDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationDataManager.swift; sourceTree = "<group>"; };
 		E0A476B52537DF1F00938B10 /* GCDDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDDataManager.swift; sourceTree = "<group>"; };
+		E0A476EA2537E93800938B10 /* SaveOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOperation.swift; sourceTree = "<group>"; };
+		E0A476ED2537E94500938B10 /* LoadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadOperation.swift; sourceTree = "<group>"; };
+		E0A476F12537F52C00938B10 /* DataManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerDelegate.swift; sourceTree = "<group>"; };
 		E0EBA6B2250A8E2D004CD943 /* Tinkoff Fintech App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinkoff Fintech App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -234,10 +240,29 @@
 		E0A476B32537DF1F00938B10 /* ProfileDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				E0A476B42537DF1F00938B10 /* OperationDataManager.swift */,
-				E0A476B52537DF1F00938B10 /* GCDDataManager.swift */,
+				E0A476F12537F52C00938B10 /* DataManagerDelegate.swift */,
+				E0A476E62537E90000938B10 /* GCD */,
+				E0A476E82537E90B00938B10 /* Operation */,
 			);
 			path = ProfileDataManager;
+			sourceTree = "<group>";
+		};
+		E0A476E62537E90000938B10 /* GCD */ = {
+			isa = PBXGroup;
+			children = (
+				E0A476B52537DF1F00938B10 /* GCDDataManager.swift */,
+			);
+			path = GCD;
+			sourceTree = "<group>";
+		};
+		E0A476E82537E90B00938B10 /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				E0A476B42537DF1F00938B10 /* OperationDataManager.swift */,
+				E0A476EA2537E93800938B10 /* SaveOperation.swift */,
+				E0A476ED2537E94500938B10 /* LoadOperation.swift */,
+			);
+			path = Operation;
 			sourceTree = "<group>";
 		};
 		E0EBA6A9250A8E2D004CD943 = {
@@ -365,7 +390,9 @@
 				E0A476CE2537DF1F00938B10 /* ProfileViewController.swift in Sources */,
 				E0A476D32537DF1F00938B10 /* NightTheme.swift in Sources */,
 				E0A476D72537DF1F00938B10 /* InterfaceStyle.swift in Sources */,
+				E0A476EE2537E94500938B10 /* LoadOperation.swift in Sources */,
 				E0A476BB2537DF1F00938B10 /* ConversationsListViewController.swift in Sources */,
+				E0A476F22537F52C00938B10 /* DataManagerDelegate.swift in Sources */,
 				E0A476D62537DF1F00938B10 /* ThemesPickerDelegate.swift in Sources */,
 				E0A476C02537DF1F00938B10 /* PlaceholderData.swift in Sources */,
 				E0A476D92537DF1F00938B10 /* GCDDataManager.swift in Sources */,
@@ -374,6 +401,7 @@
 				E0A476CB2537DF1F00938B10 /* ImagePickerExtension.swift in Sources */,
 				E0A476D22537DF1F00938B10 /* ClassicTheme.swift in Sources */,
 				E0A476C52537DF1F00938B10 /* Logger.swift in Sources */,
+				E0A476EB2537E93800938B10 /* SaveOperation.swift in Sources */,
 				E0A476B82537DF1F00938B10 /* ConversationCell.swift in Sources */,
 				E0A476C12537DF1F00938B10 /* ConversationCellModel.swift in Sources */,
 				E0A476C22537DF1F00938B10 /* ChatOfflineCell.swift in Sources */,

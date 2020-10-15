@@ -10,7 +10,7 @@ import UIKit
 
 class GCDDataManager {
     
-    weak var delegate: GCDDataManagerDelegate?
+    weak var delegate: DataManagerDelegate?
     
     private var plistURL: URL {
         let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -38,27 +38,22 @@ class GCDDataManager {
             if let data = try? encoder.encode(profInfo) {
                 if FileManager.default.fileExists(atPath: self.plistURL.path) {
                     try? data.write(to: self.plistURL)
-                    print("сохранили")
+                    print("сохранили GCD")
                     DispatchQueue.main.async {
-                        self.delegate?.showAlertGCD(title: "Success", message: "the data was written to the file")
+                        self.delegate?.showAlert(title: "Success", message: "Data was written to the file with GCD")
                         self.delegate?.enableInterface()
                     }
                 } else {
                     FileManager.default.createFile(atPath: self.plistURL.path, contents: data, attributes: nil)
                     DispatchQueue.main.async {
-                        self.delegate?.showAlertGCD(title: "Success", message: "the data was written to the file")
+                        self.delegate?.showAlert(title: "Success", message: "the data was written to the file")
                         self.delegate?.enableInterface()
                     }
                 }
             } else {
-                self.delegate?.showAlertGCD(title: "Failing save", message: "Failed to save data")
+                self.delegate?.showAlert(title: "Failing save", message: "Failed to save data")
             }
         }
     }
     
-}
-
-protocol GCDDataManagerDelegate: class {
-    func showAlertGCD(title: String, message: String)
-    func enableInterface()
 }
