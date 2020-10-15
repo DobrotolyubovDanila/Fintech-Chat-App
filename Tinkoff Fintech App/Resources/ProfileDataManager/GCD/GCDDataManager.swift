@@ -8,30 +8,31 @@
 
 import UIKit
 
-class GCDDataManager {
+class GCDDataManager: DataManagerAbstraction {
     
-    weak var delegate: DataManagerDelegate?
+    weak var delegate: DataUpdaterDelegate?
     
     private var plistURL: URL {
         let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         return documents.appendingPathComponent("ProfileData.plist")
     }
     
-    func getProfileInformation() -> ProfileInformation {
+    func loadProfileInformation(completion: @escaping (ProfileInformation) -> () ) {
         
         let decoder = PropertyListDecoder()
         
         guard let data = try? Data(contentsOf: plistURL),
               let profInfo = try? decoder.decode(ProfileInformation.self, from: data) else {
-            return ProfileInformation(name: "", description: "information", imageData: Data())
+            completion(ProfileInformation(name: "", description: "information", imageData: Data() ) )
+            return
         }
         
-        return profInfo
+        completion(profInfo)
     }
     
     
     
-    func saveProfileInformation(with profInfo: ProfileInformation) {
+    func saveProfileInformation(with profInfo: ProfileInformation, completion: @escaping ()->() ) {
         DispatchQueue.global().async {
             let encoder = PropertyListEncoder()
             
@@ -43,12 +44,14 @@ class GCDDataManager {
                         self.delegate?.showAlert(title: "Success", message: "Data was written to the file with GCD")
                         self.delegate?.enableInterface()
                     }
+                    completion()
                 } else {
                     FileManager.default.createFile(atPath: self.plistURL.path, contents: data, attributes: nil)
                     DispatchQueue.main.async {
                         self.delegate?.showAlert(title: "Success", message: "the data was written to the file")
                         self.delegate?.enableInterface()
                     }
+                    completion()
                 }
             } else {
                 self.delegate?.showAlert(title: "Failing save", message: "Failed to save data")

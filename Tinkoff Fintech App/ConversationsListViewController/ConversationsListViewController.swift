@@ -14,12 +14,12 @@ class ConversationsListViewController: UITableViewController {
     
     var conversationCellsContent: [ConversationCellModel] = PlaceholderData().conversationCellsContent
     
-    var profileDataManager = GCDDataManager()
+    var gcdDataManager: DataManagerAbstraction?
     
-    var operationDataManager = OperationDataManager()
+    var operationDataManager: DataManagerAbstraction?
     
     var profileInformation: ProfileInformation!
-        
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if ThemeManager.shared.current.style == .night {
             return .lightContent
@@ -30,28 +30,37 @@ class ConversationsListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // MARK: - Select method of load data
+        gcdDataManager = GCDDataManager()
+        operationDataManager = OperationDataManager()
+        
+        // MARK: - Select method of loading data
         /*
-        profileInformation = profileDataManager.getProfileInformation()
-        if let image = UIImage(data: self.profileInformation.imageData) {
-            self.profileAvatarView.setImage(image: image)
+        // GCD
+         gcdDataManager?.loadProfileInformation { [weak self] (profInformaiton) in
+         self?.profileInformation = profInformaiton
+         
+         if let image = UIImage(data: self?.profileInformation.imageData ?? Data()) {
+         DispatchQueue.main.async {
+         self?.profileAvatarView.setImage(image: image)
+                }
+            }
         }
         */
         
         // Закомментируйте код ниже, если раскомментировали выше.
-         operationDataManager.loadData(completion: { (profileInfo) in
-            self.profileInformation = profileInfo
-            if let image = UIImage(data: self.profileInformation.imageData) {
+        // Operaition
+        
+        operationDataManager?.loadProfileInformation(completion: { [weak self] (profileInfo) in
+            self?.profileInformation = profileInfo
+            
+            if let image = UIImage(data: self?.profileInformation.imageData ?? Data()) {
                 DispatchQueue.main.async {
-                    self.profileAvatarView.setImage(image: image)
+                    self?.profileAvatarView.setImage(image: image)
                 }
             }
         })
         
-        
-        // MARK: - Select method of load data
-        
-        
+        // MARK: - Select method of loading data
         
         conversationCellsContent.sort { (item1, item2) -> Bool in
             return item1.date > item2.date

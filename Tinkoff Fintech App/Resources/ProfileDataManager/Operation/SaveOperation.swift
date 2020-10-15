@@ -12,7 +12,7 @@ class SaveOperation: Operation {
     
     var profileInformation: ProfileInformation?
     
-    var delegate: DataManagerDelegate?
+    var delegate: DataUpdaterDelegate?
     
     private var plistURL: URL {
         let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

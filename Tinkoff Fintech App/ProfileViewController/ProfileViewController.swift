@@ -24,9 +24,9 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    let GCDProfileDM = GCDDataManager()
+    var GCDProfileDM: DataManagerAbstraction!
     
-    let operationManager = OperationDataManager()
+    var operationManager: DataManagerAbstraction!
     
     var profileInformation: ProfileInformation!
     
@@ -45,6 +45,9 @@ class ProfileViewController: UIViewController {
         setInterfaceStyle()
         
         configKeyboardObservers()
+        
+        GCDProfileDM = GCDDataManager()
+        operationManager = OperationDataManager()
         
         GCDProfileDM.delegate = self
         operationManager.delegate = self
@@ -81,7 +84,6 @@ class ProfileViewController: UIViewController {
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification , object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification , object: nil)
-//        saveData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -168,7 +170,7 @@ class ProfileViewController: UIViewController {
             profileInformation.imageData = data
         }
         
-        operationManager.saveData(with: profileInformation) {
+        operationManager.saveProfileInformation(with: profileInformation) {
             self.enableInterface()
         }
         
@@ -176,7 +178,23 @@ class ProfileViewController: UIViewController {
 
     private func switchEditMode() {
         nameField.isUserInteractionEnabled.toggle()
+        if nameField.isUserInteractionEnabled {
+            nameField.layer.borderColor = ThemeManager.shared.current.secondBackgroundColor.cgColor
+            nameField.layer.borderWidth = 1
+        } else {
+            nameField.layer.borderColor = nil
+            nameField.layer.borderWidth = 0
+        }
+        
         descriptionTextView.isEditable.toggle()
+        if descriptionTextView.isEditable {
+            descriptionTextView.layer.borderWidth = 1
+            descriptionTextView.layer.borderColor = ThemeManager.shared.current.secondBackgroundColor.cgColor
+        } else {
+            descriptionTextView.layer.borderWidth = 0
+            descriptionTextView.layer.borderColor = nil
+        }
+        
         profileAvatarView.profileImageButton.isEnabled.toggle()
         
         editButton.isHidden.toggle()
@@ -207,11 +225,13 @@ class ProfileViewController: UIViewController {
             profileInformation.imageData = data
         }
         
-        GCDProfileDM.saveProfileInformation(with: profileInformation)
+        GCDProfileDM.saveProfileInformation(with: profileInformation, completion: {
+            
+        })
     }
 }
 
-extension ProfileViewController: DataManagerDelegate {
+extension ProfileViewController: DataUpdaterDelegate {
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         if title == "Success" {

@@ -8,15 +8,15 @@
 
 import UIKit
 
-class OperationDataManager {
+class OperationDataManager: DataManagerAbstraction {
     
-    var delegate: DataManagerDelegate?
+    var delegate: DataUpdaterDelegate?
     
-    func saveData(with profileInfo: ProfileInformation, completion: @escaping () -> () ) {
+    func saveProfileInformation(with profInfo: ProfileInformation, completion: @escaping ()->() ) {
         print("Save with Operation")
         
         let saveOperation = SaveOperation()
-        saveOperation.profileInformation = profileInfo
+        saveOperation.profileInformation = profInfo
         saveOperation.delegate = delegate
         
         saveOperation.completionBlock = {
@@ -29,7 +29,7 @@ class OperationDataManager {
     }
     
     
-    func loadData(completion: @escaping (ProfileInformation) -> () ) {
+    func loadProfileInformation(completion: @escaping (ProfileInformation) -> () ) {
         let loadOperation = LoadOperation()
         
         loadOperation.completionBlock = {
