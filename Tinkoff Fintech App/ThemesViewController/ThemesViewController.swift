@@ -93,7 +93,9 @@ class ThemesViewController: UIViewController {
         labelsThemes.forEach{ $0.textColor = ThemeManager.shared.current.mainTextColor }
         self.navigationController?.setNeedsStatusBarAppearanceUpdate()
     }
-    
+    deinit {
+        print("deinit ThemeVC")
+    }
 }
 
 
