@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E044DA622538632D007C7597 /* DataManagerAbstraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044DA612538632D007C7597 /* DataManagerAbstraction.swift */; };
 		E0A476B62537DF1F00938B10 /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476812537DF1E00938B10 /* ConfigurableViewProtocol.swift */; };
 		E0A476B72537DF1F00938B10 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476832537DF1E00938B10 /* ConversationViewController.swift */; };
 		E0A476B82537DF1F00938B10 /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476852537DF1E00938B10 /* ConversationCell.swift */; };
@@ -28,7 +29,6 @@
 		E0A476C82537DF1F00938B10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4769B2537DF1E00938B10 /* AppDelegate.swift */; };
 		E0A476CA2537DF1F00938B10 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0A4769E2537DF1F00938B10 /* Profile.storyboard */; };
 		E0A476CB2537DF1F00938B10 /* ImagePickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476A12537DF1F00938B10 /* ImagePickerExtension.swift */; };
-		E0A476CC2537DF1F00938B10 /* ProfileData.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0A476A32537DF1F00938B10 /* ProfileData.plist */; };
 		E0A476CD2537DF1F00938B10 /* ProfileInformationStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476A42537DF1F00938B10 /* ProfileInformationStruct.swift */; };
 		E0A476CE2537DF1F00938B10 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476A52537DF1F00938B10 /* ProfileViewController.swift */; };
 		E0A476CF2537DF1F00938B10 /* ProfileAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476A72537DF1F00938B10 /* ProfileAvatarView.swift */; };
@@ -44,10 +44,11 @@
 		E0A476D92537DF1F00938B10 /* GCDDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476B52537DF1F00938B10 /* GCDDataManager.swift */; };
 		E0A476EB2537E93800938B10 /* SaveOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476EA2537E93800938B10 /* SaveOperation.swift */; };
 		E0A476EE2537E94500938B10 /* LoadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476ED2537E94500938B10 /* LoadOperation.swift */; };
-		E0A476F22537F52C00938B10 /* DataManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476F12537F52C00938B10 /* DataManagerDelegate.swift */; };
+		E0A476F22537F52C00938B10 /* DataUpdaterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476F12537F52C00938B10 /* DataUpdaterDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E044DA612538632D007C7597 /* DataManagerAbstraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerAbstraction.swift; sourceTree = "<group>"; };
 		E0A476812537DF1E00938B10 /* ConfigurableViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableViewProtocol.swift; sourceTree = "<group>"; };
 		E0A476832537DF1E00938B10 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		E0A476852537DF1E00938B10 /* ConversationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
@@ -70,7 +71,6 @@
 		E0A4769C2537DF1F00938B10 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0A4769F2537DF1F00938B10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		E0A476A12537DF1F00938B10 /* ImagePickerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerExtension.swift; sourceTree = "<group>"; };
-		E0A476A32537DF1F00938B10 /* ProfileData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ProfileData.plist; sourceTree = "<group>"; };
 		E0A476A42537DF1F00938B10 /* ProfileInformationStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInformationStruct.swift; sourceTree = "<group>"; };
 		E0A476A52537DF1F00938B10 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E0A476A72537DF1F00938B10 /* ProfileAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAvatarView.swift; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 		E0A476B52537DF1F00938B10 /* GCDDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDDataManager.swift; sourceTree = "<group>"; };
 		E0A476EA2537E93800938B10 /* SaveOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOperation.swift; sourceTree = "<group>"; };
 		E0A476ED2537E94500938B10 /* LoadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadOperation.swift; sourceTree = "<group>"; };
-		E0A476F12537F52C00938B10 /* DataManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerDelegate.swift; sourceTree = "<group>"; };
+		E0A476F12537F52C00938B10 /* DataUpdaterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUpdaterDelegate.swift; sourceTree = "<group>"; };
 		E0EBA6B2250A8E2D004CD943 /* Tinkoff Fintech App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinkoff Fintech App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -191,7 +191,6 @@
 		E0A476A22537DF1F00938B10 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E0A476A32537DF1F00938B10 /* ProfileData.plist */,
 				E0A476A42537DF1F00938B10 /* ProfileInformationStruct.swift */,
 			);
 			path = Model;
@@ -217,12 +216,12 @@
 		E0A476A92537DF1F00938B10 /* Theme Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				E0A476AA2537DF1F00938B10 /* DefaultThemeRepository.swift */,
-				E0A476AB2537DF1F00938B10 /* ThemeClasses */,
 				E0A476AF2537DF1F00938B10 /* ThemeManager.swift */,
+				E0A476AA2537DF1F00938B10 /* DefaultThemeRepository.swift */,
 				E0A476B02537DF1F00938B10 /* ThemeProtocol.swift */,
 				E0A476B12537DF1F00938B10 /* ThemesPickerDelegate.swift */,
 				E0A476B22537DF1F00938B10 /* InterfaceStyle.swift */,
+				E0A476AB2537DF1F00938B10 /* ThemeClasses */,
 			);
 			path = "Theme Configuration";
 			sourceTree = "<group>";
@@ -240,7 +239,8 @@
 		E0A476B32537DF1F00938B10 /* ProfileDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				E0A476F12537F52C00938B10 /* DataManagerDelegate.swift */,
+				E044DA612538632D007C7597 /* DataManagerAbstraction.swift */,
+				E0A476F12537F52C00938B10 /* DataUpdaterDelegate.swift */,
 				E0A476E62537E90000938B10 /* GCD */,
 				E0A476E82537E90B00938B10 /* Operation */,
 			);
@@ -363,7 +363,6 @@
 				E0A476C42537DF1F00938B10 /* LaunchScreen.storyboard in Resources */,
 				E0A476B92537DF1F00938B10 /* ConversationStoryboard.storyboard in Resources */,
 				E0A476CA2537DF1F00938B10 /* Profile.storyboard in Resources */,
-				E0A476CC2537DF1F00938B10 /* ProfileData.plist in Resources */,
 				E0A476BD2537DF1F00938B10 /* ConversationsList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +378,7 @@
 				E0A476BC2537DF1F00938B10 /* NavController.swift in Sources */,
 				E0A476CF2537DF1F00938B10 /* ProfileAvatarView.swift in Sources */,
 				E0A476D52537DF1F00938B10 /* ThemeProtocol.swift in Sources */,
+				E044DA622538632D007C7597 /* DataManagerAbstraction.swift in Sources */,
 				E0A476B72537DF1F00938B10 /* ConversationViewController.swift in Sources */,
 				E0A476BF2537DF1F00938B10 /* ConversationListPassImage.swift in Sources */,
 				E0A476C62537DF1F00938B10 /* ThemesViewController.swift in Sources */,
@@ -392,7 +392,7 @@
 				E0A476D72537DF1F00938B10 /* InterfaceStyle.swift in Sources */,
 				E0A476EE2537E94500938B10 /* LoadOperation.swift in Sources */,
 				E0A476BB2537DF1F00938B10 /* ConversationsListViewController.swift in Sources */,
-				E0A476F22537F52C00938B10 /* DataManagerDelegate.swift in Sources */,
+				E0A476F22537F52C00938B10 /* DataUpdaterDelegate.swift in Sources */,
 				E0A476D62537DF1F00938B10 /* ThemesPickerDelegate.swift in Sources */,
 				E0A476C02537DF1F00938B10 /* PlaceholderData.swift in Sources */,
 				E0A476D92537DF1F00938B10 /* GCDDataManager.swift in Sources */,

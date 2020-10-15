@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol DataManagerDelegate: class {
+protocol DataUpdaterDelegate: class {
     func showAlert(title: String, message: String)
     func enableInterface()
 }
