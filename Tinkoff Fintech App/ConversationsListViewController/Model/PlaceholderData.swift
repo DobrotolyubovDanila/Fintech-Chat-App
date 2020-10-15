@@ -19,7 +19,7 @@ class PlaceholderData {
         ConversationCellModel(name: "Тони Рамбола", message: "Барабан сломал", date: Date(timeIntervalSinceNow: -200), isOnline: false, hasUnreadMessage: true),
         ConversationCellModel(name: "Сергей Шнуров", message: nil, date: Date(timeIntervalSinceNow: -800), isOnline: true, hasUnreadMessage: false),
         ConversationCellModel(name: "Арагорн из Араторна", message: "Поднять Щиты!", date: Date(timeIntervalSinceNow: -9000), isOnline: false, hasUnreadMessage: false),
-        ConversationCellModel(name: "Пикабу Фан", message: "ДУра оНа ТуПАЯ", date: Date(timeIntervalSinceNow: -4), isOnline: true, hasUnreadMessage: false),
+        ConversationCellModel(name: "Jim Morgan", message: "Come here", date: Date(timeIntervalSinceNow: -4), isOnline: true, hasUnreadMessage: false),
         ConversationCellModel(name: "Даня Иванов", message: "Дай списать", date: Date(timeIntervalSinceNow: -600), isOnline: false, hasUnreadMessage: false),
         ConversationCellModel(name: "Рома Игорев", message: "Есть идея по бизнесу", date: Date(timeIntervalSinceNow: -100000), isOnline: true, hasUnreadMessage: true),
         ConversationCellModel(name: "Иван Гордеев", message: "Идешь гулять?", date: Date(timeIntervalSinceNow: 0), isOnline: true, hasUnreadMessage: true),

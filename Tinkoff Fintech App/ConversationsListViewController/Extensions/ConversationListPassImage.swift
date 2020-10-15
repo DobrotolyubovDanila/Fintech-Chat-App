@@ -8,8 +8,8 @@
 
 import UIKit
 
-extension ConversationsListViewController: PassImageProtocol {
-    func setImage(image: UIImage?) {
+extension ConversationsListViewController: PassProfileInformationProtocol {
+    func setProfileInformation(image: UIImage?) {
         profileAvatarView.setImage(image: image)
     }
 }

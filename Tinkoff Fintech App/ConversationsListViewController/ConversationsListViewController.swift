@@ -10,12 +10,14 @@ import UIKit
 
 class ConversationsListViewController: UITableViewController {
     
-    var profileImage: UIImage?
-    
     @IBOutlet weak var profileAvatarView: ProfileAvatarView!
     
     var conversationCellsContent: [ConversationCellModel] = PlaceholderData().conversationCellsContent
     
+    var profileDataManager = GCDDataManager()
+    
+    var profileInformation: ProfileInformation!
+        
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if ThemeManager.shared.current.style == .night {
             return .lightContent
@@ -26,7 +28,10 @@ class ConversationsListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        profileAvatarView.setImage(image: profileImage)
+        profileInformation = profileDataManager.getProfileInformation()
+        if let image = UIImage(data:profileInformation.imageData) {
+            profileAvatarView.setImage(image: image)
+        }
         
         conversationCellsContent.sort { (item1, item2) -> Bool in
             return item1.date > item2.date
@@ -113,7 +118,8 @@ class ConversationsListViewController: UITableViewController {
             if let image = profileAvatarView.profileImageView.image {
                 pvc.profileImage = image
             }
-            pvc.profileImageDelegate = self
+            pvc.profileInformationDelegate = self
+            pvc.profileInformation = profileInformation
         }
         self.present(nProfileController, animated: true, completion: nil)
     }
@@ -127,6 +133,7 @@ class ConversationsListViewController: UITableViewController {
                 
                 profileAvatarView.setImage(image: image)
             }
+            profileInformation = pvc.profileInformation
         }
     }
     

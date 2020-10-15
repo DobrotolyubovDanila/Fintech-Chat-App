@@ -9,48 +9,55 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    
+    // MARK: - Properties
     @IBOutlet weak var profileAvatarView: ProfileAvatarView!
     
     @IBOutlet weak var editButton: UIButton!
     
     @IBOutlet weak var nameField: UITextField!
     
-    @IBOutlet weak var informationTextView: UITextView!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    
+    @IBOutlet weak var saveWithGCDButton: UIButton!
+    
+    @IBOutlet weak var saveWithOperationButton: UIButton!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    let GCDProfileDM = GCDDataManager()
+    
+    var profileInformation: ProfileInformation!
     
     var profileImage:UIImage?
     
-    var profileImageDelegate: PassImageProtocol?
+    var profileInformationDelegate: PassProfileInformationProtocol?
     
+    // MARK: - Lificycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         profileAvatarView.setImage(image: profileImage)
+        nameField.text = profileInformation.name
+        descriptionTextView.text = profileInformation.description
         
         setInterfaceStyle()
+        
+        configKeyboardObservers()
+        
+        GCDProfileDM.delegate = self
+        
+        nameField.isUserInteractionEnabled = false
+        descriptionTextView.isEditable = false
+        profileAvatarView.profileImageButton.isEnabled = false
+        
+        activityIndicator.isHidden = true
+        
+        saveWithGCDButton.isHidden = true
+        saveWithOperationButton.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
-        /*
-         Свойства frame отличаются из-за того, что в петвом случае
-         наш основной view и его subViews были загружены,но не "обработаны" Auto Layout.
-         
-         Во втором случае механизм уже отработал. Frame стал соотсетствовать констрейнтам.
-         Поэтому округление провожу в
-         текущем методе.
-         */
-        
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
         
     }
     
@@ -60,13 +67,18 @@ class ProfileViewController: UIViewController {
         
         profileAvatarView.clipsToBounds = true
         
-        
         editButton.layer.cornerRadius = 10
+        saveWithGCDButton.layer.cornerRadius = 10
+        saveWithOperationButton.layer.cornerRadius = 10
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        profileImageDelegate?.setImage(image: profileAvatarView.profileImageView.image)
+        profileInformationDelegate?.setProfileInformation(image: profileAvatarView.profileImageView.image)
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification , object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification , object: nil)
+//        saveData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -74,50 +86,42 @@ class ProfileViewController: UIViewController {
         
     }
     
-    @IBAction func imageButtonPressed(_ sender: UIButton) {
+    // MARK: - Work with keyboard
+    private func configKeyboardObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil);
         
-        let cameraIcon = #imageLiteral(resourceName: "camera")
-        let photoLiteral = #imageLiteral(resourceName: "photo")
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil);
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        guard self.navigationController?.view.frame.origin.y == 0 else { return }
         
-        let actionSheet = UIAlertController(title: nil,
-                                            message: nil,
-                                            preferredStyle: .actionSheet)
-        let camera = UIAlertAction(title: "Camera", style: .default, handler: { _ in
-            self.chooseImagePicker(source: UIImagePickerController.SourceType.camera)
-        })
-        camera.setValue(cameraIcon, forKey: "image")
-        camera.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-        
-        let photo = UIAlertAction(title: "Photo", style: .default, handler: { _ in
-            self.chooseImagePicker(source: UIImagePickerController.SourceType.photoLibrary)
-        })
-        photo.setValue(photoLiteral, forKey: "image")//Добавление изображения всплывающему меню
-        photo.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")//выравнивание слева
-        
-        let cansel = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        
-        
-        actionSheet.addAction(camera)
-        actionSheet.addAction(photo)
-        actionSheet.addAction(cansel)
-        
-        if ThemeManager.shared.current.style == .night {
-            if #available(iOS 13.0, *) {
-                actionSheet.overrideUserInterfaceStyle = .dark
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            
+            UIView.animate(withDuration: 0.3) {
+                self.navigationController?.view.frame.origin.y -= keyboardHeight
             }
         }
-        
-        present(actionSheet, animated:true)
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        UIView.animate(withDuration: 0.3) {
+            self.navigationController?.view.frame.origin.y = 0
+        }
         
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
+    // MARK: - Work with Interface
     func setInterfaceStyle() {
         editButton.backgroundColor = ThemeManager.shared.current.secondBackgroundColor
         editButton.setTitleColor(ThemeManager.shared.current.tintColor, for: .normal)
         nameField.textColor = ThemeManager.shared.current.mainTextColor
-        informationTextView.textColor = ThemeManager.shared.current.mainTextColor
+        descriptionTextView.textColor = ThemeManager.shared.current.mainTextColor
         
         view.backgroundColor = ThemeManager.shared.current.backgroundColor
         
@@ -127,30 +131,86 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: ThemeManager.shared.current.mainTextColor]
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: ThemeManager.shared.current.mainTextColor]
     }
-}
+    
+    // MARK: - Work with Buttons
+    @IBAction func editButtonPressed(_ sender: Any) {
+        switchEditMode()
+    }
+    
+    @IBAction func GCDButtonPressed(_ sender: UIButton) {
+        switchEditMode()
+        
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        
+        saveWithGCDButton.isEnabled = false
+        saveWithOperationButton.isEnabled = false
+        
+        saveInformationWithGCD()
+    }
+    
+    @IBAction func operationButtonPressed(_ sender: UIButton) {
+        switchEditMode()
+        
+        
+    }
 
-extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    func chooseImagePicker(source: UIImagePickerController.SourceType){
-        if UIImagePickerController.isSourceTypeAvailable(source) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.allowsEditing = true //Редактирование после выбора
-            imagePicker.sourceType = source
-            present(imagePicker, animated: true, completion: nil)
+    private func switchEditMode() {
+        nameField.isUserInteractionEnabled.toggle()
+        descriptionTextView.isEditable.toggle()
+        profileAvatarView.profileImageButton.isEnabled.toggle()
+        
+        editButton.isHidden.toggle()
+        saveWithGCDButton.isHidden.toggle()
+        saveWithOperationButton.isHidden.toggle()
+    }
+    
+    private func saveInformationWithGCD() {
+        
+        if profileInformation.name == nameField.text,
+           profileInformation.description == descriptionTextView.text,
+           profileInformation.imageData == profileAvatarView.profileImageView.image?.pngData() {
+            enableInterface()
+            return
         }
+        
+        profileInformation.name = nameField.text ?? ""
+        profileInformation.description = descriptionTextView.text
+        if let data = profileAvatarView.profileImageView.image?.pngData() {
+            profileInformation.imageData = data
+        }
+        
+        GCDProfileDM.saveProfileInformation(with: profileInformation)
+    }
+}
+
+extension ProfileViewController: GCDDataManagerDelegate {
+    func showAlertGCD(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        if title == "Success" {
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        } else {
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            alert.addAction(UIAlertAction(title: "Repeat", style: .default, handler: { (action) in
+                self.saveInformationWithGCD()
+            }))
+        }
+        
+        present(alert, animated: true)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info:[UIImagePickerController.InfoKey: Any]){
+    func enableInterface() {
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
         
-        let image = info[.editedImage] as? UIImage
-        profileAvatarView.setImage(image: image)
-        
-        dismiss(animated: true, completion: nil)
+        saveWithGCDButton.isEnabled = true
+        saveWithOperationButton.isEnabled = true
     }
+    
     
 }
 
-protocol PassImageProtocol {
-    func setImage(image: UIImage?) -> ()
+// MARK: - Support
+protocol PassProfileInformationProtocol {
+    func setProfileInformation(image: UIImage?) -> ()
 }
