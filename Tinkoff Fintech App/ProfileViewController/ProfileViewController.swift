@@ -32,7 +32,7 @@ class ProfileViewController: UIViewController {
     
     var profileImage:UIImage?
     
-    var profileInformationDelegate: PassProfileInformationProtocol?
+    weak var profileInformationDelegate: PassProfileInformationProtocol?
     
     // MARK: - Lificycle
     override func viewDidLoad() {
@@ -170,8 +170,8 @@ class ProfileViewController: UIViewController {
             profileInformation.imageData = data
         }
         
-        operationManager.saveProfileInformation(with: profileInformation) {
-            self.enableInterface()
+        operationManager.saveProfileInformation(with: profileInformation) { [weak self] in
+            self?.enableInterface()
         }
         
     }
@@ -229,6 +229,10 @@ class ProfileViewController: UIViewController {
             
         })
     }
+    
+    deinit {
+        print("deinit ProfileVC")
+    }
 }
 
 extension ProfileViewController: DataUpdaterDelegate {
@@ -258,6 +262,6 @@ extension ProfileViewController: DataUpdaterDelegate {
 }
 
 // MARK: - Support
-protocol PassProfileInformationProtocol {
+protocol PassProfileInformationProtocol: class {
     func setProfileInformation(image: UIImage?) -> ()
 }
