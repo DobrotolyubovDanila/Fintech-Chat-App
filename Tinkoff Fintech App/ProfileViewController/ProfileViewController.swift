@@ -26,6 +26,8 @@ class ProfileViewController: UIViewController {
     
     let GCDProfileDM = GCDDataManager()
     
+    let operationManager = OperationDataManager()
+    
     var profileInformation: ProfileInformation!
     
     var profileImage:UIImage?
@@ -45,6 +47,7 @@ class ProfileViewController: UIViewController {
         configKeyboardObservers()
         
         GCDProfileDM.delegate = self
+        operationManager.delegate = self
         
         nameField.isUserInteractionEnabled = false
         descriptionTextView.isEditable = false
@@ -122,6 +125,8 @@ class ProfileViewController: UIViewController {
         editButton.setTitleColor(ThemeManager.shared.current.tintColor, for: .normal)
         nameField.textColor = ThemeManager.shared.current.mainTextColor
         descriptionTextView.textColor = ThemeManager.shared.current.mainTextColor
+        saveWithGCDButton.backgroundColor = ThemeManager.shared.current.secondBackgroundColor
+        saveWithOperationButton.backgroundColor = ThemeManager.shared.current.secondBackgroundColor
         
         view.backgroundColor = ThemeManager.shared.current.backgroundColor
         
@@ -140,11 +145,7 @@ class ProfileViewController: UIViewController {
     @IBAction func GCDButtonPressed(_ sender: UIButton) {
         switchEditMode()
         
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
-        
-        saveWithGCDButton.isEnabled = false
-        saveWithOperationButton.isEnabled = false
+        prepareForSave()
         
         saveInformationWithGCD()
     }
@@ -152,6 +153,24 @@ class ProfileViewController: UIViewController {
     @IBAction func operationButtonPressed(_ sender: UIButton) {
         switchEditMode()
         
+        prepareForSave()
+        
+        if profileInformation.name == nameField.text,
+           profileInformation.description == descriptionTextView.text,
+           profileInformation.imageData == profileAvatarView.profileImageView.image?.pngData() {
+            enableInterface()
+            return
+        }
+        
+        profileInformation.name = nameField.text ?? ""
+        profileInformation.description = descriptionTextView.text
+        if let data = profileAvatarView.profileImageView.image?.pngData() {
+            profileInformation.imageData = data
+        }
+        
+        operationManager.saveData(with: profileInformation) {
+            self.enableInterface()
+        }
         
     }
 
@@ -163,6 +182,14 @@ class ProfileViewController: UIViewController {
         editButton.isHidden.toggle()
         saveWithGCDButton.isHidden.toggle()
         saveWithOperationButton.isHidden.toggle()
+    }
+    
+    private func prepareForSave() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        
+        saveWithGCDButton.isEnabled = false
+        saveWithOperationButton.isEnabled = false
     }
     
     private func saveInformationWithGCD() {
@@ -184,8 +211,8 @@ class ProfileViewController: UIViewController {
     }
 }
 
-extension ProfileViewController: GCDDataManagerDelegate {
-    func showAlertGCD(title: String, message: String) {
+extension ProfileViewController: DataManagerDelegate {
+    func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         if title == "Success" {
             alert.addAction(UIAlertAction(title: "Ok", style: .default))

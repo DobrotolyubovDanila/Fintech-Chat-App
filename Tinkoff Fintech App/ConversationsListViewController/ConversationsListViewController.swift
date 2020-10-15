@@ -16,6 +16,8 @@ class ConversationsListViewController: UITableViewController {
     
     var profileDataManager = GCDDataManager()
     
+    var operationDataManager = OperationDataManager()
+    
     var profileInformation: ProfileInformation!
         
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -28,10 +30,28 @@ class ConversationsListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // MARK: - Select method of load data
+        /*
         profileInformation = profileDataManager.getProfileInformation()
-        if let image = UIImage(data:profileInformation.imageData) {
-            profileAvatarView.setImage(image: image)
+        if let image = UIImage(data: self.profileInformation.imageData) {
+            self.profileAvatarView.setImage(image: image)
         }
+        */
+        
+        // Закомментируйте код ниже, если раскомментировали выше.
+         operationDataManager.loadData(completion: { (profileInfo) in
+            self.profileInformation = profileInfo
+            if let image = UIImage(data: self.profileInformation.imageData) {
+                DispatchQueue.main.async {
+                    self.profileAvatarView.setImage(image: image)
+                }
+            }
+        })
+        
+        
+        // MARK: - Select method of load data
+        
+        
         
         conversationCellsContent.sort { (item1, item2) -> Bool in
             return item1.date > item2.date

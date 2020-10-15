@@ -1,5 +1,5 @@
 //
-//  OperationDataManager.swift
+//  DataManagerDelegate.swift
 //  Tinkoff Fintech App
 //
 //  Created by Данила on 15.10.2020.
@@ -8,6 +8,7 @@
 
 import UIKit
 
-class OperationDataManager {
-    
+protocol DataManagerDelegate: class {
+    func showAlert(title: String, message: String)
+    func enableInterface()
 }
