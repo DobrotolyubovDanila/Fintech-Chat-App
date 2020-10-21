@@ -36,7 +36,7 @@ class MessagesFBDataManager {
         }
         
     }
-    
+    // Функция работает. Проверено. Поле для ввода сообщения еще не добавлял. Не было в тз.
     func sendMessage(message: Message, completion: @escaping () -> Void ) {
         
         DispatchQueue.global().async { [weak self] in
