@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		BFD0709448800B9A35FCC721 /* Pods_Tinkoff_Fintech_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9F020D258CD3C7A25EA517 /* Pods_Tinkoff_Fintech_App.framework */; };
 		E044DA622538632D007C7597 /* DataManagerAbstraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044DA612538632D007C7597 /* DataManagerAbstraction.swift */; };
+		E0455F0B2540806600735558 /* MessageClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0455F0A2540806600735558 /* MessageClass.swift */; };
+		E0455F0F254081A000735558 /* UserIdentificator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0455F0E254081A000735558 /* UserIdentificator.swift */; };
+		E0455F142540906100735558 /* MessagesFBDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0455F132540906100735558 /* MessagesFBDataManager.swift */; };
 		E06935FD253FB27E000D0D72 /* ConversationListFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06935FC253FB27E000D0D72 /* ConversationListFirebase.swift */; };
 		E08729D7253E3C2D00FC704A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E08729D6253E3C2D00FC704A /* GoogleService-Info.plist */; };
 		E0A476B62537DF1F00938B10 /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476812537DF1E00938B10 /* ConfigurableViewProtocol.swift */; };
@@ -49,7 +52,7 @@
 		E0A476EE2537E94500938B10 /* LoadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476ED2537E94500938B10 /* LoadOperation.swift */; };
 		E0A476F22537F52C00938B10 /* DataUpdaterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476F12537F52C00938B10 /* DataUpdaterDelegate.swift */; };
 		E0DF7365253FA83D00FA77DE /* ChannelsFBDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DF7364253FA83D00FA77DE /* ChannelsFBDataManager.swift */; };
-		E0FBF52F253F982A00C3278B /* ChannelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FBF52E253F982A00C3278B /* ChannelData.swift */; };
+		E0FBF52F253F982A00C3278B /* ChannelClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FBF52E253F982A00C3278B /* ChannelClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +60,9 @@
 		59201C61C37E7062B2324AD7 /* Pods-Tinkoff Fintech App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinkoff Fintech App.debug.xcconfig"; path = "Target Support Files/Pods-Tinkoff Fintech App/Pods-Tinkoff Fintech App.debug.xcconfig"; sourceTree = "<group>"; };
 		DE5BB089E76B552B715ABB70 /* Pods-Tinkoff Fintech App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinkoff Fintech App.release.xcconfig"; path = "Target Support Files/Pods-Tinkoff Fintech App/Pods-Tinkoff Fintech App.release.xcconfig"; sourceTree = "<group>"; };
 		E044DA612538632D007C7597 /* DataManagerAbstraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerAbstraction.swift; sourceTree = "<group>"; };
+		E0455F0A2540806600735558 /* MessageClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageClass.swift; sourceTree = "<group>"; };
+		E0455F0E254081A000735558 /* UserIdentificator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdentificator.swift; sourceTree = "<group>"; };
+		E0455F132540906100735558 /* MessagesFBDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesFBDataManager.swift; sourceTree = "<group>"; };
 		E06935FC253FB27E000D0D72 /* ConversationListFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListFirebase.swift; sourceTree = "<group>"; };
 		E08729D6253E3C2D00FC704A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E0A476812537DF1E00938B10 /* ConfigurableViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableViewProtocol.swift; sourceTree = "<group>"; };
@@ -99,7 +105,7 @@
 		E0A476F12537F52C00938B10 /* DataUpdaterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUpdaterDelegate.swift; sourceTree = "<group>"; };
 		E0DF7364253FA83D00FA77DE /* ChannelsFBDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsFBDataManager.swift; sourceTree = "<group>"; };
 		E0EBA6B2250A8E2D004CD943 /* Tinkoff Fintech App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinkoff Fintech App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E0FBF52E253F982A00C3278B /* ChannelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelData.swift; sourceTree = "<group>"; };
+		E0FBF52E253F982A00C3278B /* ChannelClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,12 +137,38 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E0455F092540804C00735558 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E0455F112540903A00735558 /* Channels */ = {
+			isa = PBXGroup;
+			children = (
+				E0DF7364253FA83D00FA77DE /* ChannelsFBDataManager.swift */,
+				E0FBF52E253F982A00C3278B /* ChannelClass.swift */,
+			);
+			path = Channels;
+			sourceTree = "<group>";
+		};
+		E0455F122540904B00735558 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				E0455F132540906100735558 /* MessagesFBDataManager.swift */,
+				E0455F0A2540806600735558 /* MessageClass.swift */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
 		E0A476822537DF1E00938B10 /* ConversationViewController */ = {
 			isa = PBXGroup;
 			children = (
 				E0A476832537DF1E00938B10 /* ConversationViewController.swift */,
 				E0A476862537DF1E00938B10 /* ConversationStoryboard.storyboard */,
 				E0A476842537DF1E00938B10 /* Views */,
+				E0455F092540804C00735558 /* Model */,
 			);
 			path = ConversationViewController;
 			sourceTree = "<group>";
@@ -240,6 +272,7 @@
 			children = (
 				E0A476812537DF1E00938B10 /* ConfigurableViewProtocol.swift */,
 				E0A476962537DF1E00938B10 /* Logger.swift */,
+				E0455F0E254081A000735558 /* UserIdentificator.swift */,
 				E0FBF531253FA59200C3278B /* ContentFBDataManager */,
 				E0A476A92537DF1F00938B10 /* Theme Configuration */,
 				E0A476B32537DF1F00938B10 /* ProfileDataManager */,
@@ -337,8 +370,8 @@
 		E0FBF531253FA59200C3278B /* ContentFBDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				E0DF7364253FA83D00FA77DE /* ChannelsFBDataManager.swift */,
-				E0FBF52E253F982A00C3278B /* ChannelData.swift */,
+				E0455F122540904B00735558 /* Messages */,
+				E0455F112540903A00735558 /* Channels */,
 			);
 			path = ContentFBDataManager;
 			sourceTree = "<group>";
@@ -350,6 +383,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E0EBA6C6250A8E30004CD943 /* Build configuration list for PBXNativeTarget "Tinkoff Fintech App" */;
 			buildPhases = (
+				E0720FF52540C1900053B3EA /* ShellScript */,
 				6EF372CBB3C437D2C0074EF5 /* [CP] Check Pods Manifest.lock */,
 				E0EBA6AE250A8E2D004CD943 /* Sources */,
 				E0EBA6AF250A8E2D004CD943 /* Frameworks */,
@@ -439,6 +473,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E0720FF52540C1900053B3EA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
 		E5A99BE1050379157362EC64 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -466,7 +517,7 @@
 				E0A476D42537DF1F00938B10 /* ThemeManager.swift in Sources */,
 				E0A476BC2537DF1F00938B10 /* NavController.swift in Sources */,
 				E0A476CF2537DF1F00938B10 /* ProfileAvatarView.swift in Sources */,
-				E0FBF52F253F982A00C3278B /* ChannelData.swift in Sources */,
+				E0FBF52F253F982A00C3278B /* ChannelClass.swift in Sources */,
 				E0A476D52537DF1F00938B10 /* ThemeProtocol.swift in Sources */,
 				E044DA622538632D007C7597 /* DataManagerAbstraction.swift in Sources */,
 				E0A476B72537DF1F00938B10 /* ConversationViewController.swift in Sources */,
@@ -479,6 +530,8 @@
 				E0A476BE2537DF1F00938B10 /* ConversationListThemePicker.swift in Sources */,
 				E0A476CE2537DF1F00938B10 /* ProfileViewController.swift in Sources */,
 				E0A476D32537DF1F00938B10 /* NightTheme.swift in Sources */,
+				E0455F0F254081A000735558 /* UserIdentificator.swift in Sources */,
+				E0455F142540906100735558 /* MessagesFBDataManager.swift in Sources */,
 				E0A476D72537DF1F00938B10 /* InterfaceStyle.swift in Sources */,
 				E0A476EE2537E94500938B10 /* LoadOperation.swift in Sources */,
 				E06935FD253FB27E000D0D72 /* ConversationListFirebase.swift in Sources */,
@@ -487,6 +540,7 @@
 				E0A476D62537DF1F00938B10 /* ThemesPickerDelegate.swift in Sources */,
 				E0A476C02537DF1F00938B10 /* PlaceholderData.swift in Sources */,
 				E0A476D92537DF1F00938B10 /* GCDDataManager.swift in Sources */,
+				E0455F0B2540806600735558 /* MessageClass.swift in Sources */,
 				E0A476D02537DF1F00938B10 /* DefaultThemeRepository.swift in Sources */,
 				E0A476B62537DF1F00938B10 /* ConfigurableViewProtocol.swift in Sources */,
 				E0A476CB2537DF1F00938B10 /* ImagePickerExtension.swift in Sources */,
@@ -639,7 +693,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PLZNGC64TN;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Tinkoff Fintech App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -664,7 +718,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PLZNGC64TN;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Tinkoff Fintech App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

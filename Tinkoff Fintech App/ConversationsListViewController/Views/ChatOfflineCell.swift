@@ -24,23 +24,27 @@ class ChatOfflineCell: UITableViewCell {
         self.backgroundColor = ThemeManager.shared.current.backgroundColor
     }
     
-    func configCellContent(_ content: ConversationCellModel) {
-        let dateFormatter = DateFormatter()
-        let isToday = Calendar.current.isDateInToday(content.date)
-        dateFormatter.dateFormat = isToday ? "HH:mm ›" : "dd.MMM ›"
+    func configCellContent(_ content: Channel) {
+        var dateString = ""
+        if let lastAct = content.lastActivity {
+            let dateFormatter = DateFormatter()
+            let isToday = Calendar.current.isDateInToday(lastAct)
+            dateFormatter.dateFormat = isToday ? "HH:mm ›" : "dd.MMM ›"
+            
+            dateString = dateFormatter.string(from: lastAct)
+        }
         
-        let dateString = dateFormatter.string(from: content.date)
         
         nameLabel.text = content.name
-        messageLabel.text = content.message ?? "No messages yet"
+        messageLabel.text = content.lastMessage ?? "No messages yet"
         dateLabel.text = dateString
         avatarImageView.layer.cornerRadius = avatarImageView.frame.height/2
         
-        if content.hasUnreadMessage {
+     /*   if content.hasUnreadMessage {
             messageLabel.font = UIFont(name: "HelveticaNeue-Medium", size: messageLabel.font.pointSize)
         } else {
             messageLabel.font = UIFont(name: "HelveticaNeue", size: messageLabel.font.pointSize)
-        }
+        } */
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {

@@ -15,7 +15,7 @@ class ConversationsListViewController: UITableViewController {
     
     @IBOutlet weak var addChannelButton: UIBarButtonItem!
     
-    var conversationCellsContent: [ConversationCellModel] = []
+    var channelsCellContent: [Channel] = []
     
     var channelsFBDM = ChannelsFBDataManager()
     
@@ -69,6 +69,26 @@ class ConversationsListViewController: UITableViewController {
         
         // MARK: - Сonfiguring the interface
         
+        
+        
+        
+//        reference.getDocuments { (shot, error) in
+//            guard let shot = shot else { return }
+//
+//            for item in shot.documents {
+//                let id = item.documentID
+//                let messageRef = self.db.collection("channels/\(id)/messages")
+//
+//                messageRef.getDocuments { (shot, error) in
+//                    guard let shot = shot else { return }
+//
+//                    for mesItem in shot.documents {
+//                        print(mesItem.data())
+//                    }
+//                }
+//            }
+//        }
+        
         updateDataFromFB()
         
         setInterfaceTheme()
@@ -77,7 +97,8 @@ class ConversationsListViewController: UITableViewController {
         
     }
     
-    
+    private lazy var db = Firestore.firestore()
+    private lazy var reference = db.collection("channels")
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -90,31 +111,18 @@ class ConversationsListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return conversationCellsContent.count
+        return channelsCellContent.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if conversationCellsContent[indexPath.row].isOnline {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatOnlineCell", for: indexPath) as! ChatOnlineCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatOfflineCell", for: indexPath) as! ChatOfflineCell
             
-            cell.configCellContent(conversationCellsContent[indexPath.row])
-            cell.configWithTheme()
+        cell.configCellContent(channelsCellContent[indexPath.row])
+        cell.configColorTheme()
             
-            return cell
-        }
-        
-        if !conversationCellsContent[indexPath.row].isOnline {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatOfflineCell", for: indexPath) as! ChatOfflineCell
-            
-            cell.configCellContent(conversationCellsContent[indexPath.row])
-            cell.configColorTheme()
-            
-            return cell
-        }
-        
-        return UITableViewCell()
+        return cell
     }
     
     
@@ -135,16 +143,7 @@ class ConversationsListViewController: UITableViewController {
         self.navigationController?.pushViewController(conversationViewController, animated: true)
         
         conversationViewController.title = title
-        
-        if let message = (tableView.cellForRow(at: indexPath) as? ChatOnlineCell)?.messageLabel.text,
-           message != "No messages yet" {
-            conversationViewController.testArray.append(MessageCellMode(text: message, isIncoming: true))
-        }
-        
-        if let message = (tableView.cellForRow(at: indexPath) as? ChatOfflineCell)?.messageLabel.text,
-           message != "No messages yet" {
-            conversationViewController.testArray.append(MessageCellMode(text: message, isIncoming: true))
-        }
+        conversationViewController.channelIdentifier = channelsCellContent[indexPath.row].identifier
     }
     
     
@@ -184,11 +183,6 @@ class ConversationsListViewController: UITableViewController {
             nameField.placeholder = "Название"
         }
         
-        alert.addTextField { (messageField) in
-            messageField.autocapitalizationType = .sentences
-            messageField.placeholder = "Сообщение"
-        }
-        
         alert.addAction(UIAlertAction(title: "Отмена",
                                       style: .default,
                                       handler: nil))
@@ -198,10 +192,8 @@ class ConversationsListViewController: UITableViewController {
                                       handler: { [weak self] (action) in
                                         
                                         guard let name = alert.textFields?.first?.text else { return }
-                                        var message:String? = alert.textFields?.last?.text
-                                        if message == "" { message = nil }
                                         
-                                        let data = ChannelData(name: name, lastMessage: message, lastActivity: Date())
+                                        let data = Channel(name: name, identifier: "id", lastMessage: nil, lastActivity: nil)
                                         
                                         self?.channelsFBDM.addChannel(data: data, completion: { [weak self] in
                                             self?.updateDataFromFB()
