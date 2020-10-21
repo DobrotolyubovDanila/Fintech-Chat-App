@@ -69,31 +69,9 @@ class ConversationsListViewController: UITableViewController {
         
         // MARK: - Сonfiguring the interface
         
-        
-        
-        
-//        reference.getDocuments { (shot, error) in
-//            guard let shot = shot else { return }
-//
-//            for item in shot.documents {
-//                let id = item.documentID
-//                let messageRef = self.db.collection("channels/\(id)/messages")
-//
-//                messageRef.getDocuments { (shot, error) in
-//                    guard let shot = shot else { return }
-//
-//                    for mesItem in shot.documents {
-//                        print(mesItem.data())
-//                    }
-//                }
-//            }
-//        }
-        
         updateDataFromFB()
         
         setInterfaceTheme()
-        
-        
         
     }
     
@@ -125,7 +103,6 @@ class ConversationsListViewController: UITableViewController {
         return cell
     }
     
-    
     // MARK: - Navigation
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -146,7 +123,6 @@ class ConversationsListViewController: UITableViewController {
         conversationViewController.channelIdentifier = channelsCellContent[indexPath.row].identifier
     }
     
-    
     @IBAction func profileButtonTapped(_ sender: UIButton) {
         let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
         let nProfileController: UINavigationController = profileStoryboard.instantiateViewController(withIdentifier: "profileNC") as! UINavigationController
@@ -159,7 +135,6 @@ class ConversationsListViewController: UITableViewController {
         }
         self.present(nProfileController, animated: true, completion: nil)
     }
-    
     
     @IBAction func  unwindFromProfileVC(_ sender: UIStoryboardSegue){
         
@@ -202,7 +177,6 @@ class ConversationsListViewController: UITableViewController {
                                       }))
         present(alert, animated: true)
     }
-    
     
     @IBAction func settingsButtonPressed(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "ThemesViewController", bundle: nil)
