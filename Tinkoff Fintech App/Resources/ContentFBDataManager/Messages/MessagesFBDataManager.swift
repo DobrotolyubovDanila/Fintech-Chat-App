@@ -16,7 +16,7 @@ class MessagesFBDataManager {
     
     private lazy var db = Firestore.firestore()
     
-    private lazy var reference = db.collection("channels/\(idDocument)/messages")
+    lazy var reference = db.collection("channels/\(idDocument)/messages")
     
     init(idDocument: String) {
         self.idDocument = idDocument

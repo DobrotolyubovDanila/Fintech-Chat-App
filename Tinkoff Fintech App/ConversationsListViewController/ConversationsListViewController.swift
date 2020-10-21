@@ -75,9 +75,6 @@ class ConversationsListViewController: UITableViewController {
         
     }
     
-    private lazy var db = Firestore.firestore()
-    private lazy var reference = db.collection("channels")
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         profileAvatarView.setCornerRadius(cornerRadius: profileAvatarView.frame.height/2)

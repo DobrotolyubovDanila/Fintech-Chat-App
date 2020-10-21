@@ -12,7 +12,7 @@ import Firebase
 class ChannelsFBDataManager {
     
     private lazy var db = Firestore.firestore()
-    private lazy var reference = db.collection("channels")
+    lazy var reference = db.collection("channels")
     
     func getDataFromStorage(completion: @escaping (QuerySnapshot) -> Void) {
         
