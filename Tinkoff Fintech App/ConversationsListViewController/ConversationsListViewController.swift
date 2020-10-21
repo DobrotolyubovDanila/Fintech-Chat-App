@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Firebase
 
 class ConversationsListViewController: UITableViewController {
     
     @IBOutlet weak var profileAvatarView: ProfileAvatarView!
     
-    var conversationCellsContent: [ConversationCellModel] = PlaceholderData().conversationCellsContent
+    @IBOutlet weak var addChannelButton: UIBarButtonItem!
+    
+    var conversationCellsContent: [ConversationCellModel] = []
+    
+    var channelsFBDM = ChannelsFBDataManager()
     
     var gcdDataManager: DataManagerAbstraction?
     
@@ -33,19 +38,19 @@ class ConversationsListViewController: UITableViewController {
         gcdDataManager = GCDDataManager()
         operationDataManager = OperationDataManager()
         
-        // MARK: - Select method of loading data
+        // MARK: - Select method of loading data ⬇
         /*
-        // GCD
+         // GCD
          gcdDataManager?.loadProfileInformation { [weak self] (profInformaiton) in
          self?.profileInformation = profInformaiton
          
          if let image = UIImage(data: self?.profileInformation.imageData ?? Data()) {
          DispatchQueue.main.async {
          self?.profileAvatarView.setImage(image: image)
-                }
-            }
-        }
-        */
+         }
+         }
+         }
+         */
         
         // Закомментируйте код ниже, если раскомментировали выше.
         // Operaition
@@ -60,16 +65,19 @@ class ConversationsListViewController: UITableViewController {
             }
         })
         
-        // MARK: - Select method of loading data
+        // MARK: - Select method of loading data ⬆
         
-        conversationCellsContent.sort { (item1, item2) -> Bool in
-            return item1.date > item2.date
-        }
+        // MARK: - Сonfiguring the interface
         
-        conversationCellsContent = conversationCellsContent.filter { $0.isOnline } + conversationCellsContent.filter { !$0.isOnline }
+        updateDataFromFB()
         
-        updateInterfaceWithoutReloadData()
+        setInterfaceTheme()
+        
+        
+        
     }
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -166,6 +174,43 @@ class ConversationsListViewController: UITableViewController {
         }
     }
     
+    // MARK: - Add channel
+    
+    @IBAction func addCannelButtonPressed(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Создать канал", message: "Введите название и сообщение", preferredStyle: .alert)
+        
+        alert.addTextField { (nameField) in
+            nameField.autocapitalizationType = .sentences
+            nameField.placeholder = "Название"
+        }
+        
+        alert.addTextField { (messageField) in
+            messageField.autocapitalizationType = .sentences
+            messageField.placeholder = "Сообщение"
+        }
+        
+        alert.addAction(UIAlertAction(title: "Отмена",
+                                      style: .default,
+                                      handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "Добавить",
+                                      style: .default,
+                                      handler: { [weak self] (action) in
+                                        
+                                        guard let name = alert.textFields?.first?.text else { return }
+                                        var message:String? = alert.textFields?.last?.text
+                                        if message == "" { message = nil }
+                                        
+                                        let data = ChannelData(name: name, lastMessage: message, lastActivity: Date())
+                                        
+                                        self?.channelsFBDM.addChannel(data: data, completion: { [weak self] in
+                                            self?.updateDataFromFB()
+                                        })
+                                        
+                                      }))
+        present(alert, animated: true)
+    }
+    
     
     @IBAction func settingsButtonPressed(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "ThemesViewController", bundle: nil)
@@ -182,6 +227,8 @@ class ConversationsListViewController: UITableViewController {
         // Повторил код обновления интерфейса вручную для наглядности
         themesViewController.closure = { [weak self] in
             self?.tableView.backgroundColor = ThemeManager.shared.current.backgroundColor
+            
+            self?.addChannelButton.tintColor = ThemeManager.shared.current.tintColor
             
             self?.navigationController?.navigationBar.tintColor = ThemeManager.shared.current.tintColor
             self?.navigationController?.navigationBar.barTintColor = ThemeManager.shared.current.backgroundColor

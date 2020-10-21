@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BFD0709448800B9A35FCC721 /* Pods_Tinkoff_Fintech_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9F020D258CD3C7A25EA517 /* Pods_Tinkoff_Fintech_App.framework */; };
 		E044DA622538632D007C7597 /* DataManagerAbstraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044DA612538632D007C7597 /* DataManagerAbstraction.swift */; };
+		E06935FD253FB27E000D0D72 /* ConversationListFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06935FC253FB27E000D0D72 /* ConversationListFirebase.swift */; };
+		E08729D7253E3C2D00FC704A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E08729D6253E3C2D00FC704A /* GoogleService-Info.plist */; };
 		E0A476B62537DF1F00938B10 /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476812537DF1E00938B10 /* ConfigurableViewProtocol.swift */; };
 		E0A476B72537DF1F00938B10 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476832537DF1E00938B10 /* ConversationViewController.swift */; };
 		E0A476B82537DF1F00938B10 /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476852537DF1E00938B10 /* ConversationCell.swift */; };
@@ -45,10 +48,17 @@
 		E0A476EB2537E93800938B10 /* SaveOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476EA2537E93800938B10 /* SaveOperation.swift */; };
 		E0A476EE2537E94500938B10 /* LoadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476ED2537E94500938B10 /* LoadOperation.swift */; };
 		E0A476F22537F52C00938B10 /* DataUpdaterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476F12537F52C00938B10 /* DataUpdaterDelegate.swift */; };
+		E0DF7365253FA83D00FA77DE /* ChannelsFBDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DF7364253FA83D00FA77DE /* ChannelsFBDataManager.swift */; };
+		E0FBF52F253F982A00C3278B /* ChannelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FBF52E253F982A00C3278B /* ChannelData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C9F020D258CD3C7A25EA517 /* Pods_Tinkoff_Fintech_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tinkoff_Fintech_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59201C61C37E7062B2324AD7 /* Pods-Tinkoff Fintech App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinkoff Fintech App.debug.xcconfig"; path = "Target Support Files/Pods-Tinkoff Fintech App/Pods-Tinkoff Fintech App.debug.xcconfig"; sourceTree = "<group>"; };
+		DE5BB089E76B552B715ABB70 /* Pods-Tinkoff Fintech App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinkoff Fintech App.release.xcconfig"; path = "Target Support Files/Pods-Tinkoff Fintech App/Pods-Tinkoff Fintech App.release.xcconfig"; sourceTree = "<group>"; };
 		E044DA612538632D007C7597 /* DataManagerAbstraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerAbstraction.swift; sourceTree = "<group>"; };
+		E06935FC253FB27E000D0D72 /* ConversationListFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListFirebase.swift; sourceTree = "<group>"; };
+		E08729D6253E3C2D00FC704A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E0A476812537DF1E00938B10 /* ConfigurableViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableViewProtocol.swift; sourceTree = "<group>"; };
 		E0A476832537DF1E00938B10 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		E0A476852537DF1E00938B10 /* ConversationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
@@ -87,7 +97,9 @@
 		E0A476EA2537E93800938B10 /* SaveOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOperation.swift; sourceTree = "<group>"; };
 		E0A476ED2537E94500938B10 /* LoadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadOperation.swift; sourceTree = "<group>"; };
 		E0A476F12537F52C00938B10 /* DataUpdaterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUpdaterDelegate.swift; sourceTree = "<group>"; };
+		E0DF7364253FA83D00FA77DE /* ChannelsFBDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsFBDataManager.swift; sourceTree = "<group>"; };
 		E0EBA6B2250A8E2D004CD943 /* Tinkoff Fintech App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinkoff Fintech App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0FBF52E253F982A00C3278B /* ChannelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,18 +107,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFD0709448800B9A35FCC721 /* Pods_Tinkoff_Fintech_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F07D3FCF1C6EBE2A913F056 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				59201C61C37E7062B2324AD7 /* Pods-Tinkoff Fintech App.debug.xcconfig */,
+				DE5BB089E76B552B715ABB70 /* Pods-Tinkoff Fintech App.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CCD18C0ACFBE37FC57E6EDB6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C9F020D258CD3C7A25EA517 /* Pods_Tinkoff_Fintech_App.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E0A476822537DF1E00938B10 /* ConversationViewController */ = {
 			isa = PBXGroup;
 			children = (
 				E0A476832537DF1E00938B10 /* ConversationViewController.swift */,
-				E0A476842537DF1E00938B10 /* Views */,
 				E0A476862537DF1E00938B10 /* ConversationStoryboard.storyboard */,
+				E0A476842537DF1E00938B10 /* Views */,
 			);
 			path = ConversationViewController;
 			sourceTree = "<group>";
@@ -137,6 +167,7 @@
 			children = (
 				E0A4768D2537DF1E00938B10 /* ConversationListThemePicker.swift */,
 				E0A4768E2537DF1E00938B10 /* ConversationListPassImage.swift */,
+				E06935FC253FB27E000D0D72 /* ConversationListFirebase.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -209,6 +240,7 @@
 			children = (
 				E0A476812537DF1E00938B10 /* ConfigurableViewProtocol.swift */,
 				E0A476962537DF1E00938B10 /* Logger.swift */,
+				E0FBF531253FA59200C3278B /* ContentFBDataManager */,
 				E0A476A92537DF1F00938B10 /* Theme Configuration */,
 				E0A476B32537DF1F00938B10 /* ProfileDataManager */,
 			);
@@ -272,6 +304,8 @@
 			children = (
 				E0EBA6B4250A8E2D004CD943 /* Tinkoff Fintech App */,
 				E0EBA6B3250A8E2D004CD943 /* Products */,
+				7F07D3FCF1C6EBE2A913F056 /* Pods */,
+				CCD18C0ACFBE37FC57E6EDB6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -287,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				E0A4769B2537DF1E00938B10 /* AppDelegate.swift */,
+				E08729D6253E3C2D00FC704A /* GoogleService-Info.plist */,
 				E0A4769C2537DF1F00938B10 /* Info.plist */,
 				E0A476952537DF1E00938B10 /* LaunchScreen.storyboard */,
 				E0A476872537DF1E00938B10 /* Assets.xcassets */,
@@ -299,6 +334,15 @@
 			path = "Tinkoff Fintech App";
 			sourceTree = "<group>";
 		};
+		E0FBF531253FA59200C3278B /* ContentFBDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				E0DF7364253FA83D00FA77DE /* ChannelsFBDataManager.swift */,
+				E0FBF52E253F982A00C3278B /* ChannelData.swift */,
+			);
+			path = ContentFBDataManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -306,9 +350,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E0EBA6C6250A8E30004CD943 /* Build configuration list for PBXNativeTarget "Tinkoff Fintech App" */;
 			buildPhases = (
+				6EF372CBB3C437D2C0074EF5 /* [CP] Check Pods Manifest.lock */,
 				E0EBA6AE250A8E2D004CD943 /* Sources */,
 				E0EBA6AF250A8E2D004CD943 /* Frameworks */,
 				E0EBA6B0250A8E2D004CD943 /* Resources */,
+				E5A99BE1050379157362EC64 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -364,10 +410,53 @@
 				E0A476B92537DF1F00938B10 /* ConversationStoryboard.storyboard in Resources */,
 				E0A476CA2537DF1F00938B10 /* Profile.storyboard in Resources */,
 				E0A476BD2537DF1F00938B10 /* ConversationsList.storyboard in Resources */,
+				E08729D7253E3C2D00FC704A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6EF372CBB3C437D2C0074EF5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tinkoff Fintech App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5A99BE1050379157362EC64 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tinkoff Fintech App/Pods-Tinkoff Fintech App-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tinkoff Fintech App/Pods-Tinkoff Fintech App-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tinkoff Fintech App/Pods-Tinkoff Fintech App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E0EBA6AE250A8E2D004CD943 /* Sources */ = {
@@ -377,6 +466,7 @@
 				E0A476D42537DF1F00938B10 /* ThemeManager.swift in Sources */,
 				E0A476BC2537DF1F00938B10 /* NavController.swift in Sources */,
 				E0A476CF2537DF1F00938B10 /* ProfileAvatarView.swift in Sources */,
+				E0FBF52F253F982A00C3278B /* ChannelData.swift in Sources */,
 				E0A476D52537DF1F00938B10 /* ThemeProtocol.swift in Sources */,
 				E044DA622538632D007C7597 /* DataManagerAbstraction.swift in Sources */,
 				E0A476B72537DF1F00938B10 /* ConversationViewController.swift in Sources */,
@@ -391,6 +481,7 @@
 				E0A476D32537DF1F00938B10 /* NightTheme.swift in Sources */,
 				E0A476D72537DF1F00938B10 /* InterfaceStyle.swift in Sources */,
 				E0A476EE2537E94500938B10 /* LoadOperation.swift in Sources */,
+				E06935FD253FB27E000D0D72 /* ConversationListFirebase.swift in Sources */,
 				E0A476BB2537DF1F00938B10 /* ConversationsListViewController.swift in Sources */,
 				E0A476F22537F52C00938B10 /* DataUpdaterDelegate.swift in Sources */,
 				E0A476D62537DF1F00938B10 /* ThemesPickerDelegate.swift in Sources */,
@@ -406,6 +497,7 @@
 				E0A476C12537DF1F00938B10 /* ConversationCellModel.swift in Sources */,
 				E0A476C22537DF1F00938B10 /* ChatOfflineCell.swift in Sources */,
 				E0A476C32537DF1F00938B10 /* ChatOnlineCell.swift in Sources */,
+				E0DF7365253FA83D00FA77DE /* ChannelsFBDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,9 +633,11 @@
 		};
 		E0EBA6C7250A8E30004CD943 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59201C61C37E7062B2324AD7 /* Pods-Tinkoff Fintech App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PLZNGC64TN;
 				INFOPLIST_FILE = "Tinkoff Fintech App/Info.plist";
@@ -552,8 +646,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-ru.Dobrotolyubov-chat";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.tinkoff.TinkoffChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tinkoff Fintech App/Tinkoff Fintech App-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -563,9 +658,11 @@
 		};
 		E0EBA6C8250A8E30004CD943 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE5BB089E76B552B715ABB70 /* Pods-Tinkoff Fintech App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PLZNGC64TN;
 				INFOPLIST_FILE = "Tinkoff Fintech App/Info.plist";
@@ -574,8 +671,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-ru.Dobrotolyubov-chat";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.tinkoff.TinkoffChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tinkoff Fintech App/Tinkoff Fintech App-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

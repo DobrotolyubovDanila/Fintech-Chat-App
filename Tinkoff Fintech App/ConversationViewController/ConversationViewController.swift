@@ -5,12 +5,7 @@ import UIKit
 class ConversationViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    var testArray:[MessageCellMode] = [
-        MessageCellMode(text: "Алло! Добрый день, Ник. Как наши дела?", isIncoming: false),
-        MessageCellMode(text: "Вроде бы все по плану… Материалы по Навальному готовы. Будут переданы в администрацию канцлера. Ожидаем ее заявления.", isIncoming: true),
-        MessageCellMode(text: "Отравление подтверждается точно?", isIncoming: false),
-        MessageCellMode(text: "Послушай, Майк, в данном случае это не так важно… Идет война… А во время войны всякие методы хороши.", isIncoming: true)
-    ]
+    var testArray:[MessageCellMode] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

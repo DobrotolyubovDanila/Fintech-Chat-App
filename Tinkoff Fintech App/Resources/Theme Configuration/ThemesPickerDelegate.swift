@@ -9,6 +9,6 @@
 import UIKit
 
 protocol ThemesPickerDelegate: AnyObject {
-    func updateInterfaceWithTheme()
+    func updateInterfaceTheme()
 }
 

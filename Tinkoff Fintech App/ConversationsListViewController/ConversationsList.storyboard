@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tinkoff Chat-->
+        <!--Channels-->
         <scene sceneID="ihW-d9-Geo">
             <objects>
                 <tableViewController storyboardIdentifier="ConversationsList" id="bUn-5U-Hcz" customClass="ConversationsListViewController" customModule="Tinkoff_Fintech_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -148,63 +148,71 @@ Second Line</string>
                             <outlet property="delegate" destination="bUn-5U-Hcz" id="1VO-SQ-wat"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Tinkoff Chat" id="7jY-hK-ObL">
+                    <navigationItem key="navigationItem" title="Channels" id="7jY-hK-ObL">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="Settings_groupsettings" id="lee-ZD-cff">
                             <color key="tintColor" red="0.54889911410000003" green="0.5493570566" blue="0.56078028680000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="settingsButtonPressed:" destination="bUn-5U-Hcz" id="tYZ-9d-MHC"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" id="6kM-Ro-Y2n">
-                            <view key="customView" clipsSubviews="YES" contentMode="scaleAspectFill" id="08F-KO-fya" customClass="ProfileAvatarView" customModule="Tinkoff_Fintech_App" customModuleProvider="target">
-                                <rect key="frame" x="326" y="6" width="33" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="flT-6r-LRr">
-                                        <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
-                                        <color key="backgroundColor" red="0.89451497790000001" green="0.91149806980000003" blue="0.16960212590000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="33" id="ASi-ew-Ip2"/>
-                                            <constraint firstAttribute="width" constant="33" id="ecU-nU-wuu"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4T-jj-Hut">
-                                        <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Vk-KV-ziw">
-                                        <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
-                                        <connections>
-                                            <action selector="profileButtonTapped:" destination="bUn-5U-Hcz" eventType="touchUpInside" id="xVx-HI-fRQ"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="flT-6r-LRr" secondAttribute="trailing" id="1za-fT-gye"/>
-                                    <constraint firstItem="M4T-jj-Hut" firstAttribute="centerX" secondItem="flT-6r-LRr" secondAttribute="centerX" id="Ckq-9E-qRV"/>
-                                    <constraint firstItem="M4T-jj-Hut" firstAttribute="width" secondItem="flT-6r-LRr" secondAttribute="width" id="D3U-N3-G8P"/>
-                                    <constraint firstItem="flT-6r-LRr" firstAttribute="leading" secondItem="08F-KO-fya" secondAttribute="leading" id="Jc3-l7-kXT"/>
-                                    <constraint firstItem="flT-6r-LRr" firstAttribute="top" secondItem="08F-KO-fya" secondAttribute="top" id="LbP-3M-wOL"/>
-                                    <constraint firstItem="2Vk-KV-ziw" firstAttribute="width" secondItem="flT-6r-LRr" secondAttribute="width" id="QrU-e8-qLY"/>
-                                    <constraint firstItem="2Vk-KV-ziw" firstAttribute="centerX" secondItem="flT-6r-LRr" secondAttribute="centerX" id="SdC-zG-s3b"/>
-                                    <constraint firstItem="2Vk-KV-ziw" firstAttribute="centerY" secondItem="flT-6r-LRr" secondAttribute="centerY" id="fCz-qQ-IeN"/>
-                                    <constraint firstItem="M4T-jj-Hut" firstAttribute="height" secondItem="flT-6r-LRr" secondAttribute="height" id="hCz-ny-0m1"/>
-                                    <constraint firstItem="2Vk-KV-ziw" firstAttribute="height" secondItem="flT-6r-LRr" secondAttribute="height" id="iBM-X9-IHi"/>
-                                    <constraint firstAttribute="bottom" secondItem="flT-6r-LRr" secondAttribute="bottom" id="ik5-vf-cqy"/>
-                                    <constraint firstItem="M4T-jj-Hut" firstAttribute="centerY" secondItem="flT-6r-LRr" secondAttribute="centerY" id="yML-4w-xfJ"/>
-                                </constraints>
+                        <rightBarButtonItems>
+                            <barButtonItem id="6kM-Ro-Y2n">
+                                <view key="customView" clipsSubviews="YES" contentMode="scaleAspectFill" id="08F-KO-fya" customClass="ProfileAvatarView" customModule="Tinkoff_Fintech_App" customModuleProvider="target">
+                                    <rect key="frame" x="326" y="6" width="33" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="flT-6r-LRr">
+                                            <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
+                                            <color key="backgroundColor" red="0.89451497790000001" green="0.91149806980000003" blue="0.16960212590000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="33" id="ASi-ew-Ip2"/>
+                                                <constraint firstAttribute="width" constant="33" id="ecU-nU-wuu"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4T-jj-Hut">
+                                            <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Vk-KV-ziw">
+                                            <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
+                                            <connections>
+                                                <action selector="profileButtonTapped:" destination="bUn-5U-Hcz" eventType="touchUpInside" id="xVx-HI-fRQ"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="flT-6r-LRr" secondAttribute="trailing" id="1za-fT-gye"/>
+                                        <constraint firstItem="M4T-jj-Hut" firstAttribute="centerX" secondItem="flT-6r-LRr" secondAttribute="centerX" id="Ckq-9E-qRV"/>
+                                        <constraint firstItem="M4T-jj-Hut" firstAttribute="width" secondItem="flT-6r-LRr" secondAttribute="width" id="D3U-N3-G8P"/>
+                                        <constraint firstItem="flT-6r-LRr" firstAttribute="leading" secondItem="08F-KO-fya" secondAttribute="leading" id="Jc3-l7-kXT"/>
+                                        <constraint firstItem="flT-6r-LRr" firstAttribute="top" secondItem="08F-KO-fya" secondAttribute="top" id="LbP-3M-wOL"/>
+                                        <constraint firstItem="2Vk-KV-ziw" firstAttribute="width" secondItem="flT-6r-LRr" secondAttribute="width" id="QrU-e8-qLY"/>
+                                        <constraint firstItem="2Vk-KV-ziw" firstAttribute="centerX" secondItem="flT-6r-LRr" secondAttribute="centerX" id="SdC-zG-s3b"/>
+                                        <constraint firstItem="2Vk-KV-ziw" firstAttribute="centerY" secondItem="flT-6r-LRr" secondAttribute="centerY" id="fCz-qQ-IeN"/>
+                                        <constraint firstItem="M4T-jj-Hut" firstAttribute="height" secondItem="flT-6r-LRr" secondAttribute="height" id="hCz-ny-0m1"/>
+                                        <constraint firstItem="2Vk-KV-ziw" firstAttribute="height" secondItem="flT-6r-LRr" secondAttribute="height" id="iBM-X9-IHi"/>
+                                        <constraint firstAttribute="bottom" secondItem="flT-6r-LRr" secondAttribute="bottom" id="ik5-vf-cqy"/>
+                                        <constraint firstItem="M4T-jj-Hut" firstAttribute="centerY" secondItem="flT-6r-LRr" secondAttribute="centerY" id="yML-4w-xfJ"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="profileImageButton" destination="2Vk-KV-ziw" id="2Ef-hd-yUb"/>
+                                        <outlet property="profileImageView" destination="flT-6r-LRr" id="shu-9r-zRy"/>
+                                        <outlet property="profileLabel" destination="M4T-jj-Hut" id="aIZ-Vg-Jjs"/>
+                                    </connections>
+                                </view>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="tDF-dj-iKV">
                                 <connections>
-                                    <outlet property="profileImageButton" destination="2Vk-KV-ziw" id="2Ef-hd-yUb"/>
-                                    <outlet property="profileImageView" destination="flT-6r-LRr" id="shu-9r-zRy"/>
-                                    <outlet property="profileLabel" destination="M4T-jj-Hut" id="aIZ-Vg-Jjs"/>
+                                    <action selector="addCannelButtonPressed:" destination="bUn-5U-Hcz" id="lw7-rr-G7A"/>
                                 </connections>
-                            </view>
-                        </barButtonItem>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addChannelButton" destination="tDF-dj-iKV" id="B08-ny-odF"/>
                         <outlet property="profileAvatarView" destination="08F-KO-fya" id="xif-Zq-xEN"/>
                     </connections>
                 </tableViewController>

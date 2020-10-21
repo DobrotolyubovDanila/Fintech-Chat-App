@@ -9,14 +9,16 @@
 import UIKit
 
 extension ConversationsListViewController: ThemesPickerDelegate {
-    func updateInterfaceWithTheme() {
+    func updateInterfaceTheme() {
         
-        updateInterfaceWithoutReloadData()
+        setInterfaceTheme()
         tableView.reloadData()
     }
     
-    func updateInterfaceWithoutReloadData() {
+    func setInterfaceTheme() {
         self.tableView.backgroundColor = ThemeManager.shared.current.backgroundColor
+        
+        self.addChannelButton.tintColor = ThemeManager.shared.current.tintColor
         
         navigationController?.navigationBar.tintColor = ThemeManager.shared.current.tintColor
         navigationController?.navigationBar.barTintColor = ThemeManager.shared.current.backgroundColor
