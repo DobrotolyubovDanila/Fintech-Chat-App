@@ -11,6 +11,13 @@ import UIKit
 class ConversationCell: UITableViewCell {
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    func configCellTheme() {
+        self.view.backgroundColor = ThemeManager.shared.current.sendedMessagesBackgroundColor
+        self.backgroundColor = ThemeManager.shared.current.backgroundColor
+        self.label.textColor = ThemeManager.shared.current.sendedMessagesTextColor
+    }
 
 }
 
@@ -20,9 +27,4 @@ extension ConversationCell: ConfigurableView {
     func configure(with model: Int) {
         
     }
-}
-
-struct MessageCellMode {
-    let text: String
-    let isIncoming: Bool
 }

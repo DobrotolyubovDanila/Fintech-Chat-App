@@ -17,29 +17,31 @@ class ChannelsFBDataManager {
     func getDataFromStorage(completion: @escaping (QuerySnapshot) -> Void) {
         
         DispatchQueue.global(qos: .default).async { [weak self] in
-            self?.reference.getDocuments { (querySnapshot, error) in
-                guard let querySnapshot = querySnapshot else {
-                    print(error?.localizedDescription ?? "error")
-                    return
+            
+            self?.reference.addSnapshotListener { (querySnapshot, error) in
+                    guard let querySnapshot = querySnapshot else {
+                        print(error?.localizedDescription ?? "error")
+                        return
+                    }
+                    print("изменения")
+                    completion(querySnapshot)
                 }
-                
-                completion(querySnapshot)
             }
-        }
-        
-        
     }
     
-    func addChannel(data: ChannelData, completion: @escaping () -> Void) {
+    func addChannel(data: Channel, completion: @escaping () -> Void) {
         
         DispatchQueue.global().async { [weak self] in
-            self?.reference.addDocument(data: data.encode()) { (error) in
+            
+            guard let doc = self?.reference.document() else { return }
+            data.identifier = doc.documentID
+            doc.setData(data.encode()) { (error) in
                 if let error = error {
                     print(error.localizedDescription)
                     return
                 }
                 completion()
-            }   
+            }
         }
     }
     

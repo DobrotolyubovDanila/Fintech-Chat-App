@@ -30,9 +30,23 @@
                                             <subviews>
                                                 <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUj-Pz-81j">
                                                     <rect key="frame" x="20" y="11" width="298" height="48"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vh4-pK-Ibu">
+                                                            <rect key="frame" x="10" y="7" width="280" height="13.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.97529206859999995" green="0.9614715774" blue="0.90928822789999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="vh4-pK-Ibu" secondAttribute="trailing" constant="8" id="7YZ-lF-Tq3"/>
+                                                        <constraint firstItem="vh4-pK-Ibu" firstAttribute="top" secondItem="LUj-Pz-81j" secondAttribute="top" constant="7" id="pli-W9-mCo"/>
+                                                        <constraint firstItem="vh4-pK-Ibu" firstAttribute="leading" secondItem="LUj-Pz-81j" secondAttribute="leading" constant="10" id="rZU-0x-JcS"/>
+                                                    </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifB-L4-pY8">
-                                                    <rect key="frame" x="30" y="21" width="274" height="28"/>
+                                                    <rect key="frame" x="30" y="31" width="274" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="9f4-AL-d8Y"/>
                                                     </constraints>
@@ -43,7 +57,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ifB-L4-pY8" firstAttribute="width" secondItem="Dnh-05-c2W" secondAttribute="width" multiplier="0.661333" id="L3x-8W-iNE"/>
-                                                <constraint firstItem="ifB-L4-pY8" firstAttribute="top" secondItem="Dnh-05-c2W" secondAttribute="topMargin" constant="10" id="NUg-pg-uRx"/>
+                                                <constraint firstItem="ifB-L4-pY8" firstAttribute="top" secondItem="Dnh-05-c2W" secondAttribute="topMargin" constant="20" id="NUg-pg-uRx"/>
                                                 <constraint firstItem="LUj-Pz-81j" firstAttribute="width" secondItem="Dnh-05-c2W" secondAttribute="width" multiplier="0.72" id="X4u-la-Xhs"/>
                                                 <constraint firstItem="LUj-Pz-81j" firstAttribute="bottom" secondItem="Dnh-05-c2W" secondAttribute="bottomMargin" id="ZTr-N0-czg"/>
                                                 <constraint firstItem="LUj-Pz-81j" firstAttribute="leading" secondItem="Dnh-05-c2W" secondAttribute="leadingMargin" id="aNt-wh-Twr"/>
@@ -54,6 +68,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="label" destination="ifB-L4-pY8" id="Nbf-V3-mNn"/>
+                                            <outlet property="nameLabel" destination="vh4-pK-Ibu" id="YgB-zj-mrc"/>
                                             <outlet property="view" destination="LUj-Pz-81j" id="jXq-Nh-cL9"/>
                                         </connections>
                                     </tableViewCell>
@@ -66,9 +81,23 @@
                                             <subviews>
                                                 <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCu-Jh-ehH">
                                                     <rect key="frame" x="96" y="11" width="298" height="48"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0CE-u4-crr">
+                                                            <rect key="frame" x="17" y="7" width="273" height="13.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.97529206859999995" green="0.9614715774" blue="0.90928822789999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="0CE-u4-crr" secondAttribute="trailing" constant="8" id="03i-nX-frm"/>
+                                                        <constraint firstItem="0CE-u4-crr" firstAttribute="leading" secondItem="vCu-Jh-ehH" secondAttribute="leading" constant="17" id="V53-sn-T6h"/>
+                                                        <constraint firstItem="0CE-u4-crr" firstAttribute="top" secondItem="vCu-Jh-ehH" secondAttribute="top" constant="7" id="bGc-Q7-JOM"/>
+                                                    </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DhE-AQ-EtG">
-                                                    <rect key="frame" x="113" y="21" width="275" height="28"/>
+                                                    <rect key="frame" x="113" y="31" width="275" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="SMH-bs-bIh"/>
                                                     </constraints>
@@ -83,13 +112,14 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="DhE-AQ-EtG" secondAttribute="bottom" constant="10" id="6Zj-MP-a8S"/>
                                                 <constraint firstItem="vCu-Jh-ehH" firstAttribute="width" secondItem="ZBJ-tJ-kwt" secondAttribute="width" multiplier="0.72" id="D2j-cu-t3K"/>
                                                 <constraint firstItem="vCu-Jh-ehH" firstAttribute="top" secondItem="ZBJ-tJ-kwt" secondAttribute="topMargin" id="N8r-hI-H7c"/>
-                                                <constraint firstItem="DhE-AQ-EtG" firstAttribute="top" secondItem="ZBJ-tJ-kwt" secondAttribute="topMargin" constant="10" id="mg4-B7-jCt"/>
+                                                <constraint firstItem="DhE-AQ-EtG" firstAttribute="top" secondItem="ZBJ-tJ-kwt" secondAttribute="topMargin" constant="20" id="mg4-B7-jCt"/>
                                                 <constraint firstItem="vCu-Jh-ehH" firstAttribute="bottom" secondItem="ZBJ-tJ-kwt" secondAttribute="bottomMargin" id="wZP-u4-xLW"/>
                                                 <constraint firstItem="vCu-Jh-ehH" firstAttribute="trailing" secondItem="ZBJ-tJ-kwt" secondAttribute="trailingMargin" id="x60-5Y-ntJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="label" destination="DhE-AQ-EtG" id="ubN-tf-haQ"/>
+                                            <outlet property="nameLabel" destination="0CE-u4-crr" id="kEg-lc-B6n"/>
                                             <outlet property="view" destination="vCu-Jh-ehH" id="9u8-gK-qNa"/>
                                         </connections>
                                     </tableViewCell>

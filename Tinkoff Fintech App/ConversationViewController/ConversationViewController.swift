@@ -3,9 +3,16 @@ import UIKit
     
 
 class ConversationViewController: UIViewController {
+    
     @IBOutlet weak var tableView: UITableView!
     
-    var testArray:[MessageCellMode] = []
+    var channelIdentifier: String!
+    
+    let udid = UIDevice.current.identifierForVendor?.uuidString
+    
+    var messagesArray:[Message] = []
+    
+    lazy var messagesFBDM = MessagesFBDataManager(idDocument: channelIdentifier)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +24,30 @@ class ConversationViewController: UIViewController {
         tableView.allowsSelection = false
         
         tableView.backgroundColor = ThemeManager.shared.current.backgroundColor
+        
+        updateDataFromFB()
+    }
+    
+    func updateDataFromFB() {
+        messagesFBDM.getMessages { [weak self] (querySnapshot) in
+            self?.messagesArray = []
+            
+            for item in querySnapshot.documents {
+                guard let message = Message(decodeWith: item.data()) else { return }
+                
+                self?.messagesArray.append(message)
+            }
+            self?.messagesArray.sort { $0.created < $1.created }
+            
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+                self?.scrollToBottom()
+            }
+        }
+    }
+    
+    deinit {
+        print("deinitConversationVC")
     }
 }
 
@@ -27,42 +58,47 @@ extension ConversationViewController:UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testArray.count
+        return messagesArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if testArray[indexPath.row].isIncoming == true {
+        
+        
+        if  messagesArray[indexPath.row].senderId != udid {
             let cell = tableView.dequeueReusableCell(withIdentifier: "receivedMessageCell") as! ConversationCell
             
-            cell.label.text = testArray[indexPath.row].text
+            cell.label.text = messagesArray[indexPath.row].content
+            cell.nameLabel.text = messagesArray[indexPath.row].senderName
             cell.view.layer.cornerRadius = 20
-            cell.view.backgroundColor = ThemeManager.shared.current.incomeMessagesBackgroundColor
-            cell.backgroundColor = ThemeManager.shared.current.backgroundColor
-            cell.label.textColor = ThemeManager.shared.current.incomeMessagesTextColor
+            cell.configCellTheme()
             
             return cell
-        }
-        
-        if testArray[indexPath.row].isIncoming == false {
+        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sendMessegesCell") as! ConversationCell
             
-            cell.label.text = testArray[indexPath.row].text
+            cell.label.text = messagesArray[indexPath.row].content
+            cell.nameLabel.text = messagesArray[indexPath.row].senderName
             cell.view.layer.cornerRadius = 20
-            cell.view.backgroundColor = ThemeManager.shared.current.sendedMessagesBackgroundColor
-            cell.backgroundColor = ThemeManager.shared.current.backgroundColor
-            cell.label.textColor = ThemeManager.shared.current.sendedMessagesTextColor
+            cell.configCellTheme()
             
             return cell
         }
         
-        return UITableViewCell()
     }
     
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func scrollToBottom() {
+        if messagesArray.count > 0 {
+        tableView.scrollToRow(at: IndexPath(row: messagesArray.count - 1, section: 0),
+                              at: .bottom,
+                              animated: true)
+        }
     }
     
 }

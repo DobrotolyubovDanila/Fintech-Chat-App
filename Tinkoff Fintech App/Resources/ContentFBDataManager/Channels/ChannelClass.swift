@@ -9,34 +9,37 @@
 import Foundation
 import Firebase
 
-class ChannelData {
+class Channel {
     var name: String
+    var identifier: String
     var lastMessage: String?
-    var lastActivity: Date
+    var lastActivity: Date?
     
-    required init? (decodeWith dict: [String:Any]) {
+    init? (decodeWith dict: [String:Any], identifier: String) {
         guard let name = dict["name"] as? String,
-              let lastActivity = dict["lastActivity"] as? Timestamp else { return nil }
+              let lastActivity = (dict["lastActivity"] as? Timestamp)?.dateValue() else { return nil }
         
         self.name = name
-        self.lastActivity = lastActivity.dateValue()
+        self.identifier = identifier
+        self.lastActivity = lastActivity
         self.lastMessage = dict["lastMessage"] as? String
         
-        if self.lastMessage == "" { self.lastMessage = nil }
     }
     
-    init(name: String, lastMessage: String?, lastActivity: Date) {
+    init(name: String, identifier:String, lastMessage: String?, lastActivity: Date?) {
         self.name = name
-        self.lastMessage = lastMessage 
+        self.lastMessage = lastMessage
         self.lastActivity = lastActivity
+        self.identifier = identifier
     }
     
     func encode() -> [String:Any] {
         var dict: [String:Any] = [:]
         
         dict["name"] = self.name
+        dict["identifier"] = self.identifier
         dict["lastMessage"] = self.lastMessage
-        dict["lastActivity"] = Timestamp(date: self.lastActivity)
+        dict["lastActivity"] = self.lastActivity ?? Date()
         
         return dict
     }

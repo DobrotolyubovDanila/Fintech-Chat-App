@@ -13,27 +13,22 @@ extension ConversationsListViewController {
     func updateDataFromFB() {
         channelsFBDM.getDataFromStorage { [weak self] (querySnapshot) in
             
-            self?.conversationCellsContent = []
+            self?.channelsCellContent = []
             
             for item in querySnapshot.documents {
-                if let channelData = ChannelData(decodeWith: item.data()) {
-                    let cellModel = ConversationCellModel(name: channelData.name,
-                                                          message: channelData.lastMessage,
-                                                          date: channelData.lastActivity,
-                                                          isOnline: false,
-                                                          hasUnreadMessage: false)
-                    
-                    self?.conversationCellsContent.append(cellModel)
+                
+                if let channelData = Channel(decodeWith: item.data(), identifier: item.documentID) {
+                    self?.channelsCellContent.append(channelData)
                 }
             }
             
             
-            self?.conversationCellsContent.sort { (item1, item2) -> Bool in
-                return item1.date > item2.date
+            self?.channelsCellContent.sort { (item1, item2) -> Bool in
+                guard let date1 = item1.lastActivity,
+                      let date2 = item2.lastActivity else { return false }
+                
+                return date1 > date2
             }
-            
-            self?.conversationCellsContent = (self?.conversationCellsContent.filter { $0.isOnline } ?? []) + (self?.conversationCellsContent.filter { !$0.isOnline } ?? [])
-            
             
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
