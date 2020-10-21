@@ -10,7 +10,6 @@
 		BFD0709448800B9A35FCC721 /* Pods_Tinkoff_Fintech_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9F020D258CD3C7A25EA517 /* Pods_Tinkoff_Fintech_App.framework */; };
 		E044DA622538632D007C7597 /* DataManagerAbstraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044DA612538632D007C7597 /* DataManagerAbstraction.swift */; };
 		E0455F0B2540806600735558 /* MessageClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0455F0A2540806600735558 /* MessageClass.swift */; };
-		E0455F0F254081A000735558 /* UserIdentificator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0455F0E254081A000735558 /* UserIdentificator.swift */; };
 		E0455F142540906100735558 /* MessagesFBDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0455F132540906100735558 /* MessagesFBDataManager.swift */; };
 		E06935FD253FB27E000D0D72 /* ConversationListFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06935FC253FB27E000D0D72 /* ConversationListFirebase.swift */; };
 		E08729D7253E3C2D00FC704A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E08729D6253E3C2D00FC704A /* GoogleService-Info.plist */; };
@@ -61,7 +60,6 @@
 		DE5BB089E76B552B715ABB70 /* Pods-Tinkoff Fintech App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinkoff Fintech App.release.xcconfig"; path = "Target Support Files/Pods-Tinkoff Fintech App/Pods-Tinkoff Fintech App.release.xcconfig"; sourceTree = "<group>"; };
 		E044DA612538632D007C7597 /* DataManagerAbstraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerAbstraction.swift; sourceTree = "<group>"; };
 		E0455F0A2540806600735558 /* MessageClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageClass.swift; sourceTree = "<group>"; };
-		E0455F0E254081A000735558 /* UserIdentificator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdentificator.swift; sourceTree = "<group>"; };
 		E0455F132540906100735558 /* MessagesFBDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesFBDataManager.swift; sourceTree = "<group>"; };
 		E06935FC253FB27E000D0D72 /* ConversationListFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListFirebase.swift; sourceTree = "<group>"; };
 		E08729D6253E3C2D00FC704A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -272,7 +270,6 @@
 			children = (
 				E0A476812537DF1E00938B10 /* ConfigurableViewProtocol.swift */,
 				E0A476962537DF1E00938B10 /* Logger.swift */,
-				E0455F0E254081A000735558 /* UserIdentificator.swift */,
 				E0FBF531253FA59200C3278B /* ContentFBDataManager */,
 				E0A476A92537DF1F00938B10 /* Theme Configuration */,
 				E0A476B32537DF1F00938B10 /* ProfileDataManager */,
@@ -530,7 +527,6 @@
 				E0A476BE2537DF1F00938B10 /* ConversationListThemePicker.swift in Sources */,
 				E0A476CE2537DF1F00938B10 /* ProfileViewController.swift in Sources */,
 				E0A476D32537DF1F00938B10 /* NightTheme.swift in Sources */,
-				E0455F0F254081A000735558 /* UserIdentificator.swift in Sources */,
 				E0455F142540906100735558 /* MessagesFBDataManager.swift in Sources */,
 				E0A476D72537DF1F00938B10 /* InterfaceStyle.swift in Sources */,
 				E0A476EE2537E94500938B10 /* LoadOperation.swift in Sources */,
