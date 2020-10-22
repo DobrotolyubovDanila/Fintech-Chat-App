@@ -163,7 +163,8 @@ class ConversationsListViewController: UITableViewController {
                                       style: .default,
                                       handler: { [weak self] (action) in
                                         
-                                        guard let name = alert.textFields?.first?.text else { return }
+                                        guard let name = alert.textFields?.first?.text,
+                                              name != "" else { return }
                                         
                                         let data = Channel(name: name, identifier: "id", lastMessage: nil, lastActivity: nil)
                                         
