@@ -51,7 +51,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Logger.printApplicationState(from: "Suspended", to: "Not running", callByFunc: callBy)
     }
     
-    
-    
 }
-

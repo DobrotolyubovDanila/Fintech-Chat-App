@@ -10,32 +10,23 @@ import UIKit
 
 class OperationDataManager: DataManagerAbstraction {
     
-    weak var delegate: DataUpdaterDelegate?
-    
-    func saveProfileInformation(with profInfo: ProfileInformation, completion: @escaping ()->() ) {
+    func saveProfileInformation(with profInfo: ProfileInformation, completion: @escaping (Bool) -> Void) {
         print("Save with Operation")
         
         let saveOperation = SaveOperation()
         saveOperation.profileInformation = profInfo
-        saveOperation.delegate = delegate
         
         saveOperation.completionBlock = {
-            DispatchQueue.main.async {
-                completion()
-                self.delegate?.showAlert(title: "Success", message: "Data was written to the file with Operation")
-            }
+            completion(saveOperation.isSuccess)
         }
         OperationQueue().addOperation(saveOperation)
     }
     
-    
-    func loadProfileInformation(completion: @escaping (ProfileInformation) -> () ) {
+    func loadProfileInformation(completion: @escaping (ProfileInformation) -> Void ) {
         let loadOperation = LoadOperation()
         
         loadOperation.completionBlock = {
-            DispatchQueue.main.async {
-                completion(loadOperation.profileInformation)
-            }
+            completion(loadOperation.profileInformation)
         }
         OperationQueue().addOperation(loadOperation)
     }

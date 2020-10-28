@@ -12,13 +12,12 @@ class SaveOperation: Operation {
     
     var profileInformation: ProfileInformation?
     
-    var delegate: DataUpdaterDelegate?
+    var isSuccess = true
     
     private var plistURL: URL {
         let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         return documents.appendingPathComponent("ProfileData.plist")
     }
-    
     
     override func main() {
         if isCancelled { return }
@@ -29,23 +28,22 @@ class SaveOperation: Operation {
         
     }
     
-    
     func saveProfileInformation(with profInfo: ProfileInformation) {
-        DispatchQueue.global().async {
-            let encoder = PropertyListEncoder()
-            
-            if let data = try? encoder.encode(profInfo) {
-                if FileManager.default.fileExists(atPath: self.plistURL.path) {
-                    try? data.write(to: self.plistURL)
-                    print("сохранили Operation")
-                    
-                } else {
-                    FileManager.default.createFile(atPath: self.plistURL.path, contents: data, attributes: nil)
-                }
+        
+        let encoder = PropertyListEncoder()
+        
+        if let data = try? encoder.encode(profInfo) {
+            if FileManager.default.fileExists(atPath: self.plistURL.path) {
+                try? data.write(to: self.plistURL)
+                print("сохранили Operation")
             } else {
-                self.delegate?.showAlert(title: "Failing save", message: "Failed to save data")
+                FileManager.default.createFile(atPath: self.plistURL.path, contents: data, attributes: nil)
+                print("создали файл Operation")
             }
+        } else {
+            self.isSuccess = false
         }
+        
     }
     
     deinit {

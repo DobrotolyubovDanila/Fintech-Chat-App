@@ -13,6 +13,3 @@ extension ConversationsListViewController: PassProfileInformationProtocol {
         profileAvatarView.setImage(image: image)
     }
 }
-
-
-

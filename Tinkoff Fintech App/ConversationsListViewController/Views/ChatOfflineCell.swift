@@ -16,7 +16,6 @@ class ChatOfflineCell: UITableViewCell {
     
     @IBOutlet weak var avatarImageView: UIImageView!
     
-    
     func configColorTheme() {
         nameLabel.textColor = ThemeManager.shared.current.mainTextColor
         messageLabel.textColor = ThemeManager.shared.current.secondaryTextColor
@@ -34,11 +33,10 @@ class ChatOfflineCell: UITableViewCell {
             dateString = dateFormatter.string(from: lastAct)
         }
         
-        
         nameLabel.text = content.name
         messageLabel.text = content.lastMessage ?? "No messages yet"
         dateLabel.text = dateString
-        avatarImageView.layer.cornerRadius = avatarImageView.frame.height/2
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
         
      /*   if content.hasUnreadMessage {
             messageLabel.font = UIFont(name: "HelveticaNeue-Medium", size: messageLabel.font.pointSize)

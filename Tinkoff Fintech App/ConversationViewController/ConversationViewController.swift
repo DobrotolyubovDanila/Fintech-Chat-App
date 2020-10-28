@@ -1,6 +1,4 @@
-
-import UIKit
-    
+import UIKit    
 
 class ConversationViewController: UIViewController {
     
@@ -10,7 +8,7 @@ class ConversationViewController: UIViewController {
     
     let udid = UIDevice.current.identifierForVendor?.uuidString
     
-    var messagesArray:[Message] = []
+    var messagesArray: [Message] = []
     
     lazy var messagesFBDM = MessagesFBDataManager(idDocument: channelIdentifier)
     
@@ -51,7 +49,7 @@ class ConversationViewController: UIViewController {
     }
 }
 
-extension ConversationViewController:UITableViewDelegate, UITableViewDataSource {
+extension ConversationViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -63,10 +61,9 @@ extension ConversationViewController:UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        
         if  messagesArray[indexPath.row].senderId != udid {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "receivedMessageCell") as! ConversationCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "receivedMessageCell") as? ConversationCell
+            else { return UITableViewCell() }
             
             cell.label.text = messagesArray[indexPath.row].content
             cell.nameLabel.text = messagesArray[indexPath.row].senderName
@@ -75,7 +72,8 @@ extension ConversationViewController:UITableViewDelegate, UITableViewDataSource 
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "sendMessegesCell") as! ConversationCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "sendMessegesCell") as? ConversationCell
+            else { return UITableViewCell() }
             
             cell.label.text = messagesArray[indexPath.row].content
             cell.nameLabel.text = messagesArray[indexPath.row].senderName
@@ -86,8 +84,6 @@ extension ConversationViewController:UITableViewDelegate, UITableViewDataSource 
         }
         
     }
-    
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

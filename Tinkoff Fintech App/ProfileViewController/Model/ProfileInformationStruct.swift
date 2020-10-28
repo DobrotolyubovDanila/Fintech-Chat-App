@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileInformation: Codable  {
+class ProfileInformation: Codable {
     var name: String
     var description: String
     var imageData: Data
@@ -19,4 +19,3 @@ class ProfileInformation: Codable  {
         self.imageData = imageData ?? Data()
     }
 }
-

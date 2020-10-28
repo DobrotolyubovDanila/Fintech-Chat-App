@@ -56,10 +56,11 @@ class ConversationsListViewController: UITableViewController {
         // Operaition
         
         operationDataManager?.loadProfileInformation(completion: { [weak self] (profileInfo) in
-            self?.profileInformation = profileInfo
-            
-            if let image = UIImage(data: self?.profileInformation.imageData ?? Data()) {
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                self?.profileInformation = profileInfo
+                
+                if let image = UIImage(data: self?.profileInformation.imageData ?? Data()) {
+                    
                     self?.profileAvatarView.setImage(image: image)
                 }
             }
@@ -77,7 +78,7 @@ class ConversationsListViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        profileAvatarView.setCornerRadius(cornerRadius: profileAvatarView.frame.height/2)
+        profileAvatarView.setCornerRadius(cornerRadius: profileAvatarView.frame.height / 2)
     }
     
     // MARK: - Table view data source
@@ -89,10 +90,10 @@ class ConversationsListViewController: UITableViewController {
         return channelsCellContent.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatOfflineCell", for: indexPath) as! ChatOfflineCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChatOfflineCell", for: indexPath) as? ChatOfflineCell
+        else { return UITableViewCell() }
             
         cell.configCellContent(channelsCellContent[indexPath.row])
         cell.configColorTheme()
@@ -111,8 +112,8 @@ class ConversationsListViewController: UITableViewController {
         }
         
         let storyboard = UIStoryboard(name: "ConversationStoryboard", bundle: nil)
-        let navigationController = storyboard.instantiateViewController(withIdentifier: "conversationNC") as! UINavigationController
-        let conversationViewController = navigationController.topViewController as! ConversationViewController
+        guard let navigationController = storyboard.instantiateViewController(withIdentifier: "conversationNC") as? UINavigationController else { return }
+        guard let conversationViewController = navigationController.topViewController as? ConversationViewController else { return }
         
         self.navigationController?.pushViewController(conversationViewController, animated: true)
         
@@ -122,7 +123,7 @@ class ConversationsListViewController: UITableViewController {
     
     @IBAction func profileButtonTapped(_ sender: UIButton) {
         let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
-        let nProfileController: UINavigationController = profileStoryboard.instantiateViewController(withIdentifier: "profileNC") as! UINavigationController
+        guard let nProfileController: UINavigationController = profileStoryboard.instantiateViewController(withIdentifier: "profileNC") as? UINavigationController else { return }
         if let pvc = nProfileController.topViewController as? ProfileViewController {
             if let image = profileAvatarView.profileImageView.image {
                 pvc.profileImage = image
@@ -133,9 +134,9 @@ class ConversationsListViewController: UITableViewController {
         self.present(nProfileController, animated: true, completion: nil)
     }
     
-    @IBAction func  unwindFromProfileVC(_ sender: UIStoryboardSegue){
+    @IBAction func  unwindFromProfileVC(_ sender: UIStoryboardSegue) {
         
-        if let pvc = sender.source as? ProfileViewController, let _ = sender.destination as? ConversationsListViewController {
+        if let pvc = sender.source as? ProfileViewController {
             
             if let image = pvc.profileAvatarView.profileImageView.image {
                 
@@ -161,9 +162,10 @@ class ConversationsListViewController: UITableViewController {
         
         alert.addAction(UIAlertAction(title: "Добавить",
                                       style: .default,
-                                      handler: { [weak self] (action) in
+                                      handler: { [weak self] (_) in
                                         
-                                        guard let name = alert.textFields?.first?.text else { return }
+                                        guard let name = alert.textFields?.first?.text,
+                                              name != "" else { return }
                                         
                                         let data = Channel(name: name, identifier: "id", lastMessage: nil, lastActivity: nil)
                                         
@@ -178,9 +180,9 @@ class ConversationsListViewController: UITableViewController {
     @IBAction func settingsButtonPressed(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "ThemesViewController", bundle: nil)
         
-        let navigationVC = storyboard.instantiateViewController(withIdentifier: "navigationVC") as! UINavigationController
+        guard let navigationVC = storyboard.instantiateViewController(withIdentifier: "navigationVC") as? UINavigationController else { return }
         
-        let themesViewController = navigationVC.topViewController as! ThemesViewController
+        guard let themesViewController = navigationVC.topViewController as? ThemesViewController else { return }
         
         self.navigationController?.pushViewController(themesViewController, animated: true)
         themesViewController.title = "Settings"

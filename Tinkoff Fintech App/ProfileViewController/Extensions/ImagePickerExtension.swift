@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBAction func imageButtonPressed(_ sender: UIButton) {
         
@@ -42,10 +42,10 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             }
         }
         
-        present(actionSheet, animated:true)
+        present(actionSheet, animated: true)
     }
     
-    private func chooseImagePicker(source: UIImagePickerController.SourceType){
+    private func chooseImagePicker(source: UIImagePickerController.SourceType) {
         if UIImagePickerController.isSourceTypeAvailable(source) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -56,7 +56,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info:[UIImagePickerController.InfoKey: Any]){
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
         let image = info[.editedImage] as? UIImage
         profileAvatarView.setImage(image: image)

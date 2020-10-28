@@ -9,10 +9,9 @@
 import Foundation
 import Firebase
 
-
 class MessagesFBDataManager {
     
-    var idDocument:String
+    var idDocument: String
     
     private lazy var db = Firestore.firestore()
     
@@ -52,4 +51,3 @@ class MessagesFBDataManager {
     }
     
 }
-

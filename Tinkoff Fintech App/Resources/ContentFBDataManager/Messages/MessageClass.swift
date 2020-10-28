@@ -22,7 +22,7 @@ class Message {
         self.senderName = senderName
     }
     
-    init? (decodeWith dict: [String:Any]) {
+    init? (decodeWith dict: [String: Any]) {
         guard let content = dict["content"] as? String,
               let created = (dict["created"] as? Timestamp)?.dateValue(),
               let senderId = dict["senderId"] as? String,
@@ -35,7 +35,7 @@ class Message {
     }
     
     func encode() -> [String: Any] {
-        var dict:[String:Any] = [:]
+        var dict: [String: Any] = [:]
         
         dict["content"] = self.content
         dict["created"] = Timestamp(date: self.created)
@@ -45,4 +45,3 @@ class Message {
         return dict
     }
 }
-

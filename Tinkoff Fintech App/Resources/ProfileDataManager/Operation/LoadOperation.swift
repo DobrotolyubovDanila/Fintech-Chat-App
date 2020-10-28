@@ -17,13 +17,11 @@ class LoadOperation: Operation {
         return documents.appendingPathComponent("ProfileData.plist")
     }
     
-    
     override func main() {
         if isCancelled { return }
         
         profileInformation = loadProfileInformation()
     }
-    
     
     func loadProfileInformation() -> ProfileInformation {
         

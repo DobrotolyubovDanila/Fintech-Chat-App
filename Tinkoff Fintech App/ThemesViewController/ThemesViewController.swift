@@ -14,7 +14,7 @@ class ThemesViewController: UIViewController {
     
     @IBOutlet var labelsThemes: [UILabel]!
     
-    var closure: (() -> ())?
+    var closure: (() -> Void)?
     
     var conversationListDelegate: ThemesPickerDelegate?
     
@@ -35,10 +35,6 @@ class ThemesViewController: UIViewController {
         updateInterfaceWithTheme()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        
-    }
     // MARK: - Комментарий. Обработка смены тем.
     /*
      Код метода делегата закомментирован.
@@ -82,20 +78,18 @@ class ThemesViewController: UIViewController {
     }
     
     private func selectCurrentButton(_ button: UIButton) {
-        for item in themeButtons {
-            if item != button { item.isSelected = false }
+        for item in themeButtons where item != button {
+            item.isSelected = false
         }
         button.isSelected = true
     }
     
     func updateInterfaceWithTheme() {
         view.backgroundColor = ThemeManager.shared.current.backgroundColor
-        labelsThemes.forEach{ $0.textColor = ThemeManager.shared.current.mainTextColor }
+        labelsThemes.forEach { $0.textColor = ThemeManager.shared.current.mainTextColor }
         self.navigationController?.setNeedsStatusBarAppearanceUpdate()
     }
     deinit {
         print("deinit ThemeVC")
     }
 }
-
-

@@ -17,7 +17,7 @@ class GCDDataManager: DataManagerAbstraction {
         return documents.appendingPathComponent("ProfileData.plist")
     }
     
-    func loadProfileInformation(completion: @escaping (ProfileInformation) -> () ) {
+    func loadProfileInformation(completion: @escaping (ProfileInformation) -> Void ) {
         
         let decoder = PropertyListDecoder()
         
@@ -30,9 +30,7 @@ class GCDDataManager: DataManagerAbstraction {
         completion(profInfo)
     }
     
-    
-    
-    func saveProfileInformation(with profInfo: ProfileInformation, completion: @escaping ()->() ) {
+    func saveProfileInformation(with profInfo: ProfileInformation, completion: @escaping (Bool) -> Void ) {
         DispatchQueue.global().async {
             let encoder = PropertyListEncoder()
             
@@ -41,20 +39,17 @@ class GCDDataManager: DataManagerAbstraction {
                     try? data.write(to: self.plistURL)
                     print("сохранили GCD")
                     DispatchQueue.main.async {
-                        self.delegate?.showAlert(title: "Success", message: "Data was written to the file with GCD")
-                        self.delegate?.enableInterface()
+                        completion(true)
                     }
-                    completion()
                 } else {
                     FileManager.default.createFile(atPath: self.plistURL.path, contents: data, attributes: nil)
                     DispatchQueue.main.async {
-                        self.delegate?.showAlert(title: "Success", message: "the data was written to the file")
-                        self.delegate?.enableInterface()
+                        completion(true)
                     }
-                    completion()
+                    
                 }
             } else {
-                self.delegate?.showAlert(title: "Failing save", message: "Failed to save data")
+                completion(false)
             }
         }
     }

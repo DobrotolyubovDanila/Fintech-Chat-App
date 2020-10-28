@@ -9,7 +9,6 @@
 import UIKit
 
 protocol DataManagerAbstraction: class {
-    func loadProfileInformation(completion: @escaping (ProfileInformation) -> () )
-    func saveProfileInformation(with profInfo: ProfileInformation, completion: @escaping ()->() )
-    var delegate: DataUpdaterDelegate? { get set }
+    func loadProfileInformation(completion: @escaping (ProfileInformation) -> Void )
+    func saveProfileInformation(with profInfo: ProfileInformation, completion: @escaping (Bool) -> Void )
 }

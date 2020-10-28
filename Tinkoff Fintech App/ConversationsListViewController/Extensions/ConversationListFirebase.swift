@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension ConversationsListViewController {
     func updateDataFromFB() {
         channelsFBDM.getDataFromStorage { [weak self] (querySnapshot) in
@@ -21,7 +20,6 @@ extension ConversationsListViewController {
                     self?.channelsCellContent.append(channelData)
                 }
             }
-            
             
             self?.channelsCellContent.sort { (item1, item2) -> Bool in
                 guard let date1 = item1.lastActivity,
@@ -36,5 +34,3 @@ extension ConversationsListViewController {
         }
     }
 }
-
-

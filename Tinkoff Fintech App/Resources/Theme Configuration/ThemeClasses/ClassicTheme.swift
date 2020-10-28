@@ -10,7 +10,6 @@ import UIKit
 
 class ClassicTheme: ThemeProtocol {
     
-    
     var style: InterfaceStyle = .classic
     
     var backgroundColor: UIColor = #colorLiteral(red: 0.9719105363, green: 0.9547016025, blue: 0.8976618052, alpha: 1)
@@ -31,4 +30,3 @@ class ClassicTheme: ThemeProtocol {
     
     var sendedMessagesTextColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 }
-

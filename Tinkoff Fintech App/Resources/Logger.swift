@@ -10,7 +10,6 @@
 
 import Foundation
 
-
 class Logger {
     
     private init () {}
@@ -31,4 +30,3 @@ class Logger {
         }
     }
 }
-

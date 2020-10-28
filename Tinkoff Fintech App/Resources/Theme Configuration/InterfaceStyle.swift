@@ -8,13 +8,12 @@
 
 import Foundation
 
-
 enum InterfaceStyle {
     case classic
     case day
     case night
     
-    var description:String {
+    var description: String {
         switch self {
         case .classic:
             return "ClassicTheme"

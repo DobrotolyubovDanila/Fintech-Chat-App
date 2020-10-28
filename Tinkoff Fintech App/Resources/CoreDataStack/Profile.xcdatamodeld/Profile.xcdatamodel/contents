@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Channels" representedClassName="Channels" syncable="YES">
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProfileInfo" inverseName="chanenls" inverseEntity="ProfileInfo"/>
+    </entity>
+    <entity name="ProfileInfo" representedClassName="ProfileInfo" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="profileAvatarImage" optional="YES" attributeType="Binary"/>
+        <attribute name="profileId" optional="YES" attributeType="String"/>
+        <attribute name="profileInformation" optional="YES" attributeType="String"/>
+        <relationship name="chanenls" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Channels" inverseName="user" inverseEntity="Channels"/>
+    </entity>
+    <elements>
+        <element name="ProfileInfo" positionX="-2610.48046875" positionY="-532.6484375" width="128" height="118"/>
+        <element name="Channels" positionX="-2327.71875" positionY="-323.40625" width="128" height="58"/>
+    </elements>
+</model>

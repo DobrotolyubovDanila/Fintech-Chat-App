@@ -13,7 +13,7 @@ class PlaceholderData {
         ConversationCellModel(name: "Igor", message: "GO v fifu", date: Date(timeIntervalSinceNow: -900), isOnline: true, hasUnreadMessage: false),
         ConversationCellModel(name: "Арья Старк", message: "Я никто", date: Date(timeIntervalSinceNow: -90), isOnline: false, hasUnreadMessage: false),
         ConversationCellModel(name: "Джон сноу", message: "Зима близко", date: Date(timeIntervalSinceNow: 0), isOnline: true, hasUnreadMessage: true),
-        ConversationCellModel(name: "Анна Ивановна", message: "Выучи уроки, дружок, иначе я тебя исключу из школы", date: Date(timeIntervalSinceNow: -780900), isOnline: false, hasUnreadMessage: true),
+        ConversationCellModel(name: "Анна Ивановна", message: "Выучи уроки, дружок", date: Date(timeIntervalSinceNow: -780900), isOnline: false, hasUnreadMessage: true),
         ConversationCellModel(name: "Роб Старк", message: "Как ваше ничего ?", date: Date(timeIntervalSinceNow: -70), isOnline: true, hasUnreadMessage: true),
         ConversationCellModel(name: "Тони старк", message: "Я – Железный Человек", date: Date(timeIntervalSinceNow: -489900), isOnline: true, hasUnreadMessage: false),
         ConversationCellModel(name: "Тони Рамбола", message: "Барабан сломал", date: Date(timeIntervalSinceNow: -200), isOnline: false, hasUnreadMessage: true),

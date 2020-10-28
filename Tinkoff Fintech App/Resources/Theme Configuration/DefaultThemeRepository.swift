@@ -10,7 +10,6 @@ import UIKit
 
 class DefaultThemeRepository {
     
-    
     private let selectedThemeKey = "selectedThemeKey"
     private let defaults = UserDefaults.standard
     

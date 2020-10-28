@@ -30,7 +30,7 @@ class ProfileViewController: UIViewController {
     
     var profileInformation: ProfileInformation!
     
-    var profileImage:UIImage?
+    var profileImage: UIImage?
     
     weak var profileInformationDelegate: PassProfileInformationProtocol?
     
@@ -49,9 +49,6 @@ class ProfileViewController: UIViewController {
         GCDProfileDM = GCDDataManager()
         operationManager = OperationDataManager()
         
-        GCDProfileDM.delegate = self
-        operationManager.delegate = self
-        
         nameField.isUserInteractionEnabled = false
         descriptionTextView.isEditable = false
         profileAvatarView.profileImageButton.isEnabled = false
@@ -69,7 +66,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        profileAvatarView.setCornerRadius(cornerRadius: profileAvatarView.frame.height/2)
+        profileAvatarView.setCornerRadius(cornerRadius: profileAvatarView.frame.height / 2)
         
         profileAvatarView.clipsToBounds = true
         
@@ -82,20 +79,19 @@ class ProfileViewController: UIViewController {
         super.viewWillDisappear(true)
         profileInformationDelegate?.setProfileInformation(image: profileAvatarView.profileImageView.image)
         
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification , object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification , object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         
     }
-    
-    // MARK: - Work with keyboard
+    // MARK: - Work with keyboard
     private func configKeyboardObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
@@ -139,7 +135,7 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: ThemeManager.shared.current.mainTextColor]
     }
     
-    // MARK: - Work with Buttons
+    // MARK: - Work with Buttons
     @IBAction func editButtonPressed(_ sender: Any) {
         switchEditMode()
     }
@@ -170,8 +166,15 @@ class ProfileViewController: UIViewController {
             profileInformation.imageData = data
         }
         
-        operationManager.saveProfileInformation(with: profileInformation) { [weak self] in
-            self?.enableInterface()
+        operationManager.saveProfileInformation(with: profileInformation) { [weak self] isSuccess in
+            DispatchQueue.main.async {
+                self?.enableInterface()
+                if isSuccess {
+                    self?.showAlert(title: "Success", message: "Data was written to the file with Operation")
+                } else {
+                    self?.showAlert(title: "Failing save", message: "Failed to save data")
+                }
+            }
         }
         
     }
@@ -225,8 +228,13 @@ class ProfileViewController: UIViewController {
             profileInformation.imageData = data
         }
         
-        GCDProfileDM.saveProfileInformation(with: profileInformation, completion: {
-            
+        GCDProfileDM.saveProfileInformation(with: profileInformation, completion: { [weak self] isSuccess in
+            if isSuccess {
+                self?.showAlert(title: "Success", message: "the data was written to the file")
+                self?.enableInterface()
+            } else {
+                self?.showAlert(title: "Failing save", message: "Failed to save data")
+            }
         })
     }
     
@@ -242,7 +250,7 @@ extension ProfileViewController: DataUpdaterDelegate {
             alert.addAction(UIAlertAction(title: "Ok", style: .default))
         } else {
             alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            alert.addAction(UIAlertAction(title: "Repeat", style: .default, handler: { (action) in
+            alert.addAction(UIAlertAction(title: "Repeat", style: .default, handler: { (_) in
                 self.saveInformationWithGCD()
             }))
         }
@@ -258,10 +266,9 @@ extension ProfileViewController: DataUpdaterDelegate {
         saveWithOperationButton.isEnabled = true
     }
     
-    
 }
 
 // MARK: - Support
 protocol PassProfileInformationProtocol: class {
-    func setProfileInformation(image: UIImage?) -> ()
+    func setProfileInformation(image: UIImage?)
 }
