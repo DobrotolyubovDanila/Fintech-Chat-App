@@ -14,6 +14,7 @@ class Message {
     let created: Date
     let senderId: String
     let senderName: String
+    var identifier: String?
     
     init(content: String, created: Date, senderId: String, senderName: String) {
         self.content = content

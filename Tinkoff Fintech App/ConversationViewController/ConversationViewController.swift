@@ -34,6 +34,7 @@ class ConversationViewController: UIViewController {
             
             for item in querySnapshot.documents {
                 guard let message = Message(decodeWith: item.data()) else { return }
+                message.identifier = item.documentID
                 
                 self?.messagesArray.append(message)
             }

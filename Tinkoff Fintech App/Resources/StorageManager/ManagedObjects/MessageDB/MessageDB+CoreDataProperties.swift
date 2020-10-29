@@ -23,13 +23,14 @@ extension MessageDB {
     @NSManaged public var identifierChannel: String
     @NSManaged public var identifierMessage: String
     
-    convenience init(content: String, created: Date, senderId: String, senderName: String, identifierChannel: String, context: NSManagedObjectContext) {
+    convenience init(content: String, created: Date, senderId: String, senderName: String, identifierChannel: String, identifierMessage: String, context: NSManagedObjectContext) {
         self.init(context: context)
         self.content = content
         self.created = created
         self.senderId = senderId
         self.senderName = senderName
         self.identifierChannel = identifierChannel
+        self.identifierMessage = identifierMessage
     }
     
     var about: String {
