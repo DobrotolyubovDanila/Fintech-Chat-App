@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ChannelDB" representedClassName="ChannelDB" syncable="YES">
+        <attribute name="identifier" attributeType="String"/>
+        <attribute name="lastActivity" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="lastMessage" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="identifier"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="MessageDB" representedClassName="MessageDB" syncable="YES">
+        <attribute name="content" attributeType="String"/>
+        <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="identifierChannel" optional="YES" attributeType="String"/>
+        <attribute name="senderId" attributeType="String"/>
+        <attribute name="senderName" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="content"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="ProfileInfoDB" representedClassName="ProfileInfoDB" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String"/>
+        <attribute name="profileId" attributeType="String"/>
+        <attribute name="profileImageData" optional="YES" attributeType="Binary"/>
+        <attribute name="profileInformation" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="profileId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="ChannelDB" positionX="-2610" positionY="-504" width="128" height="103"/>
+        <element name="MessageDB" positionX="-2601" positionY="-495" width="128" height="118"/>
+        <element name="ProfileInfoDB" positionX="-2610.48046875" positionY="-532.6484375" width="128" height="103"/>
+    </elements>
+</model>

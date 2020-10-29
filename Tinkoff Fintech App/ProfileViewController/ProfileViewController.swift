@@ -18,19 +18,17 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var descriptionTextView: UITextView!
     
-    @IBOutlet weak var saveWithGCDButton: UIButton!
-    
-    @IBOutlet weak var saveWithOperationButton: UIButton!
-    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var GCDProfileDM: DataManagerAbstraction!
-    
-    var operationManager: DataManagerAbstraction!
+    var profileInfoDataManager: DataManagerAbstraction!
     
     var profileInformation: ProfileInformation!
     
     var profileImage: UIImage?
+    
+    var isEditingMode = false
+    
+    var didChangeImage = false
     
     weak var profileInformationDelegate: PassProfileInformationProtocol?
     
@@ -46,17 +44,11 @@ class ProfileViewController: UIViewController {
         
         configKeyboardObservers()
         
-        GCDProfileDM = GCDDataManager()
-        operationManager = OperationDataManager()
-        
         nameField.isUserInteractionEnabled = false
         descriptionTextView.isEditable = false
         profileAvatarView.profileImageButton.isEnabled = false
         
         activityIndicator.isHidden = true
-        
-        saveWithGCDButton.isHidden = true
-        saveWithOperationButton.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,8 +63,6 @@ class ProfileViewController: UIViewController {
         profileAvatarView.clipsToBounds = true
         
         editButton.layer.cornerRadius = 10
-        saveWithGCDButton.layer.cornerRadius = 10
-        saveWithOperationButton.layer.cornerRadius = 10
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -107,10 +97,9 @@ class ProfileViewController: UIViewController {
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.2) {
             self.navigationController?.view.frame.origin.y = 0
         }
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -123,8 +112,6 @@ class ProfileViewController: UIViewController {
         editButton.setTitleColor(ThemeManager.shared.current.tintColor, for: .normal)
         nameField.textColor = ThemeManager.shared.current.mainTextColor
         descriptionTextView.textColor = ThemeManager.shared.current.mainTextColor
-        saveWithGCDButton.backgroundColor = ThemeManager.shared.current.secondBackgroundColor
-        saveWithOperationButton.backgroundColor = ThemeManager.shared.current.secondBackgroundColor
         
         view.backgroundColor = ThemeManager.shared.current.backgroundColor
         
@@ -137,105 +124,62 @@ class ProfileViewController: UIViewController {
     
     // MARK: - Work with Buttons
     @IBAction func editButtonPressed(_ sender: Any) {
-        switchEditMode()
-    }
-    
-    @IBAction func GCDButtonPressed(_ sender: UIButton) {
-        switchEditMode()
         
-        prepareForSave()
-        
-        saveInformationWithGCD()
-    }
-    
-    @IBAction func operationButtonPressed(_ sender: UIButton) {
-        switchEditMode()
-        
-        prepareForSave()
-        
-        if profileInformation.name == nameField.text,
-           profileInformation.description == descriptionTextView.text,
-           profileInformation.imageData == profileAvatarView.profileImageView.image?.pngData() {
-            enableInterface()
-            return
-        }
-        
-        profileInformation.name = nameField.text ?? ""
-        profileInformation.description = descriptionTextView.text
-        if let data = profileAvatarView.profileImageView.image?.pngData() {
-            profileInformation.imageData = data
-        }
-        
-        operationManager.saveProfileInformation(with: profileInformation) { [weak self] isSuccess in
-            DispatchQueue.main.async {
-                self?.enableInterface()
-                if isSuccess {
-                    self?.showAlert(title: "Success", message: "Data was written to the file with Operation")
-                } else {
-                    self?.showAlert(title: "Failing save", message: "Failed to save data")
+        if isEditingMode {
+            if profileInformation.name != nameField.text ||
+                profileInformation.description != descriptionTextView.text ||
+                didChangeImage {
+                
+                profileInformation.name = nameField.text ?? ""
+                profileInformation.description = descriptionTextView.text
+                if didChangeImage {
+                    profileInformation.imageData = profileAvatarView.profileImageView.image?.pngData() ?? Data()
+                    didChangeImage = false
+                }
+                
+                profileInfoDataManager.saveProfileInformation(with: profileInformation) {
+                    print("Saved by CoreData")
                 }
             }
         }
         
+        switchEditMode()
     }
 
     private func switchEditMode() {
-        nameField.isUserInteractionEnabled.toggle()
-        if nameField.isUserInteractionEnabled {
+        isEditingMode.toggle()
+        
+        if isEditingMode {
+            nameField.isUserInteractionEnabled.toggle()
             nameField.layer.borderColor = ThemeManager.shared.current.secondBackgroundColor.cgColor
             nameField.layer.borderWidth = 1
-        } else {
-            nameField.layer.borderColor = nil
-            nameField.layer.borderWidth = 0
-        }
-        
-        descriptionTextView.isEditable.toggle()
-        if descriptionTextView.isEditable {
+            
+            descriptionTextView.isEditable.toggle()
             descriptionTextView.layer.borderWidth = 1
             descriptionTextView.layer.borderColor = ThemeManager.shared.current.secondBackgroundColor.cgColor
+            
+            profileAvatarView.profileImageButton.isEnabled.toggle()
+            
+            editButton.setTitle("Save", for: .normal)
         } else {
+            nameField.isUserInteractionEnabled.toggle()
+            nameField.layer.borderColor = nil
+            nameField.layer.borderWidth = 0
+            
+            descriptionTextView.isEditable.toggle()
             descriptionTextView.layer.borderWidth = 0
             descriptionTextView.layer.borderColor = nil
+            
+            profileAvatarView.profileImageButton.isEnabled.toggle()
+            
+            editButton.setTitle("Edit", for: .normal)
         }
-        
-        profileAvatarView.profileImageButton.isEnabled.toggle()
-        
-        editButton.isHidden.toggle()
-        saveWithGCDButton.isHidden.toggle()
-        saveWithOperationButton.isHidden.toggle()
     }
     
     private func prepareForSave() {
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
-        saveWithGCDButton.isEnabled = false
-        saveWithOperationButton.isEnabled = false
-    }
-    
-    private func saveInformationWithGCD() {
-        
-        if profileInformation.name == nameField.text,
-           profileInformation.description == descriptionTextView.text,
-           profileInformation.imageData == profileAvatarView.profileImageView.image?.pngData() {
-            enableInterface()
-            return
-        }
-        
-        profileInformation.name = nameField.text ?? ""
-        profileInformation.description = descriptionTextView.text
-        if let data = profileAvatarView.profileImageView.image?.pngData() {
-            profileInformation.imageData = data
-        }
-        
-        GCDProfileDM.saveProfileInformation(with: profileInformation, completion: { [weak self] isSuccess in
-            if isSuccess {
-                self?.showAlert(title: "Success", message: "the data was written to the file")
-                self?.enableInterface()
-            } else {
-                self?.showAlert(title: "Failing save", message: "Failed to save data")
-            }
-        })
     }
     
     deinit {
@@ -251,7 +195,7 @@ extension ProfileViewController: DataUpdaterDelegate {
         } else {
             alert.addAction(UIAlertAction(title: "Ok", style: .default))
             alert.addAction(UIAlertAction(title: "Repeat", style: .default, handler: { (_) in
-                self.saveInformationWithGCD()
+                
             }))
         }
         
@@ -262,8 +206,6 @@ extension ProfileViewController: DataUpdaterDelegate {
         activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
         
-        saveWithGCDButton.isEnabled = true
-        saveWithOperationButton.isEnabled = true
     }
     
 }

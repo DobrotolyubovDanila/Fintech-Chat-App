@@ -88,34 +88,6 @@ Moscow, Russia</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpV-uG-S3b">
-                                <rect key="frame" x="30" y="607" width="90" height="40"/>
-                                <color key="backgroundColor" red="0.7963418055" green="0.94385688430000003" blue="0.94890922310000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Z5K-ve-12s"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="vU6-Za-SfK"/>
-                                </constraints>
-                                <state key="normal" title="GCD">
-                                    <color key="titleColor" red="0.35210722680000001" green="0.31699568030000003" blue="0.83926063780000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="GCDButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6y6-r2-fIl"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rzo-PW-R3z">
-                                <rect key="frame" x="255" y="607" width="90" height="40"/>
-                                <color key="backgroundColor" red="0.7963418055" green="0.94385688430000003" blue="0.94890922310000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="OiA-GS-cNa"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="otP-B4-iLs"/>
-                                </constraints>
-                                <state key="normal" title="Operation">
-                                    <color key="titleColor" red="0.35210722680000001" green="0.31699568030000003" blue="0.83926063780000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="operationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Ba-LM-zHu"/>
-                                </connections>
-                            </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bUj-S4-aH3">
                                 <rect key="frame" x="177.5" y="371.5" width="20" height="20"/>
                             </activityIndicatorView>
@@ -123,8 +95,6 @@ Moscow, Russia</string>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Rzo-PW-R3z" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jpV-uG-S3b" secondAttribute="trailing" constant="8" symbolic="YES" id="127-yi-WqG"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rzo-PW-R3z" secondAttribute="trailing" constant="30" id="1dF-3l-Fj4"/>
                             <constraint firstItem="5Pb-zP-anh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="7A1-bJ-gYi"/>
                             <constraint firstItem="Aq8-em-boW" firstAttribute="leading" secondItem="2Gp-kc-qqx" secondAttribute="leading" id="DYd-Qq-rGL"/>
                             <constraint firstItem="BaH-5e-DBP" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="GH5-WB-6Sc"/>
@@ -132,8 +102,6 @@ Moscow, Russia</string>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Aq8-em-boW" secondAttribute="bottom" constant="20" id="IOT-FF-5p1"/>
                             <constraint firstItem="5Pb-zP-anh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="QTu-kj-UZV"/>
                             <constraint firstItem="2Gp-kc-qqx" firstAttribute="top" secondItem="BaH-5e-DBP" secondAttribute="bottom" constant="19" id="SFl-hl-rZP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Rzo-PW-R3z" secondAttribute="bottom" constant="20" id="Tue-cf-Q6W"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jpV-uG-S3b" secondAttribute="bottom" constant="20" id="XfO-dY-hYK"/>
                             <constraint firstItem="2Gp-kc-qqx" firstAttribute="leading" secondItem="5Pb-zP-anh" secondAttribute="leading" id="ZmM-4B-oOD"/>
                             <constraint firstItem="Aq8-em-boW" firstAttribute="width" secondItem="5Pb-zP-anh" secondAttribute="width" id="de6-Vt-ViE"/>
                             <constraint firstItem="bUj-S4-aH3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="djH-Ri-6j2"/>
@@ -141,7 +109,6 @@ Moscow, Russia</string>
                             <constraint firstItem="bUj-S4-aH3" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="mK6-Pp-Dpr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Aq8-em-boW" secondAttribute="trailing" symbolic="YES" id="nNk-h9-gLc"/>
                             <constraint firstItem="2Gp-kc-qqx" firstAttribute="trailing" secondItem="5Pb-zP-anh" secondAttribute="trailing" id="rEy-w2-2UX"/>
-                            <constraint firstItem="jpV-uG-S3b" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="wSd-yD-ZOD"/>
                             <constraint firstItem="5Pb-zP-anh" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.666667" id="yjV-5X-wG8"/>
                         </constraints>
                     </view>
@@ -159,8 +126,6 @@ Moscow, Russia</string>
                         <outlet property="editButton" destination="Aq8-em-boW" id="D9T-Vw-7hH"/>
                         <outlet property="nameField" destination="BaH-5e-DBP" id="epQ-cd-jxZ"/>
                         <outlet property="profileAvatarView" destination="5Pb-zP-anh" id="db7-UA-Q9v"/>
-                        <outlet property="saveWithGCDButton" destination="jpV-uG-S3b" id="eUO-4o-BCJ"/>
-                        <outlet property="saveWithOperationButton" destination="Rzo-PW-R3z" id="rlQ-Z7-1sF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

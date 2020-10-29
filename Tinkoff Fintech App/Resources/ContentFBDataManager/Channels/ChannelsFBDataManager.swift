@@ -23,7 +23,6 @@ class ChannelsFBDataManager {
                         print(error?.localizedDescription ?? "error")
                         return
                     }
-                    print("изменения")
                     completion(querySnapshot)
                 }
             }

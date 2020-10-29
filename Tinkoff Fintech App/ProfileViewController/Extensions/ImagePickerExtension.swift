@@ -60,7 +60,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         
         let image = info[.editedImage] as? UIImage
         profileAvatarView.setImage(image: image)
-        
+        self.didChangeImage = true
         dismiss(animated: true, completion: nil)
     }
 }

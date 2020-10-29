@@ -19,9 +19,11 @@ class ConversationsListViewController: UITableViewController {
     
     var channelsFBDM = ChannelsFBDataManager()
     
-    var gcdDataManager: DataManagerAbstraction?
+    private var coreDataStack = CoreDataStack(dataModelName: "Chat")
     
-    var operationDataManager: DataManagerAbstraction?
+    lazy var storageManager = StorageManager(coreDataStack: coreDataStack)
+    
+    private lazy var coreDataProfileManager = CoreDataProfileManager(with: coreDataStack)
     
     var profileInformation: ProfileInformation!
     
@@ -35,38 +37,27 @@ class ConversationsListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gcdDataManager = GCDDataManager()
-        operationDataManager = OperationDataManager()
+        // MARK: - Loading data
         
-        // MARK: - Select method of loading data ⬇
-        /*
-         // GCD
-         gcdDataManager?.loadProfileInformation { [weak self] (profInformaiton) in
-         self?.profileInformation = profInformaiton
-         
-         if let image = UIImage(data: self?.profileInformation.imageData ?? Data()) {
-         DispatchQueue.main.async {
-         self?.profileAvatarView.setImage(image: image)
-         }
-         }
-         }
-         */
+        // CoreData
         
-        // Закомментируйте код ниже, если раскомментировали выше.
-        // Operaition
+        coreDataStack.enableObservers()
         
-        operationDataManager?.loadProfileInformation(completion: { [weak self] (profileInfo) in
+        coreDataStack.didUpdateDataBase = { stack in
+            stack.printDatabaseProfileStatistice()
+            stack.printDatabaseChannelStatistice()
+            stack.printDatabaseMessagesStatistice()
+        }
+        
+        coreDataProfileManager.loadProfileInformation { [weak self] profileInfo in
             DispatchQueue.main.async {
                 self?.profileInformation = profileInfo
                 
                 if let image = UIImage(data: self?.profileInformation.imageData ?? Data()) {
-                    
                     self?.profileAvatarView.setImage(image: image)
                 }
             }
-        })
-        
-        // MARK: - Select method of loading data ⬆
+        }
         
         // MARK: - Сonfiguring the interface
         
@@ -119,6 +110,7 @@ class ConversationsListViewController: UITableViewController {
         
         conversationViewController.title = title
         conversationViewController.channelIdentifier = channelsCellContent[indexPath.row].identifier
+        conversationViewController.storageManager = storageManager
     }
     
     @IBAction func profileButtonTapped(_ sender: UIButton) {
@@ -130,6 +122,7 @@ class ConversationsListViewController: UITableViewController {
             }
             pvc.profileInformationDelegate = self
             pvc.profileInformation = profileInformation
+            pvc.profileInfoDataManager = coreDataProfileManager
         }
         self.present(nProfileController, animated: true, completion: nil)
     }
