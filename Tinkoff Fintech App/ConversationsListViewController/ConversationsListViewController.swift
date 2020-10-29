@@ -19,11 +19,9 @@ class ConversationsListViewController: UITableViewController {
     
     var channelsFBDM = ChannelsFBDataManager()
     
-    private var coreDataStack = CoreDataStack(dataModelName: "Chat")
+    lazy var storageManager = StorageManager(coreDataStack: CoreDataStack(dataModelName: "Chat"))
     
-    lazy var storageManager = StorageManager(coreDataStack: coreDataStack)
-    
-    private lazy var coreDataProfileManager = CoreDataProfileManager(with: coreDataStack)
+    private lazy var coreDataProfileManager = CoreDataProfileManager(with: storageManager.coreDataStack)
     
     var profileInformation: ProfileInformation!
     
@@ -41,9 +39,9 @@ class ConversationsListViewController: UITableViewController {
         
         // CoreData
         
-        coreDataStack.enableObservers()
+        storageManager.coreDataStack.enableObservers()
         
-        coreDataStack.didUpdateDataBase = { stack in
+        storageManager.coreDataStack.didUpdateDataBase = { stack in
             stack.printDatabaseProfileStatistice()
             stack.printDatabaseChannelStatistice()
             stack.printDatabaseMessagesStatistice()
