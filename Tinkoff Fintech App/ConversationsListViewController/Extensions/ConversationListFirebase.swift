@@ -31,6 +31,8 @@ extension ConversationsListViewController {
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
+            
+            self?.storageManager.saveChannels(channels: self?.channelsCellContent)
         }
     }
 }

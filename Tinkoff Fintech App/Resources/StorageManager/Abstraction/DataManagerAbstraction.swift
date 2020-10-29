@@ -10,5 +10,5 @@ import UIKit
 
 protocol DataManagerAbstraction: class {
     func loadProfileInformation(completion: @escaping (ProfileInformation) -> Void )
-    func saveProfileInformation(with profInfo: ProfileInformation, completion: @escaping (Bool) -> Void )
+    func saveProfileInformation(with profInfo: ProfileInformation, completion: @escaping () -> Void )
 }

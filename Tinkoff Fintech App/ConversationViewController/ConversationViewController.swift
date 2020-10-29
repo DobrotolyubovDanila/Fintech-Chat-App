@@ -6,6 +6,8 @@ class ConversationViewController: UIViewController {
     
     var channelIdentifier: String!
     
+    var storageManager: StorageManager!
+    
     let udid = UIDevice.current.identifierForVendor?.uuidString
     
     var messagesArray: [Message] = []
@@ -41,6 +43,9 @@ class ConversationViewController: UIViewController {
                 self?.tableView.reloadData()
                 self?.scrollToBottom()
             }
+            
+            self?.storageManager.saveMessages(messages: self?.messagesArray,
+                                        identifierChannel: self?.channelIdentifier)
         }
     }
     
