@@ -33,11 +33,13 @@ class StorageManager {
         
         coreDataStack.performSave { context in
             messages.forEach { message in
+                guard let identifier = message.identifier else { return }
                 _ = MessageDB(content: message.content,
                               created: message.created,
                               senderId: message.senderId,
                               senderName: message.senderName,
                               identifierChannel: identifierChannel,
+                              identifierMessage: identifier,
                               context: context)
             }
         }
