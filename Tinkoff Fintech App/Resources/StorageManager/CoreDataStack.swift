@@ -101,7 +101,6 @@ class CoreDataStack {
     
     init(dataModelName: String) {
         self.dataModelName = dataModelName
-        print("инит")
     }
     
     // MARK: - CoreData Observers

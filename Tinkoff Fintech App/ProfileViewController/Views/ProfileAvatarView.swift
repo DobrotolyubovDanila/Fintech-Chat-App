@@ -10,9 +10,9 @@ import UIKit
 
 class ProfileAvatarView: UIView {
 
-    @IBOutlet weak var profileImageButton: UIButton!
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var profileLabel: UILabel!
+    @IBOutlet weak public var profileImageButton: UIButton!
+    @IBOutlet weak public var profileImageView: UIImageView!
+    @IBOutlet weak public var profileLabel: UILabel!
     
     func setCornerRadius(cornerRadius: CGFloat) {
         profileLabel.layer.cornerRadius = cornerRadius

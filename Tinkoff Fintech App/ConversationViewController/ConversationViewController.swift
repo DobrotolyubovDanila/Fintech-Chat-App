@@ -24,6 +24,7 @@ class ConversationViewController: UIViewController {
         tableView.allowsSelection = false
         
         tableView.backgroundColor = ThemeManager.shared.current.backgroundColor
+        view.backgroundColor = ThemeManager.shared.current.backgroundColor
         
         updateDataFromFB()
     }
@@ -45,8 +46,6 @@ class ConversationViewController: UIViewController {
                 self?.scrollToBottom()
             }
             
-            self?.storageManager.saveMessages(messages: self?.messagesArray,
-                                        identifierChannel: self?.channelIdentifier)
         }
     }
     

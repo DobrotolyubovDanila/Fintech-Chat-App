@@ -16,12 +16,11 @@ class Channel {
     var lastActivity: Date?
     
     init? (decodeWith dict: [String: Any], identifier: String) {
-        guard let name = dict["name"] as? String,
-              let lastActivity = (dict["lastActivity"] as? Timestamp)?.dateValue() else { return nil }
+        guard let name = dict["name"] as? String else { return nil }
         
         self.name = name
         self.identifier = identifier
-        self.lastActivity = lastActivity
+        self.lastActivity = (dict["lastActivity"] as? Timestamp)?.dateValue()
         self.lastMessage = dict["lastMessage"] as? String
         
     }

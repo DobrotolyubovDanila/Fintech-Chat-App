@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NpP-1Y-VEh">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="716"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="receivedMessageCell" rowHeight="70" id="zeh-Dy-0hm" customClass="ConversationCell" customModule="Tinkoff_Fintech_App" customModuleProvider="target">
@@ -127,13 +127,41 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWA-Cr-y9T">
+                                <rect key="frame" x="0.0" y="804" width="414" height="60"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ipk-2e-ftV">
+                                        <rect key="frame" x="8" y="13" width="330" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4za-lF-Mjd">
+                                        <rect key="frame" x="365" y="15" width="36" height="30"/>
+                                        <state key="normal" title="Send"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="4za-lF-Mjd" secondAttribute="bottom" constant="15" id="6Kn-y0-m8f"/>
+                                    <constraint firstAttribute="height" constant="60" id="dQx-z6-VUe"/>
+                                    <constraint firstItem="Ipk-2e-ftV" firstAttribute="leading" secondItem="FWA-Cr-y9T" secondAttribute="leading" constant="8" id="qch-dV-5fj"/>
+                                    <constraint firstAttribute="trailing" secondItem="4za-lF-Mjd" secondAttribute="trailing" constant="13" id="t1f-Nt-QME"/>
+                                    <constraint firstItem="Ipk-2e-ftV" firstAttribute="top" secondItem="FWA-Cr-y9T" secondAttribute="top" constant="13" id="wyf-h6-mUE"/>
+                                    <constraint firstItem="4za-lF-Mjd" firstAttribute="leading" secondItem="Ipk-2e-ftV" secondAttribute="trailing" constant="27" id="xvQ-O3-EhC"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ipk-2e-ftV" secondAttribute="bottom" constant="13" id="zbg-2Y-8Rd"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uAS-qf-M2c"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="FWA-Cr-y9T" firstAttribute="firstBaseline" secondItem="NpP-1Y-VEh" secondAttribute="baseline" id="AJ7-D0-GS1"/>
                             <constraint firstItem="NpP-1Y-VEh" firstAttribute="leading" secondItem="uAS-qf-M2c" secondAttribute="leading" id="BSP-cZ-8VY"/>
+                            <constraint firstItem="FWA-Cr-y9T" firstAttribute="trailing" secondItem="NpP-1Y-VEh" secondAttribute="trailing" id="EhL-UQ-c6R"/>
+                            <constraint firstItem="FWA-Cr-y9T" firstAttribute="bottom" secondItem="uAS-qf-M2c" secondAttribute="bottom" constant="2" id="Zpb-qT-I9n"/>
                             <constraint firstItem="NpP-1Y-VEh" firstAttribute="top" secondItem="uAS-qf-M2c" secondAttribute="top" id="fE6-L8-c1e"/>
                             <constraint firstItem="NpP-1Y-VEh" firstAttribute="trailing" secondItem="uAS-qf-M2c" secondAttribute="trailing" id="kOe-xB-z5u"/>
-                            <constraint firstItem="NpP-1Y-VEh" firstAttribute="bottom" secondItem="fHn-uz-XO4" secondAttribute="bottom" id="nYp-TD-BQQ"/>
+                            <constraint firstItem="FWA-Cr-y9T" firstAttribute="leading" secondItem="NpP-1Y-VEh" secondAttribute="leading" id="omw-xK-h6Y"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="title" largeTitleDisplayMode="never" id="DbV-4g-qAA"/>
@@ -166,6 +194,9 @@
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

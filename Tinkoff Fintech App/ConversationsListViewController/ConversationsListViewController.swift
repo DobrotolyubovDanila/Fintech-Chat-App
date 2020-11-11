@@ -37,16 +37,6 @@ class ConversationsListViewController: UITableViewController {
         
         // MARK: - Loading data
         
-        // CoreData
-        
-        storageManager.coreDataStack.enableObservers()
-        
-        storageManager.coreDataStack.didUpdateDataBase = { stack in
-            stack.printDatabaseProfileStatistice()
-            stack.printDatabaseChannelStatistice()
-            stack.printDatabaseMessagesStatistice()
-        }
-        
         coreDataProfileManager.loadProfileInformation { [weak self] profileInfo in
             DispatchQueue.main.async {
                 self?.profileInformation = profileInfo
@@ -108,7 +98,6 @@ class ConversationsListViewController: UITableViewController {
         
         conversationViewController.title = title
         conversationViewController.channelIdentifier = channelsCellContent[indexPath.row].identifier
-        conversationViewController.storageManager = storageManager
     }
     
     @IBAction func profileButtonTapped(_ sender: UIButton) {
@@ -155,8 +144,19 @@ class ConversationsListViewController: UITableViewController {
                                       style: .default,
                                       handler: { [weak self] (_) in
                                         
-                                        guard let name = alert.textFields?.first?.text,
+                                        guard var name = alert.textFields?.first?.text,
                                               name != "" else { return }
+                                        
+                                        var check = false
+                                        for char in name {
+                                            if char != " " {
+                                                check = true
+                                                break
+                                            } else {
+                                                name.removeFirst()
+                                            }
+                                        }
+                                        guard check == true else { return }
                                         
                                         let data = Channel(name: name, identifier: "id", lastMessage: nil, lastActivity: nil)
                                         
