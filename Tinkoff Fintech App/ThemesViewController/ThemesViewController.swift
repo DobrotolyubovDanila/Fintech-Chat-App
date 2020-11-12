@@ -36,16 +36,10 @@ class ThemesViewController: UIViewController {
     }
     
     // MARK: - Комментарий. Обработка смены тем.
-    /*
-     Код метода делегата закомментирован.
-     - retyne cycle может возникнуть в случае захвата контроллера замыканием
-     - в случае, если не произойдет деинициализация ThemesViewController
-     */
+    
     @IBAction func selectClassicMode(_ sender: UIButton) {
         selectCurrentButton(sender)
         ThemeManager.shared.apply(theme: ClassicTheme())
-        
-//        conversationListDelegate?.updateInterfaceWithTheme()
         
         if let closure = closure {
             closure()
@@ -57,8 +51,6 @@ class ThemesViewController: UIViewController {
         selectCurrentButton(sender)
         ThemeManager.shared.apply(theme: DayTheme())
         
-//        conversationListDelegate?.updateInterfaceWithTheme()
-        
         if let closure = closure {
             closure()
         }
@@ -68,8 +60,6 @@ class ThemesViewController: UIViewController {
     @IBAction func selectNightMode(_ sender: UIButton) {
         selectCurrentButton(sender)
         ThemeManager.shared.apply(theme: NightTheme())
-        
-//        conversationListDelegate?.updateInterfaceWithTheme()
         
         if let closure = closure {
             closure()

@@ -8,22 +8,26 @@
 
 import Foundation
 import Firebase
+import CoreData
 
-class Message {
+class MessageFB {
     let content: String
     let created: Date
     let senderId: String
     let senderName: String
-    var identifier: String?
+    var identifierMessage: String
+    var identifierChannel: String
     
-    init(content: String, created: Date, senderId: String, senderName: String) {
+    init(content: String, created: Date, senderId: String, senderName: String, identifierMessage: String, identifierChannel: String) {
         self.content = content
         self.created = created
         self.senderId = senderId
         self.senderName = senderName
+        self.identifierMessage = identifierMessage
+        self.identifierChannel = identifierChannel
     }
     
-    init? (decodeWith dict: [String: Any]) {
+    init? (decodeWith dict: [String: Any], identifierMessage: String, identifierChannel: String) {
         guard let content = dict["content"] as? String,
               let created = (dict["created"] as? Timestamp)?.dateValue(),
               let senderId = dict["senderId"] as? String,
@@ -33,6 +37,8 @@ class Message {
         self.created = created
         self.senderId = senderId
         self.senderName = senderName
+        self.identifierMessage = identifierMessage
+        self.identifierChannel = identifierChannel
     }
     
     func encode() -> [String: Any] {
@@ -44,5 +50,16 @@ class Message {
         dict["senderName"] = self.senderName
         
         return dict
+    }
+    
+    func makeMessageDBModel(context: NSManagedObjectContext) -> MessageDB {
+        let messageDB = MessageDB(content: self.content,
+                                  created: self.created,
+                                  senderId: self.senderId,
+                                  senderName: self.senderName,
+                                  identifierChannel: self.identifierChannel,
+                                  identifierMessage: self.identifierMessage,
+                                  context: context)
+        return messageDB
     }
 }

@@ -8,8 +8,9 @@
 
 import Foundation
 import Firebase
+import CoreData
 
-class Channel {
+class ChannelFB {
     var name: String
     var identifier: String
     var lastMessage: String?
@@ -32,6 +33,22 @@ class Channel {
         self.identifier = identifier
     }
     
+    init(channelDB: ChannelDB) {
+        self.name = channelDB.name
+        self.identifier = channelDB.identifier
+        self.lastMessage = channelDB.lastMessage
+        self.lastActivity = channelDB.lastActivity
+    }
+    
+    func makeChannelDBModel(context: NSManagedObjectContext) -> ChannelDB {
+        let channelDB = ChannelDB(identifier: self.identifier,
+                                  name: self.name,
+                                  lastMessage: self.lastMessage,
+                                  lastActivity: self.lastActivity,
+                                  context: context)
+        return channelDB
+    }
+    
     func encode() -> [String: Any] {
         var dict: [String: Any] = [:]
         
@@ -41,5 +58,13 @@ class Channel {
         dict["lastActivity"] = self.lastActivity ?? Date()
         
         return dict
+    }
+    
+    static func makeArrayFromDB(channelDBArray: [ChannelDB]) -> [ChannelFB] {
+        var channels: [ChannelFB] = []
+        for item in channelDBArray {
+            channels.append(ChannelFB(channelDB: item))
+        }
+        return channels
     }
 }

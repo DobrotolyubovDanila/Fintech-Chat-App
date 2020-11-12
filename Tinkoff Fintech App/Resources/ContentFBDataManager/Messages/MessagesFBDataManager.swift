@@ -11,38 +11,61 @@ import Firebase
 
 class MessagesFBDataManager {
     
-    var idDocument: String
+    var idChannel: String
     
     private lazy var db = Firestore.firestore()
     
-    lazy var reference = db.collection("channels/\(idDocument)/messages")
+    lazy var reference = db.collection("channels/\(idChannel)/messages")
     
-    init(idDocument: String) {
-        self.idDocument = idDocument
+    init(idChannel: String) {
+        self.idChannel = idChannel
     }
     
-    func getMessages(completion: @escaping (QuerySnapshot) -> Void) {
+    func getMessages(completion: @escaping ([MessageFB]) -> Void) {
         
-        DispatchQueue.global().async { [weak self] in
-            self?.reference.addSnapshotListener { (querySnapshot, error) in
-                guard let querySnapshot = querySnapshot else {
-                    guard let error = error else { return }
-                    print(error.localizedDescription)
-                    return
+        DispatchQueue.global().async {
+            
+            self.reference.addSnapshotListener { (snapshot, _) in
+                guard let snapshot = snapshot else { return }
+                var messages: [MessageFB] = []
+                
+                snapshot.documentChanges.forEach { (change) in
+                    if change.type == .added {
+                        let messagesData = change.document.data()
+                        
+                        if let message = MessageFB(decodeWith: messagesData,
+                                                   identifierMessage: change.document.documentID,
+                                                   identifierChannel: self.idChannel) {
+                            messages.append(message)
+                        }
+                    }
                 }
-                completion(querySnapshot)
+                
+                DispatchQueue.main.async {
+                    completion(messages)
+                }
             }
+            
         }
         
     }
-    // Функция работает. Проверено. Поле для ввода сообщения еще не добавлял. Не было в тз.
-    func sendMessage(message: Message, completion: @escaping () -> Void ) {
         
-        DispatchQueue.global().async { [weak self] in
-            self?.reference.addDocument(data: message.encode()) { (error) in
+    func sendMessage(content: String, senderId: String, senderName: String, completion: @escaping () -> Void ) {
+        
+        DispatchQueue.global().async {
+            
+            let doc = self.reference.document()
+            
+            let messageFB = MessageFB(content: content,
+                                      created: Date(),
+                                      senderId: senderId,
+                                      senderName: senderName,
+                                      identifierMessage: doc.documentID,
+                                      identifierChannel: self.idChannel)
+            
+            doc.setData(messageFB.encode()) { (error) in
                 if let error = error {
                     print(error.localizedDescription)
-                    return
                 }
                 completion()
             }

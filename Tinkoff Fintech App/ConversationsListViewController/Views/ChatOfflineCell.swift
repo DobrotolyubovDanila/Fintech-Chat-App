@@ -23,7 +23,7 @@ class ChatOfflineCell: UITableViewCell {
         self.backgroundColor = ThemeManager.shared.current.backgroundColor
     }
     
-    func configCellContent(_ content: Channel) {
+    func configCellContent(_ content: ChannelFB) {
         var dateString = ""
         if let lastAct = content.lastActivity {
             let dateFormatter = DateFormatter()

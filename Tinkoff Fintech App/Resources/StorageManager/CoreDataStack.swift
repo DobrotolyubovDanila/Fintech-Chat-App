@@ -84,7 +84,13 @@ class CoreDataStack {
             block(context)
             if context.hasChanges {
                 do {
+                    try context.obtainPermanentIDs(for: Array(context.insertedObjects))
                     try performSave(in: context)
+                    print("saved")
+                    let request: NSFetchRequest<ChannelDB> = ChannelDB.fetchRequest()
+                    if let count = try? mainContext.fetch(request).count {
+                        print(count)
+                    }
                 } catch {
                     assertionFailure(error.localizedDescription)
                 }

@@ -27,28 +27,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        let callBy = #function
-        Logger.printApplicationState(from: "Inactive", to: "Active", callByFunc: callBy)
+        
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
-        let callBy = #function
-        Logger.printApplicationState(from: "Active", to: "Inactive", callByFunc: callBy)
+        
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        let callBy = #function
-        Logger.printApplicationState(from: "Background", to: "Foreground", callByFunc: callBy)
+        
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        let callBy = #function
-        Logger.printApplicationState(from: "Inactive", to: "Background", callByFunc: callBy)
+        
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        let callBy = #function
-        Logger.printApplicationState(from: "Suspended", to: "Not running", callByFunc: callBy)
+        
     }
     
 }

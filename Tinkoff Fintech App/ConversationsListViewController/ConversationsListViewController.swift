@@ -8,14 +8,13 @@
 
 import UIKit
 import Firebase
+import CoreData
 
 class ConversationsListViewController: UITableViewController {
     
     @IBOutlet weak var profileAvatarView: ProfileAvatarView!
     
     @IBOutlet weak var addChannelButton: UIBarButtonItem!
-    
-    var channelsCellContent: [Channel] = []
     
     var channelsFBDM = ChannelsFBDataManager()
     
@@ -24,6 +23,22 @@ class ConversationsListViewController: UITableViewController {
     private lazy var coreDataProfileManager = CoreDataProfileManager(with: storageManager.coreDataStack)
     
     var profileInformation: ProfileInformation!
+    
+    private lazy var fetchedResultsController: NSFetchedResultsController<ChannelDB> = {
+        let fetchRequest: NSFetchRequest<ChannelDB> = ChannelDB.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "lastActivity", ascending: false)
+        
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.resultType = .managedObjectResultType
+        
+        let fetchedResultsControlelr = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                                  managedObjectContext: storageManager.coreDataStack.mainContext,
+                                                                  sectionNameKeyPath: nil,
+                                                                  cacheName: nil)
+        fetchedResultsControlelr.delegate = self
+        
+        return fetchedResultsControlelr
+    }()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if ThemeManager.shared.current.style == .night {
@@ -35,7 +50,7 @@ class ConversationsListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // MARK: - Loading data
+        // MARK: - Loading profile
         
         coreDataProfileManager.loadProfileInformation { [weak self] profileInfo in
             DispatchQueue.main.async {
@@ -49,10 +64,67 @@ class ConversationsListViewController: UITableViewController {
         
         // MARK: - Сonfiguring the interface
         
-        updateDataFromFB()
-        
         setInterfaceTheme()
         
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ChannelDB")
+        let dateSort = NSSortDescriptor(key: "lastActivity", ascending: false)
+        
+        fetchRequest.sortDescriptors = [dateSort]
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("error performFetch. ", error.localizedDescription)
+        }
+        
+        updateDataFromFB()
+    }
+    
+    func updateDataFromFB() {
+        print(#function)
+        channelsFBDM.getDataFromStorage { [weak self] (addedChannels, modifiedChannels, deletedChannelsIDs) in
+            
+            self?.storageManager.coreDataStack.performSave { (context) in
+                let channelsDB = self?.fetchedResultsController.fetchedObjects ?? []
+                for channelFB in addedChannels {
+                    if channelsDB.contains(where: { $0.identifier == channelFB.identifier }) {
+                        continue
+                    } else {
+                        _ = channelFB.makeChannelDBModel(context: context)
+                    }
+                }
+                
+                for channelFB in modifiedChannels {
+                    let request: NSFetchRequest<ChannelDB> = ChannelDB.fetchRequest()
+                    request.predicate = NSPredicate(format: "identifier = %@", channelFB.identifier)
+                    
+                    do {
+                        let channelDB = try context.fetch(request).first
+                        if let channelDB = channelDB {
+                            channelDB.name = channelFB.name
+                            channelDB.lastMessage = channelFB.lastMessage
+                            channelDB.lastActivity = channelFB.lastActivity
+                        }
+                    } catch {
+                        fatalError(error.localizedDescription)
+                    }
+                }
+                
+                for channelId in deletedChannelsIDs {
+                    let request: NSFetchRequest<ChannelDB> = ChannelDB.fetchRequest()
+                    request.predicate = NSPredicate(format: "identifier = %@", channelId)
+                    
+                    do {
+                        let channelDB = try context.fetch(request).first
+                        if let channelDB = channelDB {
+                            context.delete(channelDB)
+                        }
+                    } catch {
+                        fatalError(error.localizedDescription)
+                    }
+                }
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,18 +138,40 @@ class ConversationsListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return channelsCellContent.count
+        return fetchedResultsController.fetchedObjects?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChatOfflineCell", for: indexPath) as? ChatOfflineCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChatOfflineCell", for: indexPath) as? ChatOfflineCell,
+              let channelModel = fetchedResultsController.fetchedObjects?[indexPath.row]
         else { return UITableViewCell() }
-            
-        cell.configCellContent(channelsCellContent[indexPath.row])
+        
+        cell.configCellContent(ChannelFB(channelDB: channelModel))
         cell.configColorTheme()
-            
+        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let channel = fetchedResultsController.fetchedObjects?[indexPath.row] else { return }
+            let channelId = channel.identifier
+            let request: NSFetchRequest<ChannelDB> = ChannelDB.fetchRequest()
+            request.predicate = NSPredicate(format: "identifier = %@", channelId)
+            
+            storageManager.coreDataStack.performSave { (context) in
+                do {
+                    let channelDB = try context.fetch(request).first
+                    if let channelDB = channelDB {
+                        context.delete(channelDB)
+                        channelsFBDM.deleteChannel(channelId: channelId)
+                    }
+                } catch {
+                    
+                }
+            }
+        }
     }
     
     // MARK: - Navigation
@@ -92,12 +186,15 @@ class ConversationsListViewController: UITableViewController {
         
         let storyboard = UIStoryboard(name: "ConversationStoryboard", bundle: nil)
         guard let navigationController = storyboard.instantiateViewController(withIdentifier: "conversationNC") as? UINavigationController else { return }
-        guard let conversationViewController = navigationController.topViewController as? ConversationViewController else { return }
+        guard let conversationViewController = navigationController.topViewController as? ConversationViewController,
+              let identifier = fetchedResultsController.fetchedObjects?[indexPath.row].identifier else { return }
         
         self.navigationController?.pushViewController(conversationViewController, animated: true)
         
         conversationViewController.title = title
-        conversationViewController.channelIdentifier = channelsCellContent[indexPath.row].identifier
+        conversationViewController.identifierChannel = identifier
+        conversationViewController.profileName = profileInformation.name
+        conversationViewController.storageManager = storageManager
     }
     
     @IBAction func profileButtonTapped(_ sender: UIButton) {
@@ -158,11 +255,9 @@ class ConversationsListViewController: UITableViewController {
                                         }
                                         guard check == true else { return }
                                         
-                                        let data = Channel(name: name, identifier: "id", lastMessage: nil, lastActivity: nil)
+                                        let data = ChannelFB(name: name, identifier: "id", lastMessage: nil, lastActivity: nil)
                                         
-                                        self?.channelsFBDM.addChannel(data: data, completion: { [weak self] in
-                                            self?.updateDataFromFB()
-                                        })
+                                        self?.channelsFBDM.addChannel(channel: data, completion: {  })
                                         
                                       }))
         present(alert, animated: true)
@@ -193,5 +288,53 @@ class ConversationsListViewController: UITableViewController {
             self?.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: ThemeManager.shared.current.mainTextColor]
             self?.tableView.reloadData()
         }
+    }
+    
+    func getChannelsFromDB() {
+        
+    }
+}
+
+extension ConversationsListViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+        print("### Начали что-то менять")
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let newIndexPath = newIndexPath {
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+                print("добавили строку", newIndexPath)
+            }
+        case .update:
+            if let indexPath = indexPath {
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+                print("обновили строку, ", indexPath)
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                print("удалили ряд ", indexPath)
+            }
+        case .move:
+            if let indexPath = indexPath, let newIndexPath = newIndexPath {
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+                print("передвинули с ", indexPath, " до ", newIndexPath)
+            }
+        default:
+            print("dafault channel case")
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+        print("### Закончили что-то менять")
     }
 }

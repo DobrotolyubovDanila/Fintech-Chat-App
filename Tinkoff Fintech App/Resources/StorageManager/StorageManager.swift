@@ -15,7 +15,7 @@ class StorageManager {
         self.coreDataStack = coreDataStack
     }
     
-    func saveChannels(channels: [Channel]?) {
+    func saveChannels(channels: [ChannelFB]?) {
         guard let channels = channels else { return }
         coreDataStack.performSave { context in
             channels.forEach { channel in
@@ -28,20 +28,34 @@ class StorageManager {
         }
     }
     
-    func saveMessages(messages: [Message]?, identifierChannel: String?) {
+    func saveMessages(messages: [MessageFB]?, identifierChannel: String?) {
         guard let messages = messages, let identifierChannel = identifierChannel else { return }
         
         coreDataStack.performSave { context in
             messages.forEach { message in
-                guard let identifier = message.identifier else { return }
+                
                 _ = MessageDB(content: message.content,
                               created: message.created,
                               senderId: message.senderId,
                               senderName: message.senderName,
                               identifierChannel: identifierChannel,
-                              identifierMessage: identifier,
+                              identifierMessage: message.identifierMessage,
                               context: context)
             }
+        }
+    }
+    
+    func getDataFromStorage(completion: ([ChannelDB]) -> Void) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ChannelDB")
+        let dateSort = NSSortDescriptor(key: "lastActivity", ascending: false)
+        fetchRequest.sortDescriptors = [dateSort]
+        let mainContext = coreDataStack.mainContext
+        
+        do {
+            guard let channelsDB = try mainContext.fetch(fetchRequest) as? [ChannelDB] else { return }
+            completion(channelsDB)
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
 }

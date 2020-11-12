@@ -17,6 +17,7 @@ class ConversationCell: UITableViewCell {
         self.view.backgroundColor = ThemeManager.shared.current.sendedMessagesBackgroundColor
         self.backgroundColor = ThemeManager.shared.current.backgroundColor
         self.label.textColor = ThemeManager.shared.current.sendedMessagesTextColor
+        self.nameLabel.textColor = ThemeManager.shared.current.secondaryTextColor
     }
 
 }
