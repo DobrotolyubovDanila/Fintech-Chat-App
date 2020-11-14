@@ -204,10 +204,11 @@ extension ConversationViewController: UITableViewDelegate, UITableViewDataSource
     
     func scrollToBottom() {
         guard let count = fetchedResultsController.fetchedObjects?.count else { return }
-        if count > 0 {
+        if count > 0 && countOfScrolls == 0 {
             tableView.scrollToRow(at: IndexPath(row: count - 1, section: 0),
                                   at: .bottom,
                                   animated: true)
+            countOfScrolls += 1
         }
     }
     
