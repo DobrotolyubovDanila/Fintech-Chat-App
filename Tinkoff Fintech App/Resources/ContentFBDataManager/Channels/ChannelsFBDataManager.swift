@@ -14,7 +14,7 @@ class ChannelsFBDataManager {
     private lazy var db = Firestore.firestore()
     lazy var reference = db.collection("channels")
     // Массивы аргументов completion по порядку: добавленные каналы, модифицированные каналы, id удаленных каналов.
-    func getDataFromStorage(completion: @escaping ([ChannelFB], [ChannelFB], [String]) -> Void) {
+    func getChannelsFromFB(completion: @escaping ([ChannelFB], [ChannelFB], [String]) -> Void) {
         
         DispatchQueue.global(qos: .default).async { [weak self] in
             self?.reference.addSnapshotListener { (snapshot, _) in

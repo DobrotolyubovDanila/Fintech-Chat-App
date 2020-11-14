@@ -75,9 +75,9 @@ class ConversationViewController: UIViewController {
     
     func updateDataFromFB() {
         print(#function)
-        messagesFBDM.getMessages { (addedMessagesFB) in
-            self.storageManager.coreDataStack.performSave { (context) in
-                let messagesDB = self.fetchedResultsController.fetchedObjects ?? []
+        messagesFBDM.getMessages { [weak self] (addedMessagesFB) in
+            self?.storageManager.coreDataStack.performSave { (context) in
+                let messagesDB = self?.fetchedResultsController.fetchedObjects ?? []
                 
                 for messageFB in addedMessagesFB {
                     if messagesDB.contains(where: { $0.identifierMessage == messageFB.identifierMessage }) {
@@ -86,8 +86,8 @@ class ConversationViewController: UIViewController {
                         _ = messageFB.makeMessageDBModel(context: context)
                     }
                 }
-                self.scrollToBottom()
             }
+            self?.scrollToBottom()
         }
     }
     
@@ -226,14 +226,16 @@ extension ConversationViewController: NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             if let newIndexPath = newIndexPath {
-                tableView.reloadRows(at: [newIndexPath], with: .automatic)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         case .update:
             if let indexPath = indexPath {
+                print("update")
                 tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         case .delete:
             if let indexPath = indexPath {
+                print("delete")
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
         default:

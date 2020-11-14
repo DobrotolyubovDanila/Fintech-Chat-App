@@ -82,7 +82,7 @@ class ConversationsListViewController: UITableViewController {
     
     func updateDataFromFB() {
         print(#function)
-        channelsFBDM.getDataFromStorage { [weak self] (addedChannels, modifiedChannels, deletedChannelsIDs) in
+        channelsFBDM.getChannelsFromFB { [weak self] (addedChannels, modifiedChannels, deletedChannelsIDs) in
             
             self?.storageManager.coreDataStack.performSave { (context) in
                 let channelsDB = self?.fetchedResultsController.fetchedObjects ?? []
@@ -310,7 +310,6 @@ extension ConversationsListViewController: NSFetchedResultsControllerDelegate {
         case .insert:
             if let newIndexPath = newIndexPath {
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
-                print("добавили строку", newIndexPath)
             }
         case .update:
             if let indexPath = indexPath {
