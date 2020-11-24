@@ -906,7 +906,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "/Users/danon/Documents/Xcode проекты/Tinkoff Fintech App/Tinkoff Fintech App/SOA/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "/Users/danon/Documents/Xcode проекты/Tinkoff Fintech App/Tinkoff Fintech App/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -931,7 +931,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "/Users/danon/Documents/Xcode проекты/Tinkoff Fintech App/Tinkoff Fintech App/SOA/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "/Users/danon/Documents/Xcode проекты/Tinkoff Fintech App/Tinkoff Fintech App/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
