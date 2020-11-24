@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 import Firebase
 
 @UIApplicationMain
@@ -14,14 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    let rootAssembly: RootAssembly = RootAssembly()
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        let callBy = #function
-        Logger.printApplicationState(from: "Not running", to: "Foreground", callByFunc: callBy)
         
         ThemeManager.shared.current = DefaultThemeRepository().load()
         
         FirebaseApp.configure()
+
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let controller = rootAssembly.presentationAssembly.conversationsListViewControlelr()
+        (controller?.topViewController as? ConversationsListViewController)?.presentaionAssembly = rootAssembly.presentationAssembly
+        window?.rootViewController = controller
+        window?.makeKeyAndVisible()
         
         return true
     }

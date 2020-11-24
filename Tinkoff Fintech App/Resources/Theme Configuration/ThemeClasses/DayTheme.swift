@@ -22,7 +22,7 @@ class DayTheme: ThemeProtocol {
     
     var secondaryTextColor: UIColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
     
-    var incomeMessagesBackgroundColor: UIColor = #colorLiteral(red: 0.8744328618, green: 0.8745589852, blue: 0.8744053245, alpha: 1)
+    var incomeMessagesBackgroundColor: UIColor = #colorLiteral(red: 0.8595830798, green: 0.8569152951, blue: 0.8616765141, alpha: 1)
     
     var sendedMessagesBackgroundColor: UIColor = #colorLiteral(red: 0.264976263, green: 0.5361477733, blue: 0.9749037623, alpha: 1)
     

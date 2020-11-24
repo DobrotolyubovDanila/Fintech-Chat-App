@@ -20,7 +20,7 @@ class NightTheme: ThemeProtocol {
     
     var mainTextColor: UIColor = .white
     
-    var secondaryTextColor: UIColor = .gray
+    var secondaryTextColor: UIColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     
     var incomeMessagesBackgroundColor: UIColor = #colorLiteral(red: 0.1803726554, green: 0.1804046035, blue: 0.1803656518, alpha: 1)
     
