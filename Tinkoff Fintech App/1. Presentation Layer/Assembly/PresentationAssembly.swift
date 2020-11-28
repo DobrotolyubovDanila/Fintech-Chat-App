@@ -16,6 +16,8 @@ protocol PresentationAssemblyProto {
     func profileViewController() -> UINavigationController?
     
     func ThemesViewController() -> ThemesViewController?
+    
+    func NetworkImagesViewController() -> NetworkImagesViewController?
 }
 
 class PresentationAssembly: PresentationAssemblyProto {
@@ -90,5 +92,14 @@ class PresentationAssembly: PresentationAssemblyProto {
         themesViewController.title = "Settings"
         
         return themesViewController
+    }
+    
+    func NetworkImagesViewController() -> NetworkImagesViewController? {
+        let sb = UIStoryboard(name: "NetworkImagesViewController", bundle: nil)
+        if let vc = sb.instantiateInitialViewController() as? NetworkImagesViewController {
+            vc.model = NetworkImagesModel(networkImagesManager: serviceAssebmly.networkImagesManager)
+            return vc
+        }
+        return nil
     }
 }

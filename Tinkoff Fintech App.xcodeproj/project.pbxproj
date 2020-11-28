@@ -21,6 +21,10 @@
 		E04BC03225498F40004DE59B /* Chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E04BC03025498F40004DE59B /* Chat.xcdatamodeld */; };
 		E04BC03525499953004DE59B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BC03425499953004DE59B /* CoreDataStack.swift */; };
 		E04BC09D254A23B9004DE59B /* ProfileInfoDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BC09C254A23B9004DE59B /* ProfileInfoDB.swift */; };
+		E061D2262572F9E700D5ED90 /* CodableStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E061D2252572F9E700D5ED90 /* CodableStructs.swift */; };
+		E061D22A2572FA1600D5ED90 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E061D2292572FA1600D5ED90 /* NetworkManager.swift */; };
+		E061D22E2572FA8700D5ED90 /* NetworkImagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E061D22D2572FA8700D5ED90 /* NetworkImagesModel.swift */; };
+		E07C25A125717752001245C7 /* NetworkImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07C259F25717752001245C7 /* NetworkImageCell.swift */; };
 		E07F3591256D33E7007C6A14 /* MessagesFetchResultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07F3590256D33E7007C6A14 /* MessagesFetchResultsService.swift */; };
 		E07F3596256D428F007C6A14 /* MessagesFBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07F3595256D428F007C6A14 /* MessagesFBService.swift */; };
 		E08729D7253E3C2D00FC704A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E08729D6253E3C2D00FC704A /* GoogleService-Info.plist */; };
@@ -55,9 +59,13 @@
 		E0A476D72537DF1F00938B10 /* InterfaceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476B22537DF1F00938B10 /* InterfaceStyle.swift */; };
 		E0A581FB2566E07A00B5FDA5 /* ChannelsFetchedResultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A581FA2566E07A00B5FDA5 /* ChannelsFetchedResultsService.swift */; };
 		E0A8DE6D254A4F3500C49E83 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8DE6C254A4F3500C49E83 /* StorageManager.swift */; };
+		E0AD30B12571325E00CFB04F /* ImageNeworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AD30B02571325E00CFB04F /* ImageNeworkManager.swift */; };
+		E0AD30C2257139B200CFB04F /* NetworkImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AD30C0257139B200CFB04F /* NetworkImagesViewController.swift */; };
 		E0C92188256BF19000DD8F9A /* ProfileVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C92187256BF19000DD8F9A /* ProfileVCModel.swift */; };
 		E0C9218F256BF7E700DD8F9A /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C9218E256BF7E700DD8F9A /* ConversationModel.swift */; };
+		E0D39A202572DB730012953C /* NetworkImagesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0D39A1F2572DB730012953C /* NetworkImagesViewController.storyboard */; };
 		E0DF7365253FA83D00FA77DE /* ChannelsFBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DF7364253FA83D00FA77DE /* ChannelsFBManager.swift */; };
+		E0E095242573005200CB34EA /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E095232573005200CB34EA /* Parser.swift */; };
 		E0FBF52F253F982A00C3278B /* ChannelFBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FBF52E253F982A00C3278B /* ChannelFBModel.swift */; };
 		E0FC78572568224200ECCF21 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC78562568224200ECCF21 /* StorageService.swift */; };
 		E0FC785B2568456700ECCF21 /* ChannelsFirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC785A2568456700ECCF21 /* ChannelsFirebaseService.swift */; };
@@ -82,6 +90,10 @@
 		E04BC03125498F40004DE59B /* Profile.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Profile.xcdatamodel; sourceTree = "<group>"; };
 		E04BC03425499953004DE59B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		E04BC09C254A23B9004DE59B /* ProfileInfoDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoDB.swift; sourceTree = "<group>"; };
+		E061D2252572F9E700D5ED90 /* CodableStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStructs.swift; sourceTree = "<group>"; };
+		E061D2292572FA1600D5ED90 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E061D22D2572FA8700D5ED90 /* NetworkImagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImagesModel.swift; sourceTree = "<group>"; };
+		E07C259F25717752001245C7 /* NetworkImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImageCell.swift; sourceTree = "<group>"; };
 		E07F3590256D33E7007C6A14 /* MessagesFetchResultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesFetchResultsService.swift; sourceTree = "<group>"; };
 		E07F3595256D428F007C6A14 /* MessagesFBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesFBService.swift; sourceTree = "<group>"; };
 		E08729D6253E3C2D00FC704A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -117,9 +129,13 @@
 		E0A476B22537DF1F00938B10 /* InterfaceStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceStyle.swift; sourceTree = "<group>"; };
 		E0A581FA2566E07A00B5FDA5 /* ChannelsFetchedResultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsFetchedResultsService.swift; sourceTree = "<group>"; };
 		E0A8DE6C254A4F3500C49E83 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		E0AD30B02571325E00CFB04F /* ImageNeworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNeworkManager.swift; sourceTree = "<group>"; };
+		E0AD30C0257139B200CFB04F /* NetworkImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImagesViewController.swift; sourceTree = "<group>"; };
 		E0C92187256BF19000DD8F9A /* ProfileVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVCModel.swift; sourceTree = "<group>"; };
 		E0C9218E256BF7E700DD8F9A /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
+		E0D39A1F2572DB730012953C /* NetworkImagesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NetworkImagesViewController.storyboard; sourceTree = "<group>"; };
 		E0DF7364253FA83D00FA77DE /* ChannelsFBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsFBManager.swift; sourceTree = "<group>"; };
+		E0E095232573005200CB34EA /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		E0EBA6B2250A8E2D004CD943 /* Tinkoff Fintech App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinkoff Fintech App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0FBF52E253F982A00C3278B /* ChannelFBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelFBModel.swift; sourceTree = "<group>"; };
 		E0FC78562568224200ECCF21 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
@@ -224,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				E03C6FC92566AF6D0032EF14 /* Assebmly */,
+				E061D2232572F94100D5ED90 /* Networking */,
 				E03C6FD32566B1AD0032EF14 /* Managers */,
 				E03C6FD42566B1CA0032EF14 /* Models */,
 			);
@@ -245,6 +262,7 @@
 				E0C9218A256BF76300DD8F9A /* Conversation */,
 				E07F3598256D5AA0007C6A14 /* Themes */,
 				E0C7255F25686AE70078091F /* Profile */,
+				E0AD30B3257138B900CFB04F /* NetworkImages */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -278,6 +296,7 @@
 		E03C6FD32566B1AD0032EF14 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E0AD30AF2571323B00CFB04F /* NetworkManager */,
 				E0A8DE6C254A4F3500C49E83 /* StorageManager.swift */,
 				E03C6FD92566B78A0032EF14 /* FirebaseManagers */,
 			);
@@ -328,6 +347,32 @@
 				E0FC785A2568456700ECCF21 /* ChannelsFirebaseService.swift */,
 			);
 			path = ChannelsServices;
+			sourceTree = "<group>";
+		};
+		E061D2232572F94100D5ED90 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				E061D2282572FA0000D5ED90 /* NetworkImageManager */,
+				E061D2242572F99600D5ED90 /* Parsers */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		E061D2242572F99600D5ED90 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				E061D2252572F9E700D5ED90 /* CodableStructs.swift */,
+				E0E095232573005200CB34EA /* Parser.swift */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
+		E061D2282572FA0000D5ED90 /* NetworkImageManager */ = {
+			isa = PBXGroup;
+			children = (
+				E061D2292572FA1600D5ED90 /* NetworkManager.swift */,
+			);
+			path = NetworkImageManager;
 			sourceTree = "<group>";
 		};
 		E07F358F256D33C4007C6A14 /* MessagesServices */ = {
@@ -426,6 +471,49 @@
 				E04BC09C254A23B9004DE59B /* ProfileInfoDB.swift */,
 			);
 			path = ProfileDataManager;
+			sourceTree = "<group>";
+		};
+		E0AD30AF2571323B00CFB04F /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				E0AD30B02571325E00CFB04F /* ImageNeworkManager.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		E0AD30B3257138B900CFB04F /* NetworkImages */ = {
+			isa = PBXGroup;
+			children = (
+				E0AD30B5257138E900CFB04F /* Model */,
+				E0AD30B6257138EF00CFB04F /* View */,
+				E0AD30B4257138E100CFB04F /* Controller */,
+			);
+			path = NetworkImages;
+			sourceTree = "<group>";
+		};
+		E0AD30B4257138E100CFB04F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E0AD30C0257139B200CFB04F /* NetworkImagesViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E0AD30B5257138E900CFB04F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E061D22D2572FA8700D5ED90 /* NetworkImagesModel.swift */,
+				E07C259F25717752001245C7 /* NetworkImageCell.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E0AD30B6257138EF00CFB04F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E0D39A1F2572DB730012953C /* NetworkImagesViewController.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		E0C7255F25686AE70078091F /* Profile */ = {
@@ -643,6 +731,7 @@
 			files = (
 				E0A476C72537DF1F00938B10 /* ThemesViewController.storyboard in Resources */,
 				E0A476BA2537DF1F00938B10 /* Assets.xcassets in Resources */,
+				E0D39A202572DB730012953C /* NetworkImagesViewController.storyboard in Resources */,
 				E0A476C42537DF1F00938B10 /* LaunchScreen.storyboard in Resources */,
 				E0A476B92537DF1F00938B10 /* ConversationStoryboard.storyboard in Resources */,
 				E0A476CA2537DF1F00938B10 /* Profile.storyboard in Resources */,
@@ -725,6 +814,7 @@
 				E0FC785B2568456700ECCF21 /* ChannelsFirebaseService.swift in Sources */,
 				E00FF7D1254B155E003444EE /* ChannelDB+CoreDataProperties.swift in Sources */,
 				E07F3596256D428F007C6A14 /* MessagesFBService.swift in Sources */,
+				E0AD30C2257139B200CFB04F /* NetworkImagesViewController.swift in Sources */,
 				E00FF7D0254B155E003444EE /* ChannelDB+CoreDataClass.swift in Sources */,
 				E03C6FBA2566A5830032EF14 /* PresentationAssembly.swift in Sources */,
 				E0A476BC2537DF1F00938B10 /* ConvListNavController.swift in Sources */,
@@ -734,12 +824,15 @@
 				E0A476D52537DF1F00938B10 /* ThemeProtocol.swift in Sources */,
 				E0A476B72537DF1F00938B10 /* ConversationViewController.swift in Sources */,
 				E0A476BF2537DF1F00938B10 /* ConversationListPassImage.swift in Sources */,
+				E0E095242573005200CB34EA /* Parser.swift in Sources */,
 				E0C9218F256BF7E700DD8F9A /* ConversationModel.swift in Sources */,
 				E0A8DE6D254A4F3500C49E83 /* StorageManager.swift in Sources */,
 				E0A476C62537DF1F00938B10 /* ThemesViewController.swift in Sources */,
 				E0A476C82537DF1F00938B10 /* AppDelegate.swift in Sources */,
 				E04BC03225498F40004DE59B /* Chat.xcdatamodeld in Sources */,
 				E0A476D12537DF1F00938B10 /* DayTheme.swift in Sources */,
+				E061D22A2572FA1600D5ED90 /* NetworkManager.swift in Sources */,
+				E061D22E2572FA8700D5ED90 /* NetworkImagesModel.swift in Sources */,
 				E00FF7AE254B12AB003444EE /* MessageDB+CoreDataClass.swift in Sources */,
 				E0A476CD2537DF1F00938B10 /* ProfileInformationStruct.swift in Sources */,
 				E0A476BE2537DF1F00938B10 /* ConversationListThemePicker.swift in Sources */,
@@ -753,14 +846,17 @@
 				E0A476D62537DF1F00938B10 /* ThemesPickerDelegate.swift in Sources */,
 				E04BC09D254A23B9004DE59B /* ProfileInfoDB.swift in Sources */,
 				E0455F0B2540806600735558 /* MessageFBModel.swift in Sources */,
+				E061D2262572F9E700D5ED90 /* CodableStructs.swift in Sources */,
 				E03C6FBF2566A6800032EF14 /* ServicesAssebmly.swift in Sources */,
 				E0A476D02537DF1F00938B10 /* DefaultThemeRepository.swift in Sources */,
 				E07F3591256D33E7007C6A14 /* MessagesFetchResultsService.swift in Sources */,
+				E0AD30B12571325E00CFB04F /* ImageNeworkManager.swift in Sources */,
 				E0A476B62537DF1F00938B10 /* ConfigurableViewProtocol.swift in Sources */,
 				E0A476CB2537DF1F00938B10 /* ImagePickerExtension.swift in Sources */,
 				E0A476D22537DF1F00938B10 /* ClassicTheme.swift in Sources */,
 				E0FC78572568224200ECCF21 /* StorageService.swift in Sources */,
 				E0A476B82537DF1F00938B10 /* ConversationCell.swift in Sources */,
+				E07C25A125717752001245C7 /* NetworkImageCell.swift in Sources */,
 				E0A476C22537DF1F00938B10 /* ChatOfflineCell.swift in Sources */,
 				E0A476C32537DF1F00938B10 /* ChatOnlineCell.swift in Sources */,
 				E0DF7365253FA83D00FA77DE /* ChannelsFBManager.swift in Sources */,
@@ -905,14 +1001,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PLZNGC64TN;
 				INFOPLIST_FILE = "/Users/danon/Documents/Xcode проекты/Tinkoff Fintech App/Tinkoff Fintech App/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.tinkoff.TinkoffChat;
+				PRODUCT_BUNDLE_IDENTIFIER = tinkoffChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tinkoff Fintech App/Tinkoff Fintech App-Bridging-Header.h";
@@ -930,14 +1026,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PLZNGC64TN;
 				INFOPLIST_FILE = "/Users/danon/Documents/Xcode проекты/Tinkoff Fintech App/Tinkoff Fintech App/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.tinkoff.TinkoffChat;
+				PRODUCT_BUNDLE_IDENTIFIER = tinkoffChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tinkoff Fintech App/Tinkoff Fintech App-Bridging-Header.h";

@@ -113,6 +113,11 @@ class ConversationViewController: UIViewController {
         messageField.backgroundColor = themeManager.secondBackgroundColor
         messageField.textColor = themeManager.sendedMessagesTextColor
         messageField.keyboardAppearance = themeManager.style == .night ? .dark : .default
+        if themeManager.style == .day {
+            messageField.textColor = themeManager.incomeMessagesTextColor
+        } else {
+            messageField.textColor = themeManager.sendedMessagesTextColor
+        }
     }
 }
 

@@ -30,10 +30,22 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         photo.setValue(photoLiteral, forKey: "image")//Добавление изображения всплывающему меню
         photo.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")//выравнивание слева
         
+        let networkImages = UIAlertAction(title: "Download", style: .default) { (_) in
+            
+            if let vc = self.presentationAssembly?.NetworkImagesViewController() {
+                vc.delegate = self
+                self.present(vc, animated: true, completion: nil)
+
+            }
+        }
+        
+        networkImages.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        
         let cansel = UIAlertAction(title: "Cancel", style: .cancel)
         
         actionSheet.addAction(camera)
         actionSheet.addAction(photo)
+        actionSheet.addAction(networkImages)
         actionSheet.addAction(cansel)
         
         if ThemeManager.shared.current.style == .night {
@@ -62,5 +74,13 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         profileAvatarView.setImage(image: image)
         self.didChangeImage = true
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ProfileViewController: PassProfileImageProtocol {
+    func setProfileImage(image: UIImage?) {
+        self.profileAvatarView.setImage(image: image)
+        self.didChangeImage = true
+        
     }
 }

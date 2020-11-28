@@ -14,6 +14,8 @@ protocol CoreAssemblyProto {
     
     var channelsFBManager: ChannelsFBManager { get }
     
+    var networkManager: NetworkImagesManager { get }
+    
     func messagesFBManager(idChannel: String) -> MessagesFBManager
 }
 
@@ -22,6 +24,8 @@ class CoreAssembly: CoreAssemblyProto {
     lazy var storageManager: StorageManager = StorageManager(coreDataStack: CoreDataStack(dataModelName: "Chat"))
     
     lazy var channelsFBManager: ChannelsFBManager = ChannelsFBManager()
+    
+    lazy var networkManager: NetworkImagesManager = NetworkImagesManager()
     
     func messagesFBManager(idChannel: String) -> MessagesFBManager {
         return MessagesFBManager(idChannel: idChannel)

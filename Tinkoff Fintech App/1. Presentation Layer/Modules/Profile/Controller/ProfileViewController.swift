@@ -22,11 +22,13 @@ class ProfileViewController: UIViewController {
     
     var model: ProfileVCModelProto!
     
+    var presentationAssembly: PresentationAssemblyProto?
+    
     private var isEditingMode = false
     
     var didChangeImage = false
     
-    weak var profileInformationDelegate: PassProfileInformationProtocol?
+    weak var profileInformationDelegate: PassProfileImageProtocol?
     
     // MARK: - Lificycle
     override func viewDidLoad() {
@@ -58,7 +60,8 @@ class ProfileViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        profileInformationDelegate?.setProfileImage(image: profileAvatarView.profileImageView.image)
+        let image = UIImage(data: model.profileInformation?.imageData ?? Data())
+        profileInformationDelegate?.setProfileImage(image: image)
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -168,6 +171,6 @@ class ProfileViewController: UIViewController {
 }
 
 // MARK: - Support
-protocol PassProfileInformationProtocol: class {
+protocol PassProfileImageProtocol: class {
     func setProfileImage(image: UIImage?)
 }

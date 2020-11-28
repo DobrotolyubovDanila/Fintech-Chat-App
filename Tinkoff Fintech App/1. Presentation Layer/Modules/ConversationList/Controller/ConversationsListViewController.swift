@@ -86,6 +86,7 @@ class ConversationsListViewController: UITableViewController {
         if let pvc = navProfileController.topViewController as? ProfileViewController {
             pvc.model.profileInformation = model.profileInformation
             pvc.model.profileImage = profileAvatarView.profileImageView.image
+            pvc.presentationAssembly = presentaionAssembly
             pvc.profileInformationDelegate = self
         }
         self.present(navProfileController, animated: true, completion: nil)

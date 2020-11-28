@@ -15,6 +15,8 @@ protocol ServicesAssemblyProto {
     
     var channelFBService: ChannelsFirebaseServiceProto { get }
     
+    var networkImagesManager: NetworkImagesManager { get }
+    
     func channelsFetchedResultsService() -> ChannelsFetchedResultsServiceProto
     
     func messagesFetchedResultsService(identifierChannel: String) -> MessagesFetchedResultsServiceProto
@@ -35,6 +37,10 @@ class ServicesAssembly: ServicesAssemblyProto {
                                               storageManager: storageService.storageManager)
         
         return firebaseService
+    }()
+    
+    lazy var networkImagesManager: NetworkImagesManager = {
+        return coreAssebmly.networkManager
     }()
     
     init(coreAssebmly: CoreAssemblyProto) {
