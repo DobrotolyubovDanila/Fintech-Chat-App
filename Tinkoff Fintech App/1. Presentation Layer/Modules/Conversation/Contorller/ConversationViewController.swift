@@ -17,7 +17,7 @@ class ConversationViewController: UIViewController, UIGestureRecognizerDelegate 
     
     var model: ConversationModelProto!
     
-//    private var emitter: EmitterServise?
+    private var emitter: EmitterServise?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +33,12 @@ class ConversationViewController: UIViewController, UIGestureRecognizerDelegate 
         
         model.setupMessagesFetchedResultController(tableView: tableView)
         
-        model.getMessagesFromFB {
-            self.scrollToBottom()
+        model.getMessagesFromFB { [weak self] in
+            self?.scrollToBottom()
         }
         
-//        emitter = EmitterServise(viewController: self)
-//        configGestureRecognizers()
+        emitter = EmitterServise(view: self.view)
+        configGestureRecognizers()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -124,19 +124,31 @@ class ConversationViewController: UIViewController, UIGestureRecognizerDelegate 
         }
     }
     
-//    private func configGestureRecognizers() {
-//        let panRec = UIPanGestureRecognizer(target: self, action: #selector(panRecocnized(_:)))
-//        panRec.cancelsTouchesInView = false
-//        panRec.delegate = self
-//        
-//        tableView.addGestureRecognizer(panRec)
-//        tableView.isUserInteractionEnabled = true
-//    
-//    }
-//    
-//    @objc func panRecocnized(_ sender: UIPanGestureRecognizer) {
-//        emitter?.panRecognized(sender)
-//    }
+    // MARK: - Emitter
+    private func configGestureRecognizers() {
+        let panRec = UIPanGestureRecognizer(target: self, action: #selector(panRecocnized(_:)))
+        panRec.cancelsTouchesInView = false
+        panRec.delegate = self
+
+        let tapRec = UITapGestureRecognizer(target: self, action: #selector(tapRecocnized(_:)))
+        tapRec.cancelsTouchesInView = false
+        tapRec.delegate = self
+        
+        tableView.addGestureRecognizer(tapRec)
+        tableView.addGestureRecognizer(panRec)
+    }
+
+    @objc func panRecocnized(_ sender: UIPanGestureRecognizer) {
+        emitter?.panRecognizer(sender)
+    }
+    
+    @objc func tapRecocnized(_ sender: UITapGestureRecognizer) {
+        emitter?.tapRecognizer(sender)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
 }
 
 extension ConversationViewController: UITableViewDelegate, UITableViewDataSource {
@@ -177,7 +189,7 @@ extension ConversationViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func scrollToBottom() {
-        let count = model.fetchedObjects().count 
+        let count = model.fetchedObjects().count
         if count > 0 && model.countOfScrolls == 0 {
             tableView.scrollToRow(at: IndexPath(row: count - 1, section: 0),
                                   at: .bottom,

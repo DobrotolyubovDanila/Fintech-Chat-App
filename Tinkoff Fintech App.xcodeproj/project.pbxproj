@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -280,8 +280,8 @@
 			children = (
 				E07F358F256D33C4007C6A14 /* MessagesServices */,
 				E055EEDF256874CB006B1D4E /* ChannelsServices */,
-				E0FC78562568224200ECCF21 /* StorageService.swift */,
 				E01DC13C25793EFC00BC5902 /* EmitterServise.swift */,
+				E0FC78562568224200ECCF21 /* StorageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -699,7 +699,7 @@
 				};
 			};
 			buildConfigurationList = E0EBA6AD250A8E2D004CD943 /* Build configuration list for PBXProject "Tinkoff Fintech App" */;
-			compatibilityVersion = "Xcode 11.4";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

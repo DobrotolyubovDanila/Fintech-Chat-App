@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThemesViewController: UIViewController {
+class ThemesViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet var themeButtons: [UIButton]!
     
@@ -19,6 +19,8 @@ class ThemesViewController: UIViewController {
     var conversationListDelegate: ThemesPickerDelegate?
     
     var interfaceStyle: InterfaceStyle = ThemeManager.shared.current.style
+    
+    private var emitter: EmitterServise?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,9 @@ class ThemesViewController: UIViewController {
         }
         
         updateInterfaceWithTheme()
+        
+        emitter = EmitterServise(view: view)
+        configGestureRecognizers()
     }
     
     // MARK: - Обработка смены тем.
@@ -81,5 +86,31 @@ class ThemesViewController: UIViewController {
     }
     deinit {
         print("deinit ThemeVC")
+    }
+    
+    // MARK: - Emitter
+    private func configGestureRecognizers() {
+        let panRec = UIPanGestureRecognizer(target: self, action: #selector(panRecocnized(_:)))
+        panRec.cancelsTouchesInView = false
+        panRec.delegate = self
+
+        let tapRec = UITapGestureRecognizer(target: self, action: #selector(tapRecocnized(_:)))
+        tapRec.cancelsTouchesInView = false
+        tapRec.delegate = self
+        
+        view.addGestureRecognizer(tapRec)
+        view.addGestureRecognizer(panRec)
+    }
+
+    @objc func panRecocnized(_ sender: UIPanGestureRecognizer) {
+        emitter?.panRecognizer(sender)
+    }
+    
+    @objc func tapRecocnized(_ sender: UITapGestureRecognizer) {
+        emitter?.tapRecognizer(sender)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }

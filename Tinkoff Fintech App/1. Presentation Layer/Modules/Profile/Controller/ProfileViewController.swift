@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Properties
     @IBOutlet weak var profileAvatarView: ProfileAvatarView!
     
@@ -21,6 +21,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var model: ProfileVCModelProto!
+    
+    private var emitter: EmitterServise?
     
     var presentationAssembly: PresentationAssemblyProto?
     
@@ -47,6 +49,9 @@ class ProfileViewController: UIViewController {
         profileAvatarView.profileImageButton.isEnabled = false
         
         activityIndicator.isHidden = true
+        
+        emitter = EmitterServise(view: view)
+        configGestureRecognizers()
     }
     
     override func viewDidLayoutSubviews() {
@@ -216,6 +221,32 @@ class ProfileViewController: UIViewController {
         animation.keyTimes = [0, 0.25, 0.5, 0.75, 1.0]
         
         return animation
+    }
+    
+    // MARK: - Emitter
+    private func configGestureRecognizers() {
+        let panRec = UIPanGestureRecognizer(target: self, action: #selector(panRecocnized(_:)))
+        panRec.cancelsTouchesInView = false
+        panRec.delegate = self
+
+        let tapRec = UITapGestureRecognizer(target: self, action: #selector(tapRecocnized(_:)))
+        tapRec.cancelsTouchesInView = false
+        tapRec.delegate = self
+        
+        view.addGestureRecognizer(tapRec)
+        view.addGestureRecognizer(panRec)
+    }
+
+    @objc func panRecocnized(_ sender: UIPanGestureRecognizer) {
+        emitter?.panRecognizer(sender)
+    }
+    
+    @objc func tapRecocnized(_ sender: UITapGestureRecognizer) {
+        emitter?.tapRecognizer(sender)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
 }

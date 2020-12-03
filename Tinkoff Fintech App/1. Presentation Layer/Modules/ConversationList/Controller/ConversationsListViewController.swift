@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import CoreData
 
-class ConversationsListViewController: UITableViewController {
+class ConversationsListViewController: UITableViewController, UIGestureRecognizerDelegate {
     
     var presentaionAssembly: PresentationAssemblyProto!
     
@@ -19,6 +19,8 @@ class ConversationsListViewController: UITableViewController {
     @IBOutlet weak var addChannelButton: UIBarButtonItem!
     
     var model: ConversationsListModelProtocol!
+    
+    private var emitter: EmitterServise?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if ThemeManager.shared.current.style == .night {
@@ -35,6 +37,9 @@ class ConversationsListViewController: UITableViewController {
         model.setupFetchResultsController(tableView: tableView)
         
         model.getChannelsFromFB()
+        
+        emitter = EmitterServise(view: self.tableView)
+        configGestureRecognizers()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -128,6 +133,33 @@ class ConversationsListViewController: UITableViewController {
         }
     }
     
+    // MARK: - Emitter
+    
+    private func configGestureRecognizers() {
+        let panRec = UIPanGestureRecognizer(target: self, action: #selector(panRecocnized(_:)))
+        panRec.cancelsTouchesInView = false
+        panRec.delegate = self
+
+        let tapRec = UITapGestureRecognizer(target: self, action: #selector(tapRecocnized(_:)))
+        tapRec.cancelsTouchesInView = false
+        tapRec.delegate = self
+        
+        tableView.addGestureRecognizer(tapRec)
+        tableView.addGestureRecognizer(panRec)
+    }
+
+    @objc func panRecocnized(_ sender: UIPanGestureRecognizer) {
+        emitter?.panRecognizer(sender)
+    }
+    
+    @objc func tapRecocnized(_ sender: UITapGestureRecognizer) {
+        emitter?.tapRecognizer(sender)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
     // MARK: - Add channel
     
     @IBAction func addCannelButtonPressed(_ sender: UIBarButtonItem) {
@@ -135,4 +167,5 @@ class ConversationsListViewController: UITableViewController {
             present(alert, animated: true)
         }
     }
+    
 }
