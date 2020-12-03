@@ -13,6 +13,7 @@
 		E00FF7AF254B12AB003444EE /* MessageDB+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF7AD254B12AB003444EE /* MessageDB+CoreDataProperties.swift */; };
 		E00FF7D0254B155E003444EE /* ChannelDB+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF7CE254B155E003444EE /* ChannelDB+CoreDataClass.swift */; };
 		E00FF7D1254B155E003444EE /* ChannelDB+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF7CF254B155E003444EE /* ChannelDB+CoreDataProperties.swift */; };
+		E01DC13D25793EFC00BC5902 /* EmitterServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01DC13C25793EFC00BC5902 /* EmitterServise.swift */; };
 		E03C6FBA2566A5830032EF14 /* PresentationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C6FB92566A5830032EF14 /* PresentationAssembly.swift */; };
 		E03C6FBF2566A6800032EF14 /* ServicesAssebmly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C6FBE2566A6800032EF14 /* ServicesAssebmly.swift */; };
 		E03C6FCD2566B0190032EF14 /* CoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C6FCC2566B0190032EF14 /* CoreAssembly.swift */; };
@@ -82,6 +83,7 @@
 		E00FF7AD254B12AB003444EE /* MessageDB+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageDB+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E00FF7CE254B155E003444EE /* ChannelDB+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChannelDB+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E00FF7CF254B155E003444EE /* ChannelDB+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChannelDB+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E01DC13C25793EFC00BC5902 /* EmitterServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterServise.swift; sourceTree = "<group>"; };
 		E03C6FB92566A5830032EF14 /* PresentationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationAssembly.swift; sourceTree = "<group>"; };
 		E03C6FBE2566A6800032EF14 /* ServicesAssebmly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesAssebmly.swift; sourceTree = "<group>"; };
 		E03C6FCC2566B0190032EF14 /* CoreAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAssembly.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				E07F358F256D33C4007C6A14 /* MessagesServices */,
 				E055EEDF256874CB006B1D4E /* ChannelsServices */,
 				E0FC78562568224200ECCF21 /* StorageService.swift */,
+				E01DC13C25793EFC00BC5902 /* EmitterServise.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -849,6 +852,7 @@
 				E061D2262572F9E700D5ED90 /* CodableStructs.swift in Sources */,
 				E03C6FBF2566A6800032EF14 /* ServicesAssebmly.swift in Sources */,
 				E0A476D02537DF1F00938B10 /* DefaultThemeRepository.swift in Sources */,
+				E01DC13D25793EFC00BC5902 /* EmitterServise.swift in Sources */,
 				E07F3591256D33E7007C6A14 /* MessagesFetchResultsService.swift in Sources */,
 				E0AD30B12571325E00CFB04F /* ImageNeworkManager.swift in Sources */,
 				E0A476B62537DF1F00938B10 /* ConfigurableViewProtocol.swift in Sources */,

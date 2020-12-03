@@ -150,6 +150,8 @@ class ProfileViewController: UIViewController {
             profileAvatarView.profileImageButton.isEnabled.toggle()
             
             editButton.setTitle("Save", for: .normal)
+            
+            startAnimation()
         } else {
             nameField.isUserInteractionEnabled.toggle()
             nameField.layer.borderColor = nil
@@ -162,12 +164,60 @@ class ProfileViewController: UIViewController {
             profileAvatarView.profileImageButton.isEnabled.toggle()
             
             editButton.setTitle("Edit", for: .normal)
+            stopAnimation()
         }
     }
     
     deinit {
         print("deinit ProfileVC")
     }
+    
+    private func startAnimation() {
+        let animationRotation = makeRotateAnimation()
+        let animaitonDiagonal = makeDiagonalAnimaiton()
+        let animationGroup = CAAnimationGroup()
+        animationGroup.animations = [animationRotation, animaitonDiagonal]
+        animationGroup.duration = 0.3
+        animationGroup.repeatCount = .infinity
+        
+        editButton.layer.add(animationGroup, forKey: "1")
+    }
+    
+    private func stopAnimation() {
+        editButton.layer.removeAllAnimations()
+    }
+    
+    func makeDiagonalAnimaiton() -> CAKeyframeAnimation {
+        let animation = CAKeyframeAnimation(keyPath: #keyPath(CALayer.position))
+        let startPosition = editButton.layer.position
+        
+        let position1 = startPosition
+        let position2 = CGPoint(x: startPosition.x + 5, y: startPosition.y + 5)
+        let position3 = startPosition
+        let position4 = CGPoint(x: startPosition.x - 5, y: startPosition.y - 5)
+        let position5 = startPosition
+        
+        animation.values = [position1, position2, position3, position4, position5]
+        animation.keyTimes = [0, 0.25, 0.5, 0.75, 1.0]
+        
+        return animation
+    }
+        
+    func makeRotateAnimation() -> CAKeyframeAnimation {
+        let animation = CAKeyframeAnimation(keyPath: "transform.rotation")
+        
+        let position1 = 0
+        let position2 = Double.pi * 18 / 365
+        let position3 = 0
+        let position4 = Double.pi * (-18) / 365
+        let position5 = 0
+        
+        animation.values = [position1, position2, position3, position4, position5]
+        animation.keyTimes = [0, 0.25, 0.5, 0.75, 1.0]
+        
+        return animation
+    }
+    
 }
 
 // MARK: - Support

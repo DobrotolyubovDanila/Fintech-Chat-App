@@ -1,7 +1,7 @@
 import UIKit
 import CoreData
 
-class ConversationViewController: UIViewController {
+class ConversationViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -16,6 +16,8 @@ class ConversationViewController: UIViewController {
     lazy var messagesFBDM = MessagesFBManager(idChannel: model.identifierChannel)
     
     var model: ConversationModelProto!
+    
+//    private var emitter: EmitterServise?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +36,9 @@ class ConversationViewController: UIViewController {
         model.getMessagesFromFB {
             self.scrollToBottom()
         }
-
+        
+//        emitter = EmitterServise(viewController: self)
+//        configGestureRecognizers()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -119,6 +123,20 @@ class ConversationViewController: UIViewController {
             messageField.textColor = themeManager.sendedMessagesTextColor
         }
     }
+    
+//    private func configGestureRecognizers() {
+//        let panRec = UIPanGestureRecognizer(target: self, action: #selector(panRecocnized(_:)))
+//        panRec.cancelsTouchesInView = false
+//        panRec.delegate = self
+//        
+//        tableView.addGestureRecognizer(panRec)
+//        tableView.isUserInteractionEnabled = true
+//    
+//    }
+//    
+//    @objc func panRecocnized(_ sender: UIPanGestureRecognizer) {
+//        emitter?.panRecognized(sender)
+//    }
 }
 
 extension ConversationViewController: UITableViewDelegate, UITableViewDataSource {
