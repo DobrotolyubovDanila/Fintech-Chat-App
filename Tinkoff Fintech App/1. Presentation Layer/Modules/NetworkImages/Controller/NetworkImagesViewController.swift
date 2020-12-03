@@ -81,7 +81,6 @@ class NetworkImagesViewController: UICollectionViewController {
             if let image = image {
                 cell.setImage(image: image)
                 self?.model.images[urlString] = image
-                print(image.size)
             }
         }
         
