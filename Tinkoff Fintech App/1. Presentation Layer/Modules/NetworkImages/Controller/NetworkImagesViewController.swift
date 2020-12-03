@@ -41,7 +41,7 @@ class NetworkImagesViewController: UICollectionViewController {
         DispatchQueue.global().async { [weak self] in
             self?.model.networkManager.getReferences { (ustrings) in
                 self?.model.urlStrings = ustrings
-                
+                print("completion in viewdidload")
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
                     self?.collectionView.reloadData()
                     self?.activityIndicator.stopAnimating()
@@ -81,6 +81,7 @@ class NetworkImagesViewController: UICollectionViewController {
             if let image = image {
                 cell.setImage(image: image)
                 self?.model.images[urlString] = image
+                print(image.size)
             }
         }
         

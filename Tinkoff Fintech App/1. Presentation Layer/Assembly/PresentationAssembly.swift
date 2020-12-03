@@ -97,7 +97,7 @@ class PresentationAssembly: PresentationAssemblyProto {
     func NetworkImagesViewController() -> NetworkImagesViewController? {
         let sb = UIStoryboard(name: "NetworkImagesViewController", bundle: nil)
         if let vc = sb.instantiateInitialViewController() as? NetworkImagesViewController {
-            vc.model = NetworkImagesModel(networkImagesManager: serviceAssebmly.networkImagesManager)
+            vc.model = NetworkImagesModel(networkManager: serviceAssebmly.networkImagesManager)
             return vc
         }
         return nil
