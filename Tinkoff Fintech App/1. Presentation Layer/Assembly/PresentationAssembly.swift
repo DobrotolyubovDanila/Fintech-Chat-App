@@ -13,11 +13,11 @@ protocol PresentationAssemblyProto {
     
     func conversationViewController(model: ConversationsListModelProtocol, identifier: String) -> ConversationViewController?
     
-    func profileViewController() -> UINavigationController?
-    
     func ThemesViewController() -> ThemesViewController?
     
     func NetworkImagesViewController() -> NetworkImagesViewController?
+    
+    func profileViewController(frame: CGRect, profileInformation: ProfileInformation, image: UIImage?) -> ProfileViewController?
 }
 
 class PresentationAssembly: PresentationAssemblyProto {
@@ -49,15 +49,16 @@ class PresentationAssembly: PresentationAssemblyProto {
         return navigationController
     }
     
-    func profileViewController() -> UINavigationController? {
-        let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
-        let navProfileController = profileStoryboard.instantiateViewController(withIdentifier: "profileNC") as? UINavigationController
+    func profileViewController(frame: CGRect, profileInformation: ProfileInformation, image: UIImage?) -> ProfileViewController? {
         
-        if let pvc = navProfileController?.topViewController as? ProfileViewController {
-            pvc.model = ProfileVCModel(storageManager: serviceAssebmly.storageService.storageManager)
-        }
+        let model = ProfileVCModel(storageManager: serviceAssebmly.storageService.storageManager)
+        model.profileImage = image
+        model.profileInformation = profileInformation
         
-        return navProfileController
+        let pvc = ProfileViewController(model: model, frame: frame)
+        pvc.presentationAssembly = self
+        
+        return pvc
     }
     
     func conversationViewController(model: ConversationsListModelProtocol, identifier: String) -> ConversationViewController? {

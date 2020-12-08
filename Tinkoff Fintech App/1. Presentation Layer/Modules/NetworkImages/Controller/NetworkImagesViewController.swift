@@ -42,7 +42,7 @@ class NetworkImagesViewController: UICollectionViewController {
             self?.model.networkManager.getReferences { (ustrings) in
                 self?.model.urlStrings = ustrings
                 print("completion in viewdidload")
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                DispatchQueue.main.async {
                     self?.collectionView.reloadData()
                     self?.activityIndicator.stopAnimating()
                     self?.activityIndicator.removeFromSuperview()
@@ -65,22 +65,26 @@ class NetworkImagesViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let urlString = model.urlStrings[indexPath.row]
+        
+//        if let image = model.images[urlString] {
+//            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "localCell", for: indexPath) as? NetworkImageCell else {
+//                return UICollectionViewCell()
+//            }
+//
+//            cell.imageView.image = image
+//            return cell
+//        }
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? NetworkImageCell else {
             return UICollectionViewCell()
         }
         
-        let urlString = model.urlStrings[indexPath.row]
-        
-        if let image = model.images[urlString] {
-            
-            cell.imageView.image = image
-            return cell
-        }
-        
-        model.networkManager.getImage(url: urlString) { [weak self] (image) in
+        model.networkManager.getImage(url: urlString) { (image) in
             if let image = image {
                 cell.setImage(image: image)
-                self?.model.images[urlString] = image
+//                self?.model.images[urlString] = image
             }
         }
         
@@ -88,11 +92,19 @@ class NetworkImagesViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let url = model.urlStrings[indexPath.row]
-        if let image = model.images[url] {
+//        let url = model.urlStrings[indexPath.row]
+//        if let image = model.images[url] {
+//            delegate?.setProfileImage(image: image)
+//            dismiss(animated: true, completion: nil)
+//        }
+        
+        let cell = collectionView.cellForItem(at: indexPath) as? NetworkImageCell
+        if let image = cell?.imageView.image {
             delegate?.setProfileImage(image: image)
             dismiss(animated: true, completion: nil)
+
         }
+        
     }
 }
 
