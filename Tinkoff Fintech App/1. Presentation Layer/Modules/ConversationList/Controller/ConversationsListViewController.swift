@@ -40,6 +40,7 @@ class ConversationsListViewController: UITableViewController, UIGestureRecognize
         
         emitter = EmitterServise(view: self.tableView)
         configGestureRecognizers()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -86,15 +87,29 @@ class ConversationsListViewController: UITableViewController, UIGestureRecognize
     }
     
     @IBAction func profileButtonTapped(_ sender: UIButton) {
-        guard let navProfileController = presentaionAssembly.profileViewController() else { return }
+        //        guard let navProfileController = presentaionAssembly.profileViewController() else { return }
+        //
+        //        if let pvc = navProfileController.topViewController as? ProfileViewController {
+        //            pvc.model.profileInformation = model.profileInformation
+        //            pvc.model.profileImage = profileAvatarView.profileImageView.image
+        //            pvc.presentationAssembly = presentaionAssembly
+        //            pvc.profileInformationDelegate = self
+        //        }
+        //
+        //        self.present(navProfileController, animated: true, completion: nil)
         
-        if let pvc = navProfileController.topViewController as? ProfileViewController {
-            pvc.model.profileInformation = model.profileInformation
-            pvc.model.profileImage = profileAvatarView.profileImageView.image
-            pvc.presentationAssembly = presentaionAssembly
-            pvc.profileInformationDelegate = self
-        }
-        self.present(navProfileController, animated: true, completion: nil)
+        let profInf = model.profileInformation ?? ProfileInformation(name: "", description: "", imageData: nil)
+        let image = profileAvatarView.profileImageView.image
+        
+        guard let pvc = presentaionAssembly.profileViewController(frame: view.frame, profileInformation: profInf, image: image) else { return }
+        
+        pvc.profileInformationDelegate = self
+        pvc.modalPresentationStyle = .custom
+        
+        let convert = profileAvatarView.convert(profileAvatarView.center, to: self.view)
+        pvc.fromCenter = convert
+        
+        self.present(pvc, animated: true, completion: nil)
     }
     
     @IBAction func settingsButtonPressed(_ sender: UIBarButtonItem) {
@@ -139,7 +154,7 @@ class ConversationsListViewController: UITableViewController, UIGestureRecognize
         let panRec = UIPanGestureRecognizer(target: self, action: #selector(panRecocnized(_:)))
         panRec.cancelsTouchesInView = false
         panRec.delegate = self
-
+        
         let tapRec = UITapGestureRecognizer(target: self, action: #selector(tapRecocnized(_:)))
         tapRec.cancelsTouchesInView = false
         tapRec.delegate = self
@@ -147,7 +162,7 @@ class ConversationsListViewController: UITableViewController, UIGestureRecognize
         tableView.addGestureRecognizer(tapRec)
         tableView.addGestureRecognizer(panRec)
     }
-
+    
     @objc func panRecocnized(_ sender: UIPanGestureRecognizer) {
         emitter?.panRecognizer(sender)
     }

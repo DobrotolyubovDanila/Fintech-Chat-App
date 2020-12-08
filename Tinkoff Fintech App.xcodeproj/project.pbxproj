@@ -43,10 +43,7 @@
 		E0A476C62537DF1F00938B10 /* ThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476982537DF1E00938B10 /* ThemesViewController.swift */; };
 		E0A476C72537DF1F00938B10 /* ThemesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0A476992537DF1E00938B10 /* ThemesViewController.storyboard */; };
 		E0A476C82537DF1F00938B10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4769B2537DF1E00938B10 /* AppDelegate.swift */; };
-		E0A476CA2537DF1F00938B10 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0A4769E2537DF1F00938B10 /* Profile.storyboard */; };
-		E0A476CB2537DF1F00938B10 /* ImagePickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476A12537DF1F00938B10 /* ImagePickerExtension.swift */; };
 		E0A476CD2537DF1F00938B10 /* ProfileInformationStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476A42537DF1F00938B10 /* ProfileInformationStruct.swift */; };
-		E0A476CE2537DF1F00938B10 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476A52537DF1F00938B10 /* ProfileViewController.swift */; };
 		E0A476CF2537DF1F00938B10 /* ProfileAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476A72537DF1F00938B10 /* ProfileAvatarView.swift */; };
 		E0A476D02537DF1F00938B10 /* DefaultThemeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476AA2537DF1F00938B10 /* DefaultThemeRepository.swift */; };
 		E0A476D12537DF1F00938B10 /* DayTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A476AC2537DF1F00938B10 /* DayTheme.swift */; };
@@ -61,11 +58,15 @@
 		E0AD30C2257139B200CFB04F /* NetworkImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AD30C0257139B200CFB04F /* NetworkImagesViewController.swift */; };
 		E0C92188256BF19000DD8F9A /* ProfileVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C92187256BF19000DD8F9A /* ProfileVCModel.swift */; };
 		E0C9218F256BF7E700DD8F9A /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C9218E256BF7E700DD8F9A /* ConversationModel.swift */; };
+		E0CD5BA1257E8C540082E88B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5B9F257E8C540082E88B /* ProfileViewController.swift */; };
+		E0CD5BA2257E8C540082E88B /* ProfilesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0CD5BA0257E8C540082E88B /* ProfilesViewController.xib */; };
 		E0D39A202572DB730012953C /* NetworkImagesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0D39A1F2572DB730012953C /* NetworkImagesViewController.storyboard */; };
+		E0DC6AEC25800ADD006D07C3 /* ProfilesVC Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC6AEB25800ADD006D07C3 /* ProfilesVC Extensions.swift */; };
 		E0DF7365253FA83D00FA77DE /* ChannelsFBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DF7364253FA83D00FA77DE /* ChannelsFBManager.swift */; };
 		E0E095242573005200CB34EA /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E095232573005200CB34EA /* Parser.swift */; };
 		E0F1A83B257964E20047AC65 /* NetworkImagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F1A83A257964E20047AC65 /* NetworkImagesModel.swift */; };
 		E0F1A83F257965000047AC65 /* CodableStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F1A83E257965000047AC65 /* CodableStructs.swift */; };
+		E0F5250B257C14BC00D8E54D /* CustoumTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5250A257C14BC00D8E54D /* CustoumTransition.swift */; };
 		E0FBF52F253F982A00C3278B /* ChannelFBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FBF52E253F982A00C3278B /* ChannelFBModel.swift */; };
 		E0FC78572568224200ECCF21 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC78562568224200ECCF21 /* StorageService.swift */; };
 		E0FC785B2568456700ECCF21 /* ChannelsFirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC785A2568456700ECCF21 /* ChannelsFirebaseService.swift */; };
@@ -113,10 +114,7 @@
 		E0A476992537DF1E00938B10 /* ThemesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ThemesViewController.storyboard; sourceTree = "<group>"; };
 		E0A4769B2537DF1E00938B10 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0A4769C2537DF1F00938B10 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E0A4769F2537DF1F00938B10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
-		E0A476A12537DF1F00938B10 /* ImagePickerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerExtension.swift; sourceTree = "<group>"; };
 		E0A476A42537DF1F00938B10 /* ProfileInformationStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInformationStruct.swift; sourceTree = "<group>"; };
-		E0A476A52537DF1F00938B10 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E0A476A72537DF1F00938B10 /* ProfileAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAvatarView.swift; sourceTree = "<group>"; };
 		E0A476AA2537DF1F00938B10 /* DefaultThemeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultThemeRepository.swift; sourceTree = "<group>"; };
 		E0A476AC2537DF1F00938B10 /* DayTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTheme.swift; sourceTree = "<group>"; };
@@ -131,12 +129,16 @@
 		E0AD30C0257139B200CFB04F /* NetworkImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImagesViewController.swift; sourceTree = "<group>"; };
 		E0C92187256BF19000DD8F9A /* ProfileVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVCModel.swift; sourceTree = "<group>"; };
 		E0C9218E256BF7E700DD8F9A /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
+		E0CD5B9F257E8C540082E88B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		E0CD5BA0257E8C540082E88B /* ProfilesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilesViewController.xib; sourceTree = "<group>"; };
 		E0D39A1F2572DB730012953C /* NetworkImagesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NetworkImagesViewController.storyboard; sourceTree = "<group>"; };
+		E0DC6AEB25800ADD006D07C3 /* ProfilesVC Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfilesVC Extensions.swift"; sourceTree = "<group>"; };
 		E0DF7364253FA83D00FA77DE /* ChannelsFBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsFBManager.swift; sourceTree = "<group>"; };
 		E0E095232573005200CB34EA /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		E0EBA6B2250A8E2D004CD943 /* Tinkoff Fintech App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinkoff Fintech App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0F1A83A257964E20047AC65 /* NetworkImagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImagesModel.swift; sourceTree = "<group>"; };
 		E0F1A83E257965000047AC65 /* CodableStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStructs.swift; sourceTree = "<group>"; };
+		E0F5250A257C14BC00D8E54D /* CustoumTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustoumTransition.swift; sourceTree = "<group>"; };
 		E0FBF52E253F982A00C3278B /* ChannelFBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelFBModel.swift; sourceTree = "<group>"; };
 		E0FC78562568224200ECCF21 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		E0FC785A2568456700ECCF21 /* ChannelsFirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsFirebaseService.swift; sourceTree = "<group>"; };
@@ -261,7 +263,7 @@
 				E0CC4E53256738030071CDCE /* ConversationList */,
 				E0C9218A256BF76300DD8F9A /* Conversation */,
 				E07F3598256D5AA0007C6A14 /* Themes */,
-				E0C7255F25686AE70078091F /* Profile */,
+				E0CD5B9B257E8BD20082E88B /* Profile */,
 				E0AD30B3257138B900CFB04F /* NetworkImages */,
 			);
 			path = Modules;
@@ -417,21 +419,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		E0A476972537DF1E00938B10 /* ThemesViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ThemesViewController;
-			sourceTree = "<group>";
-		};
-		E0A476A02537DF1F00938B10 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				E0A476A12537DF1F00938B10 /* ImagePickerExtension.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		E0A476A82537DF1F00938B10 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -504,43 +491,6 @@
 			isa = PBXGroup;
 			children = (
 				E0D39A1F2572DB730012953C /* NetworkImagesViewController.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E0C7255F25686AE70078091F /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				E0C7256125686B050078091F /* Model */,
-				E0C7256225686B0C0078091F /* View */,
-				E0C7256025686AFF0078091F /* Controller */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		E0C7256025686AFF0078091F /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				E0A476A52537DF1F00938B10 /* ProfileViewController.swift */,
-				E0A476A02537DF1F00938B10 /* Extensions */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		E0C7256125686B050078091F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				E0A476A42537DF1F00938B10 /* ProfileInformationStruct.swift */,
-				E0C92187256BF19000DD8F9A /* ProfileVCModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		E0C7256225686B0C0078091F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E0A4769E2537DF1F00938B10 /* Profile.storyboard */,
-				E0A476A72537DF1F00938B10 /* ProfileAvatarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -626,6 +576,45 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		E0CD5B9B257E8BD20082E88B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E0CD5B9E257E8BE50082E88B /* Model */,
+				E0CD5B9D257E8BE10082E88B /* View */,
+				E0CD5B9C257E8BDB0082E88B /* Controller */,
+			);
+			name = Profile;
+			path = ../../Profile;
+			sourceTree = "<group>";
+		};
+		E0CD5B9C257E8BDB0082E88B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E0CD5B9F257E8C540082E88B /* ProfileViewController.swift */,
+				E0DC6AEB25800ADD006D07C3 /* ProfilesVC Extensions.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E0CD5B9D257E8BE10082E88B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E0CD5BA0257E8C540082E88B /* ProfilesViewController.xib */,
+				E0A476A72537DF1F00938B10 /* ProfileAvatarView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E0CD5B9E257E8BE50082E88B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E0A476A42537DF1F00938B10 /* ProfileInformationStruct.swift */,
+				E0C92187256BF19000DD8F9A /* ProfileVCModel.swift */,
+				E0F5250A257C14BC00D8E54D /* CustoumTransition.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E0EBA6A9250A8E2D004CD943 = {
 			isa = PBXGroup;
 			children = (
@@ -654,7 +643,6 @@
 				E03C6FB62566A4A00032EF14 /* 3. Core Layer */,
 				E03C6FB32566A3AD0032EF14 /* Supporting Files */,
 				E0A476A82537DF1F00938B10 /* Resources */,
-				E0A476972537DF1E00938B10 /* ThemesViewController */,
 			);
 			path = "Tinkoff Fintech App";
 			sourceTree = "<group>";
@@ -722,11 +710,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0A476C72537DF1F00938B10 /* ThemesViewController.storyboard in Resources */,
+				E0CD5BA2257E8C540082E88B /* ProfilesViewController.xib in Resources */,
 				E0A476BA2537DF1F00938B10 /* Assets.xcassets in Resources */,
 				E0D39A202572DB730012953C /* NetworkImagesViewController.storyboard in Resources */,
 				E0A476C42537DF1F00938B10 /* LaunchScreen.storyboard in Resources */,
 				E0A476B92537DF1F00938B10 /* ConversationStoryboard.storyboard in Resources */,
-				E0A476CA2537DF1F00938B10 /* Profile.storyboard in Resources */,
 				E0A476BD2537DF1F00938B10 /* ConversationsList.storyboard in Resources */,
 				E08729D7253E3C2D00FC704A /* GoogleService-Info.plist in Resources */,
 			);
@@ -809,6 +797,7 @@
 				E0AD30C2257139B200CFB04F /* NetworkImagesViewController.swift in Sources */,
 				E00FF7D0254B155E003444EE /* ChannelDB+CoreDataClass.swift in Sources */,
 				E03C6FBA2566A5830032EF14 /* PresentationAssembly.swift in Sources */,
+				E0F5250B257C14BC00D8E54D /* CustoumTransition.swift in Sources */,
 				E0A476BC2537DF1F00938B10 /* ConvListNavController.swift in Sources */,
 				E0A476CF2537DF1F00938B10 /* ProfileAvatarView.swift in Sources */,
 				E04BC03525499953004DE59B /* CoreDataStack.swift in Sources */,
@@ -818,6 +807,7 @@
 				E0A476BF2537DF1F00938B10 /* ConversationListPassImage.swift in Sources */,
 				E0E095242573005200CB34EA /* Parser.swift in Sources */,
 				E0C9218F256BF7E700DD8F9A /* ConversationModel.swift in Sources */,
+				E0CD5BA1257E8C540082E88B /* ProfileViewController.swift in Sources */,
 				E0A8DE6D254A4F3500C49E83 /* StorageManager.swift in Sources */,
 				E0A476C62537DF1F00938B10 /* ThemesViewController.swift in Sources */,
 				E0A476C82537DF1F00938B10 /* AppDelegate.swift in Sources */,
@@ -828,7 +818,6 @@
 				E00FF7AE254B12AB003444EE /* MessageDB+CoreDataClass.swift in Sources */,
 				E0A476CD2537DF1F00938B10 /* ProfileInformationStruct.swift in Sources */,
 				E0A476BE2537DF1F00938B10 /* ConversationListThemePicker.swift in Sources */,
-				E0A476CE2537DF1F00938B10 /* ProfileViewController.swift in Sources */,
 				E0A476D32537DF1F00938B10 /* NightTheme.swift in Sources */,
 				E0F1A83B257964E20047AC65 /* NetworkImagesModel.swift in Sources */,
 				E03C6FCD2566B0190032EF14 /* CoreAssembly.swift in Sources */,
@@ -842,9 +831,9 @@
 				E03C6FBF2566A6800032EF14 /* ServicesAssebmly.swift in Sources */,
 				E0A476D02537DF1F00938B10 /* DefaultThemeRepository.swift in Sources */,
 				E01DC13D25793EFC00BC5902 /* EmitterServise.swift in Sources */,
+				E0DC6AEC25800ADD006D07C3 /* ProfilesVC Extensions.swift in Sources */,
 				E07F3591256D33E7007C6A14 /* MessagesFetchResultsService.swift in Sources */,
 				E0A476B62537DF1F00938B10 /* ConfigurableViewProtocol.swift in Sources */,
-				E0A476CB2537DF1F00938B10 /* ImagePickerExtension.swift in Sources */,
 				E0A476D22537DF1F00938B10 /* ClassicTheme.swift in Sources */,
 				E0FC78572568224200ECCF21 /* StorageService.swift in Sources */,
 				E0A476B82537DF1F00938B10 /* ConversationCell.swift in Sources */,
@@ -856,17 +845,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E0A4769E2537DF1F00938B10 /* Profile.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E0A4769F2537DF1F00938B10 /* Base */,
-			);
-			name = Profile.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E0EBA6C4250A8E30004CD943 /* Debug */ = {
