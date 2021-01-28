@@ -12,7 +12,7 @@ class NetworkImagesManager {
     
     func getReferences(completion: @escaping ([String]) -> Void) {
         
-        guard let url = URL(string: "https://pixabay.com/api/?key=19281671-02c972ad3ffcf4446da3cfdbd&q=yellow+flowers&image_type=%20photo&pretty=true&per_page=200") else { return }
+        guard let url = URL(string: "https://pixabay.com/api/?key=19281671-02c972ad3ffcf4446da3cfdbd&q=yellow+cars&image_type=%20photo&pretty=true&per_page=200") else { return }
         
         URLSession.shared.dataTask(with: url) { (data, _, _) in
             if let data = data {

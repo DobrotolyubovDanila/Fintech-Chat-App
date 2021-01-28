@@ -106,7 +106,7 @@ class ConversationsListViewController: UITableViewController, UIGestureRecognize
         pvc.profileInformationDelegate = self
         pvc.modalPresentationStyle = .custom
         
-        let convert = profileAvatarView.convert(profileAvatarView.center, to: self.view)
+        let convert = profileAvatarView.convert(profileAvatarView.center, to: self.navigationController?.view)
         pvc.fromCenter = convert
         
         self.present(pvc, animated: true, completion: nil)

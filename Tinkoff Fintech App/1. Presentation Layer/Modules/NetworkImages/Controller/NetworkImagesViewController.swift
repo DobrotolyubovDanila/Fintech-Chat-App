@@ -68,15 +68,6 @@ class NetworkImagesViewController: UICollectionViewController {
         
         let urlString = model.urlStrings[indexPath.row]
         
-//        if let image = model.images[urlString] {
-//            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "localCell", for: indexPath) as? NetworkImageCell else {
-//                return UICollectionViewCell()
-//            }
-//
-//            cell.imageView.image = image
-//            return cell
-//        }
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? NetworkImageCell else {
             return UICollectionViewCell()
         }
@@ -84,7 +75,6 @@ class NetworkImagesViewController: UICollectionViewController {
         model.networkManager.getImage(url: urlString) { (image) in
             if let image = image {
                 cell.setImage(image: image)
-//                self?.model.images[urlString] = image
             }
         }
         

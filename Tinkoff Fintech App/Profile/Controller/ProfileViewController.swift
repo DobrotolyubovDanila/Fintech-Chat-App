@@ -215,9 +215,9 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         let startPosition = editButton.layer.position
 
         let position1 = startPosition
-        let position2 = CGPoint(x: startPosition.x + 5, y: startPosition.y + 5)
+        let position2 = CGPoint(x: startPosition.x + 3, y: startPosition.y + 3)
         let position3 = startPosition
-        let position4 = CGPoint(x: startPosition.x - 5, y: startPosition.y - 5)
+        let position4 = CGPoint(x: startPosition.x - 3, y: startPosition.y - 3)
         let position5 = startPosition
 
         animation.values = [position1, position2, position3, position4, position5]
@@ -230,9 +230,9 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         let animation = CAKeyframeAnimation(keyPath: "transform.rotation")
 
         let position1 = 0
-        let position2 = Double.pi * 18 / 365
+        let position2 = Double.pi * 10 / 365
         let position3 = 0
-        let position4 = Double.pi * (-18) / 365
+        let position4 = Double.pi * (-10) / 365
         let position5 = 0
 
         animation.values = [position1, position2, position3, position4, position5]

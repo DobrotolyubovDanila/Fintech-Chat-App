@@ -25,6 +25,12 @@ class NetworkImageCell: UICollectionViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        print(#function)
+        imageView.image = UIImage(named: "imagePlaceholder")
+    }
+    
     static func nib() -> UINib {
         return UINib(nibName: "NetworkImageCell", bundle: nil)
     }
